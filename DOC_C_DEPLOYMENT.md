@@ -2,16 +2,24 @@
 
 기준일: 2026-08-11  
 검증 환경: Xcode 26.6 (`17F113`)  
-예정 repository: `2026TechMap_tutorial`
+repository: `woozy-A/2026TechMap_tutorial`
 
-이 문서는 repository를 만들거나 push하지 않는다. 실제 repository가 준비된 뒤 사용할 build와 Pages 설정만 고정한다.
+## 현재 공개 상태
+
+- Source: <https://github.com/woozy-A/2026TechMap_tutorial>
+- Pages: <https://woozy-a.github.io/2026TechMap_tutorial/>
+- Pages source: `gh-pages` branch의 `/`
+- HTTPS enforced: true
+- 최초 공개 static commit: `2b8a65d`
+
+현재 배포는 검증된 로컬 `.doccarchive`를 `gh-pages` branch에 게시하는 방식이다. 아래 GitHub Actions 예시는 이후 자동화를 위한 대안이다.
 
 ## URL과 base path
 
-GitHub Project Pages의 예상 주소는 다음과 같다.
+GitHub Project Pages 공개 주소는 다음과 같다.
 
 ```text
-https://<owner>.github.io/2026TechMap_tutorial/
+https://woozy-a.github.io/2026TechMap_tutorial/
 ```
 
 DocC hosting base path는 대소문자까지 정확히 다음 값이다.
@@ -85,7 +93,7 @@ xcrun docc process-archive transform-for-static-hosting \
 
 ## GitHub Actions 예시
 
-repository root에 다음 workflow를 추가할 수 있다. 현재 Phase에서는 실제 파일 생성과 push를 하지 않는다.
+향후 `main` push마다 자동 배포하려면 repository root에 다음 workflow를 추가하고 Pages source를 GitHub Actions로 전환할 수 있다. 현재 공개 site는 이 workflow가 아니라 `gh-pages` branch source를 사용한다.
 
 ```yaml
 name: Deploy DocC to GitHub Pages
@@ -156,15 +164,15 @@ jobs:
 
 GitHub의 custom Pages workflow 구조는 [공식 Pages workflow 안내](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)를 따른다. Runner image와 Xcode 경로는 배포 시점에 [macOS runner manifest](https://github.com/actions/runner-images/blob/main/images/macos/macos-26-Readme.md)에서 다시 확인한다.
 
-## GitHub에서 한 번만 할 설정
+## 현재 GitHub Pages 설정
 
-1. repository 이름을 정확히 `2026TechMap_tutorial`로 만든다.
-2. Settings → Pages로 이동한다.
-3. Build and deployment → Source에서 **GitHub Actions**를 선택한다.
-4. workflow를 `main`에 push한다.
-5. workflow가 알려주는 `page_url`에서 root와 Part 4 deep link를 각각 새로고침한다.
+1. repository 이름: `2026TechMap_tutorial`
+2. visibility: public
+3. Build and deployment source: Deploy from a branch
+4. branch/path: `gh-pages` / `/`
+5. 공개 URL에서 root와 각 tutorial deep link를 직접 확인한다.
 
-## 배포 전 acceptance
+## 배포 acceptance
 
 - `xcrun docc convert ... --analyze --warnings-as-errors` 통과
 - Xcode `docbuild`에서 `CompileDocumentation`과 `BUILD DOCUMENTATION SUCCEEDED`
