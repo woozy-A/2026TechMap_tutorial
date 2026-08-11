@@ -345,7 +345,7 @@ final class ObjectExplorerViewController: UIViewController {
     }
 
     private func boxMaterial(isSelected: Bool) -> UnlitMaterial {
-        var material = UnlitMaterial(color: isSelected ? .systemYellow : .systemTeal)
+        var material = UnlitMaterial(color: isSelected ? .systemPink : .systemTeal)
         if !isSelected {
             material.blending = .transparent(opacity: 0.15)
         }

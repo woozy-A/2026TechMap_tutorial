@@ -3,7 +3,7 @@
 이 프로젝트는 한 페이지로 이어지는 DocC Main Tutorial을 보며 Section 1부터 Section 4까지 코드를 직접 입력하는 hands-on Starter입니다.
 
 - 공개 Tutorial: <https://woozy-a.github.io/2026TechMap_tutorial/tutorials/roomplanobjectexplorer/>
-- Starter ZIP: <https://github.com/woozy-A/2026TechMap_tutorial/releases/download/tutorial-docc-v3/RoomPlanTutorialStarter-v3.zip>
+- Starter ZIP: <https://github.com/woozy-A/2026TechMap_tutorial/releases/download/tutorial-docc-v4/RoomPlanTutorialStarter-v4.zip>
 
 ## 시작하기
 

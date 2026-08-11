@@ -1,21 +1,23 @@
 # DocC Screenshot Plan
 
-기준일: 2026-08-11
+기준일: 2026-08-12
 
 가짜 화면이나 placeholder를 사용하지 않는다. Xcode 위치 안내는 각 Section 직전의 검증된 source snapshot에서 촬영하고, 실행 결과는 해당 단계 Simulator checkpoint만 사용한다.
 
 ## Instruction Screenshot
 
-Instruction Screenshot은 일반 `@Image`로 표시한다. 다음 기능을 미리 노출하지 않도록 각 Section 시작 직전 tag에서 촬영했다.
+Instruction Screenshot은 일반 `@Image`로 표시한다. 실제 Xcode 화면을 필요한 위치까지 crop하고, 파란 번호 박스로 클릭·검색할 지점을 표시한다. 다음 기능을 미리 노출하지 않도록 각 Section 시작 직전 tag에서 촬영한 원본만 사용한다.
 
-| Section | DocC resource | 촬영 기준 | 보여주는 행동 |
+| 위치 | DocC resource | 촬영 기준 | 보여주는 행동 |
 | --- | --- | --- | --- |
-| 1 | `xcode-section1-onboarding-location.png` | `tutorial-starter-v1` (`f114349`) | Run 버튼과 destination, `OnboardingViewController.swift`, `showSampleRoom(_:)`, `Resources/Room.json` 위치 |
-| 2 | `xcode-section2-captured-objects-location.png` | `tutorial-stage-part-1-v1` (`01f1782`) | `ObjectExplorerViewController.swift`의 Part 2 MARK와 두 개의 빈 hook |
-| 3 | `xcode-section3-object-selection-location.png` | `tutorial-stage-part-2-v1` (`c6dfc0f`) | Part 3 MARK, `isObjectSelected(_:)`, `selectObject(at:)` 위치 |
-| 4 | `xcode-section4-visualization-location.png` | `tutorial-stage-part-3-v1` (`3503c18`) | Part 4 MARK, `renderObjectBoxes()`, `updateHighlight()` 위치 |
+| Section 1 / Open | `instruction-01-project-open.png` | `tutorial-starter-v1` (`f114349`) | Xcode에 열린 project와 Swift editor 확인 |
+| Section 1 / Run | `instruction-02-run-controls.png` | `tutorial-starter-v1` (`f114349`) | scheme → Simulator → Run 순서 |
+| Section 1 / Locate | `instruction-03-find-show-sample-room.png` | `tutorial-starter-v1` (`f114349`) | `OnboardingViewController.swift`와 `showSampleRoom(_:)` 위치 |
+| Section 2 / Locate | `instruction-04-find-part2.png` | `tutorial-stage-part-1-v1` (`01f1782`) | `ObjectExplorerViewController.swift`의 Part 2 MARK와 두 hook |
+| Section 3 / Locate | `instruction-05-find-part3.png` | `tutorial-stage-part-2-v1` (`c6dfc0f`) | Part 3 MARK, `isObjectSelected(_:)`, `selectObject(at:)` 위치 |
+| Section 4 / Locate | `instruction-06-find-part4-render.png` | `tutorial-stage-part-3-v1` (`3503c18`) | Part 4 MARK, `renderObjectBoxes()`, `updateHighlight()` 위치 |
 
-네 이미지는 모두 실제 Xcode 창을 1215 × 768로 촬영했다. 개인 정보가 들어 있는 editor, console, 경로는 포함하지 않았다.
+원본 여섯 장은 실제 Xcode 창을 1215 × 768로 촬영했다. crop과 번호 박스 외에는 코드와 UI를 편집하지 않았다. `@Code(previousFile:)`가 바뀐 줄을 정확히 보여주는 코드 Step에는 중복 screenshot을 넣지 않는다.
 
 ## Result Preview
 
@@ -27,9 +29,11 @@ Result Preview는 해당 결과를 만드는 `@Code` 안에 `@Image`를 중첩�
 | Section 2 | `part2-objects-detected.png` | `11 Objects Detected`, category와 dimensions 목록 |
 | Section 3 | `part3-chair2-selected.png` | `Chair 2 Selected`와 checkmark, Highlight는 아직 없음 |
 | Section 4 중간 | `part4-all-boxes.png` | dimensions와 transform을 적용한 모든 teal box |
-| Section 4 완료 | `part4-chair2-highlight.png` | 선택된 Chair 2 box 하나만 노란색 Highlight |
+| Highlight 구현 | `part4-chair2-highlight.png` | 선택된 Chair 2 box 하나만 선명한 분홍색 Highlight |
+| Run and Test | `part4-table1-highlight-tested.png` | Table 1 선택 시 status, checkmark, Highlight가 함께 이동 |
+| Completion | `completion-object-explorer.png` | Table 2를 선택한 완성 상태 |
 
-Main Tutorial 시작의 Goal Preview는 완성 목표를 먼저 보여주기 위한 유일한 독립 결과 이미지다.
+Overview의 `overview-object-explorer.png`와 Main Tutorial Intro의 `goal-object-explorer.png`는 각각 해당 페이지에서 완성 목표를 먼저 보여주는 Goal Preview다. Main Tutorial 안에서는 같은 screenshot을 반복하지 않는다.
 
 ## 검증 기준
 

@@ -4,31 +4,37 @@
 
         약 55분 동안 `CapturedRoom`, `objects`, `category`, `identifier`, `dimensions`, `transform`을 차례로 연결합니다. Main Tutorial은 iOS Simulator에서 진행하므로 LiDAR 기기나 카메라가 필요하지 않습니다.
 
-        [Starter Project ZIP 다운로드](https://github.com/woozy-A/2026TechMap_tutorial/releases/download/tutorial-docc-v3/RoomPlanTutorialStarter-v3.zip)
+        **CapturedRoom → objects → Select → 3D Highlight**
+
+        Starter는 UIKit 화면, non-AR RealityKit view, camera framing 같은 boilerplate만 제공합니다. 학습자는 `CapturedRoom`을 얻고 object를 읽고 선택한 뒤 3D Entity와 연결하는 RoomPlan 핵심 코드를 직접 입력합니다.
+
+        [Starter Project ZIP 다운로드](https://github.com/woozy-A/2026TechMap_tutorial/releases/download/tutorial-docc-v4/RoomPlanTutorialStarter-v4.zip)
+
+        @Image(source: "goal-object-explorer.png", alt: "Goal Preview로 RoomPlan object 목록에서 Chair 1을 선택하자 같은 identifier의 3D box 하나가 선명한 분홍색으로 Highlight된 최종 Object Explorer 화면")
     }
 
     @Section(title: "Section 1 — Get a CapturedRoom") {
         @ContentAndMedia {
             먼저 모든 학습자가 같은 RoomPlan 결과로 시작하도록 제공된 `Room.json` 파일을 불러옵니다. 이 파일은 JSON 문법을 연습하기 위한 자료가 아니라, 실제 scan 결과인 `CapturedRoom`을 저장한 sample입니다.
 
-            이 Section을 마치면 **Explore Sample Room** 버튼으로 Explorer를 열 수 있습니다. 이어지는 Section에서 object 목록, 선택, 3D Highlight를 하나씩 추가해 Goal Preview와 같은 앱을 완성합니다.
-
-            @Image(source: "part4-chair2-highlight.png", alt: "완성된 Object Explorer에서 RoomPlan object 목록과 3D box가 보이고 Chair 2에 해당하는 box 하나가 노란색으로 Highlight된 화면")
+            이 Section을 마치면 **Explore Sample Room** 버튼으로 Explorer를 열 수 있습니다. 이어지는 Section에서 object 목록, 선택, 3D Highlight를 하나씩 추가해 위의 Goal Preview와 같은 앱을 완성합니다.
         }
 
         @Steps {
             @Step {
-                위의 **Starter Project ZIP 다운로드** 링크를 누르세요. 다운로드가 끝나면 Finder의 **다운로드** 폴더에서 `RoomPlanTutorialStarter-v3.zip`을 더블클릭해 압축을 풉니다. Safari가 이미 같은 이름의 폴더로 자동 압축 해제했다면 다시 풀지 말고 그 폴더를 여세요.
+                위의 **Starter Project ZIP 다운로드** 링크를 누르세요. 다운로드가 끝나면 Finder의 **다운로드** 폴더에서 `RoomPlanTutorialStarter-v4.zip`을 더블클릭해 압축을 풉니다. Safari가 이미 같은 이름의 폴더로 자동 압축 해제했다면 다시 풀지 말고 그 폴더를 여세요.
 
-                압축을 푼 폴더 안의 `RoomPlanExampleApp.xcodeproj`를 더블클릭해 Xcode에서 여세요. Xcode가 프로젝트를 열어도 되는지 묻는다면 **Open**을 선택합니다.
+                압축을 푼 폴더 안의 `RoomPlanExampleApp.xcodeproj`를 더블클릭해 Xcode에서 여세요. Xcode가 프로젝트를 열어도 되는지 묻는다면 **Open**을 선택합니다. 아래 이미지에서 ① Project Navigator에 `RoomPlanExampleApp`이 나타나고 ② Swift 편집기가 열렸다면 올바른 프로젝트입니다.
 
-                @Image(source: "xcode-section1-onboarding-location.png", alt: "Xcode에서 RoomPlanExampleApp 프로젝트가 열려 있고 상단의 Run 버튼과 iPhone Simulator 선택 영역, 왼쪽 Project Navigator의 OnboardingViewController.swift 위치가 표시된 화면")
+                @Image(source: "instruction-01-project-open.png", alt: "Instruction Screenshot으로 Xcode의 Project Navigator에 열린 RoomPlanExampleApp 프로젝트를 1번, Swift 편집기를 2번 파란 박스로 표시한 화면")
             }
 
             @Step {
                 Xcode 상단에서 scheme이 **RoomPlanExampleApp**인지 확인하고, 실행 기기로 iOS 17 이상의 iPhone Simulator를 선택하세요. 왼쪽 위의 **Run** 버튼을 누르거나 `Command-R`을 눌러 Starter를 실행합니다.
 
                 Simulator에 첫 화면이 나타나면 **Explore Sample Room**을 누르세요. **Start Part 1** 안내가 나타나면 Starter가 정상적으로 실행된 것입니다. **OK**를 누른 뒤 Xcode의 **Stop** 버튼을 누르거나 `Command-.`을 눌러 실행을 멈추세요.
+
+                @Image(source: "instruction-02-run-controls.png", alt: "Instruction Screenshot으로 Xcode toolbar의 RoomPlanExampleApp scheme을 1번, iPhone Simulator destination을 2번, Run 버튼을 3번 파란 박스로 표시한 화면")
             }
 
             @Step {
@@ -36,6 +42,7 @@
 
                 편집기에서 `Command-F`를 누르고 `showSampleRoom`을 검색하세요. `// MARK: - Part 1 — Get a CapturedRoom` 바로 아래에 있는 `showSampleRoom(_:)` 함수로 이동합니다.
 
+                @Image(source: "instruction-03-find-show-sample-room.png", alt: "Instruction Screenshot으로 Project Navigator의 OnboardingViewController.swift를 1번, Part 1 MARK와 showSampleRoom 함수를 2번 파란 박스로 표시한 화면")
             }
 
             @Step {
@@ -85,7 +92,7 @@
 
                 이 Section에서는 `loadObjects(from:)`와 바로 아래의 `configureObjectCell(_:for:number:)`만 수정합니다. `Starter-provided`라고 표시된 아래쪽 지원 코드는 수정하지 않습니다.
 
-                @Image(source: "xcode-section2-captured-objects-location.png", alt: "Xcode에서 ObjectExplorerViewController.swift가 열려 있고 파일 상단의 Part 2 MARK, loadObjects 함수, configureObjectCell 함수가 표시된 화면")
+                @Image(source: "instruction-04-find-part2.png", alt: "Instruction Screenshot으로 Project Navigator의 ObjectExplorerViewController.swift를 1번, Part 2 MARK와 loadObjects 및 configureObjectCell 함수를 2번 파란 박스로 표시한 화면")
             }
 
             @Step {
@@ -127,7 +134,7 @@
             @Step {
                 같은 `ObjectExplorerViewController.swift` 파일에서 `Command-F`를 누르고 `Part 3 — Object Selection`을 검색하세요. Part 2 바로 아래에 선택 state와 두 개의 빈 함수가 모여 있습니다.
 
-                @Image(source: "xcode-section3-object-selection-location.png", alt: "Xcode에서 ObjectExplorerViewController.swift의 Part 3 MARK, isObjectSelected 함수, selectObject 함수가 표시된 화면")
+                @Image(source: "instruction-05-find-part3.png", alt: "Instruction Screenshot으로 Project Navigator의 ObjectExplorerViewController.swift를 1번, Part 3 MARK와 isObjectSelected 및 selectObject 함수를 2번 파란 박스로 표시한 화면")
             }
 
             @Step {
@@ -181,7 +188,7 @@
             @Step {
                 `ObjectExplorerViewController.swift`에서 `Command-F`를 누르고 `Part 4 — 3D Visualization`을 검색하세요. 이번 Section에서는 이 MARK 안의 `renderObjectBoxes()`와 `updateHighlight()`를 완성합니다.
 
-                @Image(source: "xcode-section4-visualization-location.png", alt: "Xcode에서 ObjectExplorerViewController.swift의 Part 4 MARK와 비어 있는 renderObjectBoxes 및 updateHighlight 함수가 표시된 화면")
+                @Image(source: "instruction-06-find-part4-render.png", alt: "Instruction Screenshot으로 ObjectExplorerViewController.swift의 Part 4 MARK와 비어 있는 renderObjectBoxes 및 updateHighlight 함수를 파란 박스로 표시한 화면")
             }
 
             @Step {
@@ -247,18 +254,35 @@
             }
 
             @Step {
-                **selectedObjectID → Highlight** — 비어 있는 `updateHighlight()` 함수 안의 안내 주석을 지우고 다음 loop를 입력하세요. dictionary의 identifier가 `selectedObjectID`와 같을 때만 selected material을 적용합니다. 별도 Highlight geometry를 겹쳐 만들지 않고, 이미 만든 box의 material만 변경합니다.
+                **Implement Highlight — selectedObjectID → Material**
 
-                코드를 입력한 뒤 `Command-R`을 눌러 app을 실행하고 **Explore Sample Room**을 누르세요. 목록을 스크롤해 **Chair 2**를 누르면 오른쪽 Preview처럼 해당 identifier와 연결된 box 하나만 노란색으로 바뀝니다. 이어서 **Chair 1**과 **Table 1**도 차례로 눌러보세요. checkmark, 상태 문구, 노란색 box가 같은 object로 함께 이동하면 **RoomPlan Object Explorer를 완성한 것입니다.** 이번 Tutorial에서 직접 만든 흐름은 `Room.json` → `CapturedRoom` → `objects` → `identifier` → `dimensions` / `transform` → RealityKit Entity → Highlight입니다. Sample Room은 JSON snapshot에서 `CapturedRoom`을 얻었습니다. 실제 scan도 같은 타입의 결과를 제공하므로 이후의 목록, 선택, 3D 시각화 코드는 그대로 재사용할 수 있습니다. 다음으로 <doc:05-ScanYourOwnRoom>에서 자신의 방을 scan해보세요.
+                비어 있는 `updateHighlight()` 함수 안의 안내 주석을 지우고 다음 loop를 입력하세요. dictionary의 identifier가 `selectedObjectID`와 같을 때만 selected material을 적용합니다. 별도 Highlight geometry를 겹쳐 만들지 않고 이미 만든 box의 material만 바꾸므로, 다음 Preview의 선명한 분홍색 box도 원래 object의 `dimensions`와 `transform`을 그대로 유지합니다.
 
                 @Code(
                     name: "ObjectExplorerViewController.swift",
                     file: "Section4-06-Highlight.swift",
                     previousFile: "Section4-05-MapEntity.swift"
                 ) {
-                    @Image(source: "part4-chair2-highlight.png", alt: "완성된 Object Explorer에서 모든 object box가 보이고 선택한 Chair 2의 identifier와 연결된 box 하나만 노란색으로 Highlight된 화면")
+                    @Image(source: "part4-chair2-highlight.png", alt: "Highlight 코드를 입력한 뒤 Chair 2를 선택하면 같은 identifier와 연결된 3D box 하나만 선명한 분홍색으로 바뀌는 예상 Result Preview")
                 }
             }
+
+            @Step {
+                **Run and Test** — `Command-R`을 누르고 **Explore Sample Room**을 여세요. 목록을 스크롤해 **Chair 2**, **Chair 1**, **Table 1**을 차례로 선택합니다. 각 선택에서 checkmark, 상단 상태 문구, 선명한 분홍색 Highlight가 같은 object로 함께 이동하는지 확인하세요.
+
+                아래 화면처럼 **Table 1 Selected**와 Table 1 row의 checkmark, 큰 table box의 Highlight가 동시에 보이면 identifier 연결을 실제 실행으로 확인한 것입니다.
+
+                @Image(source: "part4-table1-highlight-tested.png", alt: "Result Preview로 Table 1 Selected 상태 문구와 Table 1 checkmark, 같은 object의 큰 3D box에 선명한 분홍색 Highlight가 함께 이동한 실제 실행 화면")
+            }
+
+            @Step {
+                **Completion — RoomPlan Object Explorer를 완성했습니다.**
+
+                직접 만든 흐름은 `Room.json` → `CapturedRoom` → `objects` → `identifier` → `dimensions` / `transform` → RealityKit Entity → Highlight입니다. Sample과 실제 scan은 같은 `CapturedRoom` 타입을 제공하므로 이후의 목록, 선택, 3D 시각화 코드를 그대로 재사용할 수 있습니다.
+
+                @Image(source: "completion-object-explorer.png", alt: "Completion 화면으로 Table 2를 선택한 목록, 상태 문구, checkmark와 같은 object의 3D Highlight가 모두 보이는 완성된 RoomPlan Object Explorer")
+            }
+
         }
     }
 }
