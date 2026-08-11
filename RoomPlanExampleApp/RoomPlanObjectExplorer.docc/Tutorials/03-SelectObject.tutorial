@@ -1,0 +1,47 @@
+@Tutorial(time: 9) {
+    @Intro(title: "Part 3 — Select an Object") {
+        같은 `category`의 여러 객체를 UI 이름이 아니라 RoomPlan의 `identifier`로 구분하고, 선택 상태를 저장합니다.
+
+        작업 파일은 `RoomPlanExampleApp/ObjectExplorerViewController.swift` 하나입니다.
+
+        @Image(source: "part3-chair2-selected.png", alt: "Chair 2 row에 checkmark가 있고 상태에 Chair 2 Selected가 표시된 화면")
+    }
+
+    @Section(title: "선택한 identifier를 저장하기") {
+        @ContentAndMedia {
+            `Chair 2`는 현재 목록이 만든 표시 이름입니다. `identifier`는 실제 `CapturedRoom.Object`를 계속 추적하는 UUID입니다.
+        }
+
+        @Steps {
+            @Step {
+                `ObjectExplorerViewController.swift`의 `// MARK: Part 3 — Object Selection`으로 이동하고 선택 property를 추가합니다.
+
+                @Code(name: "ObjectExplorerViewController.swift", file: "Part3-SelectedObjectID.swift")
+            }
+
+            @Step {
+                비어 있는 `isObjectSelected(_:)`와 `selectObject(at:)`를 다음 코드로 완성합니다.
+
+                @Code(name: "ObjectExplorerViewController.swift", file: "Part3-Selection.swift")
+            }
+
+            @Step {
+                `selectedObjectID`에 `object.identifier`를 저장하므로 같은 Chair가 여러 개여도 정확한 object를 다시 찾을 수 있습니다. Starter의 `refreshListSelection()`은 이 값을 이용해 checkmark를 갱신합니다.
+            }
+        }
+    }
+
+    @Section(title: "선택 checkpoint 확인하기") {
+        @Steps {
+            @Step {
+                Build하고 Sample Room 목록에서 **Chair 2**를 선택합니다.
+            }
+
+            @Step {
+                Chair 2 row의 checkmark와 **Chair 2 Selected** 상태를 확인합니다. object box와 3D Highlight가 아직 없어야 합니다.
+
+                @Image(source: "part3-chair2-selected.png", alt: "Chair 2 Selected 상태와 선택 row checkmark가 보이고 object box는 아직 없는 Part 3 checkpoint")
+            }
+        }
+    }
+}

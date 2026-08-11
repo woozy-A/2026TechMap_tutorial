@@ -1,0 +1,51 @@
+@Tutorial(time: 10) {
+    @Intro(title: "Part 1 — Get a CapturedRoom") {
+        저장된 RoomPlan scan snapshot을 `CapturedRoom`으로 복원합니다. JSON 내부 좌표를 직접 읽지 않고, 파일 전체를 RoomPlan의 구조화된 결과 타입으로 decode합니다.
+
+        작업 파일은 `RoomPlanExampleApp/OnboardingViewController.swift` 하나입니다.
+
+        @Image(source: "part1-sample-room-loaded.png", alt: "Sample Room Loaded 상태로 열린 빈 Object Explorer 화면")
+    }
+
+    @Section(title: "Room.json을 찾기") {
+        @ContentAndMedia {
+            Starter Project에는 `Room.json`, 오류 표시용 `showAlert`, Explorer를 여는 `presentExplorer(with:)`가 이미 준비되어 있습니다.
+        }
+
+        @Steps {
+            @Step {
+                `OnboardingViewController.swift`를 열고 `// MARK: Part 1 — Get a CapturedRoom` 아래의 `showSampleRoom(_:)`로 이동합니다. Starter의 안내용 `showAlert` 호출을 지웁니다.
+            }
+
+            @Step {
+                Bundle에서 `Room.json`의 URL을 찾는 코드를 함수 안에 추가합니다.
+
+                @Code(name: "OnboardingViewController.swift", file: "Part1-ResourceURL.swift")
+            }
+        }
+    }
+
+    @Section(title: "CapturedRoom으로 복원하기") {
+        @ContentAndMedia {
+            `JSONDecoder`는 저장된 snapshot 전체를 `CapturedRoom`으로 복원합니다. decode가 끝나면 Starter helper가 그 값을 같은 Object Explorer에 전달합니다.
+        }
+
+        @Steps {
+            @Step {
+                방금 추가한 `guard` 다음에 decode와 화면 전달 코드를 추가합니다.
+
+                @Code(name: "OnboardingViewController.swift", file: "Part1-DecodeCapturedRoom.swift")
+            }
+
+            @Step {
+                Build하고 Simulator에서 앱을 실행한 뒤 **Explore Sample Room**을 누릅니다.
+            }
+
+            @Step {
+                상태가 **Sample Room Loaded**인지 확인합니다. 목록과 object box가 아직 비어 있으면 Part 1이 정확히 끝난 것입니다.
+
+                @Image(source: "part1-sample-room-loaded.png", alt: "상단 상태에 Sample Room Loaded가 표시되고 목록과 object box는 비어 있는 Part 1 checkpoint")
+            }
+        }
+    }
+}

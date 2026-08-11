@@ -1,0 +1,1 @@
+entityByID[object.identifier] = entity

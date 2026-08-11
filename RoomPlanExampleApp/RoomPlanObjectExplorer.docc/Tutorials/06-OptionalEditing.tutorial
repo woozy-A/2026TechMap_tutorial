@@ -1,0 +1,41 @@
+@Tutorial {
+    @Intro(title: "Optional — Correct or Remove an Object") {
+        Main Tutorial을 끝낸 뒤, RoomPlan 원본과 앱의 편집 상태를 분리하는 방법을 더 탐색합니다. 이 페이지의 코드와 시간은 Main Tutorial 합계에 포함하지 않습니다.
+
+        이 Optional 기능은 검증된 Phase 2 Final Example에 보존되어 있지만, Part 4 위에 바로 입력하는 누적 snapshot으로는 아직 검증되지 않았습니다. 따라서 여기서는 완성 절차를 가장하지 않고 설계 경계와 실제 모델만 소개합니다.
+    }
+
+    @Section(title: "원본과 편집 상태 분리하기") {
+        @ContentAndMedia {
+            `CapturedRoom.Object` 자체를 수정하지 않고, 앱 전용 `editedCategory`를 함께 보관합니다. identity는 계속 `object.identifier`를 사용합니다.
+        }
+
+        @Steps {
+            @Step {
+                Final Example의 `ObjectItem`은 RoomPlan 원본과 앱 전용 category를 다음처럼 분리합니다.
+
+                @Code(name: "ObjectExplorerViewController.swift", file: "Optional-ObjectItem.swift")
+            }
+
+            @Step {
+                Category Correction은 `editedCategory`만 바꾸고, box의 `dimensions`와 `transform`은 원본 object에서 계속 읽습니다.
+            }
+
+            @Step {
+                Remove는 앱의 `visibleItems`와 `entityByID`에서 같은 `identifier`를 제거합니다. USDZ를 다시 export하거나 원본 scan 파일을 수정하지 않습니다.
+            }
+        }
+    }
+
+    @Section(title: "Further Exploration 경계") {
+        @Steps {
+            @Step {
+                실제 Optional 화면과 누적 코딩 단계를 배포하려면 Part 4 Solution 위에 별도 snapshot을 만들고 build/runtime checkpoint를 다시 검증해야 합니다.
+            }
+
+            @Step {
+                그 전까지는 Phase 2 Final Example을 참고 구현으로 사용하고, 이 페이지를 Main Tutorial의 필수 완료 조건으로 취급하지 않습니다.
+            }
+        }
+    }
+}

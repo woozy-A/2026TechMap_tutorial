@@ -1,0 +1,59 @@
+@Tutorial(time: 13) {
+    @Intro(title: "Part 2 — Explore Captured Objects") {
+        `CapturedRoom.objects`에서 RoomPlan이 인식한 개별 `CapturedRoom.Object`를 가져오고, `category`와 `dimensions`를 목록으로 확인합니다.
+
+        작업 파일은 `RoomPlanExampleApp/ObjectExplorerViewController.swift` 하나입니다.
+
+        @Image(source: "part2-objects-detected.png", alt: "11 Objects Detected와 Bed, Chair category의 object dimensions가 보이는 목록")
+    }
+
+    @Section(title: "CapturedRoom.objects를 연결하기") {
+        @ContentAndMedia {
+            Starter는 `ObjectSection`, category 정렬, table view data source를 제공합니다. 아래의 짧은 grouping closure는 `object.category`를 읽어 Starter helper에 전달하기 위한 연결 코드이며, `ObjectSection` 자체는 RoomPlan 개념이 아닙니다.
+        }
+
+        @Steps {
+            @Step {
+                `ObjectExplorerViewController.swift`를 열고 `// MARK: Part 2 — Captured Objects`로 이동합니다.
+            }
+
+            @Step {
+                `loadObjects(from:)`의 안내 주석을 지우고 다음 코드를 함수 안에 추가합니다.
+
+                @Code(name: "ObjectExplorerViewController.swift", file: "Part2-LoadObjects.swift")
+            }
+
+            @Step {
+                `room.objects`는 RoomPlan이 인식한 객체 배열입니다. grouping closure의 `object.category`는 Bed, Chair 같은 분류를 읽고, `objects.count`는 전체 인식 수를 표시합니다.
+            }
+
+            @Step {
+                각 `CapturedRoom.Object`에는 고유한 `identifier`도 있습니다. Part 2에서는 객체를 먼저 읽고 크기를 확인하며, Part 3에서 이 값을 실제 selection key로 사용합니다.
+            }
+        }
+    }
+
+    @Section(title: "category와 dimensions를 표시하기") {
+        @ContentAndMedia {
+            `dimensions`는 RoomPlan이 추정한 객체의 너비, 높이, 깊이입니다. 지금은 숫자로 확인하고, Part 4에서 같은 값을 3D box의 실제 크기로 사용합니다.
+        }
+
+        @Steps {
+            @Step {
+                같은 MARK 안의 `configureObjectCell(_:for:number:)` 안내 주석을 지우고 다음 코드를 함수 안에 추가합니다.
+
+                @Code(name: "ObjectExplorerViewController.swift", file: "Part2-ConfigureCell.swift")
+            }
+
+            @Step {
+                Build하고 **Explore Sample Room**을 다시 엽니다.
+            }
+
+            @Step {
+                **11 Objects Detected**와 Bed 2, Chair 3, Storage 4, Table 2를 확인합니다. 각 row에는 해당 object의 `dimensions`가 표시됩니다.
+
+                @Image(source: "part2-storage-table.png", alt: "Storage와 Table category 및 각 object dimensions가 보이는 Part 2 목록")
+            }
+        }
+    }
+}
