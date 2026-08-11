@@ -9,9 +9,7 @@ import UIKit
 import RoomPlan
 
 class RoomCaptureViewController: UIViewController, RoomCaptureViewDelegate, RoomCaptureSessionDelegate {
-    
-    @IBOutlet var exportButton: UIButton?
-    
+
     @IBOutlet var doneButton: UIBarButtonItem?
     @IBOutlet var cancelButton: UIBarButtonItem?
     @IBOutlet var activityIndicator: UIActivityIndicatorView?
@@ -20,8 +18,6 @@ class RoomCaptureViewController: UIViewController, RoomCaptureViewDelegate, Room
     
     private var roomCaptureView: RoomCaptureView!
     private var roomCaptureSessionConfig: RoomCaptureSession.Configuration = RoomCaptureSession.Configuration()
-    
-    private var finalResults: CapturedRoom?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,8 +66,6 @@ class RoomCaptureViewController: UIViewController, RoomCaptureViewDelegate, Room
     
     // Access the final post-processed results.
     func captureView(didPresent processedResult: CapturedRoom, error: Error?) {
-        finalResults = processedResult
-        self.exportButton?.isEnabled = true
         self.activityIndicator?.stopAnimating()
 
         if let error {
@@ -95,7 +89,6 @@ class RoomCaptureViewController: UIViewController, RoomCaptureViewDelegate, Room
 
         sender.isEnabled = false
         stopSession()
-        self.exportButton?.isEnabled = false
         self.activityIndicator?.startAnimating()
     }
 
@@ -103,50 +96,17 @@ class RoomCaptureViewController: UIViewController, RoomCaptureViewDelegate, Room
         navigationController?.dismiss(animated: true)
     }
     
-    // Export the USDZ output by specifying the `.mesh` export option.
-    // Alternatively, `.parametric` exports the model as unit-sized cubes and `.all`
-    // exports both in a single USDZ.
-    @IBAction func exportResults(_ sender: UIButton) {
-        let destinationFolderURL = FileManager.default.temporaryDirectory.appending(path: "Export")
-        let destinationURL = destinationFolderURL.appending(path: "Room.usdz")
-        let capturedRoomURL = destinationFolderURL.appending(path: "Room.json")
-        do {
-            try FileManager.default.createDirectory(at: destinationFolderURL, withIntermediateDirectories: true)
-            let jsonEncoder = JSONEncoder()
-            let jsonData = try jsonEncoder.encode(finalResults)
-            try jsonData.write(to: capturedRoomURL)
-            try finalResults?.export(to: destinationURL, exportOptions: .mesh)
-
-            let activityVC = UIActivityViewController(activityItems: [destinationFolderURL], applicationActivities: nil)
-            activityVC.modalPresentationStyle = .popover
-            
-            present(activityVC, animated: true, completion: nil)
-            if let popOver = activityVC.popoverPresentationController {
-                popOver.sourceView = self.exportButton
-            }
-        } catch {
-            print("Error = \(error)")
-        }
-    }
-    
     private func setActiveNavBar() {
         doneButton?.isEnabled = true
 
-        UIView.animate(withDuration: 1.0, animations: {
-            self.cancelButton?.tintColor = .white
-            self.doneButton?.tintColor = .white
-            self.exportButton?.alpha = 0.0
-        }, completion: { complete in
-            self.exportButton?.isHidden = true
-        })
+        self.cancelButton?.tintColor = .white
+        self.doneButton?.tintColor = .white
     }
-    
+
     private func setCompleteNavBar() {
-        self.exportButton?.isHidden = false
         UIView.animate(withDuration: 1.0) {
             self.cancelButton?.tintColor = .systemBlue
             self.doneButton?.tintColor = .systemBlue
-            self.exportButton?.alpha = 1.0
         }
     }
 }

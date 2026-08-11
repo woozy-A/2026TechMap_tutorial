@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		B10000000000000000000001 /* ObjectExplorerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000003 /* ObjectExplorerViewController.swift */; };
 		B10000000000000000000002 /* Room.json in Resources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000004 /* Room.json */; };
-		71B6638528D0CABC00635A15 /* UnsupportedDevice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71B6638328D0CABC00635A15 /* UnsupportedDevice.storyboard */; };
 		ACEF94B12820AD2300776A9D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEF94B02820AD2300776A9D /* AppDelegate.swift */; };
 		ACEF94B32820AD2300776A9D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEF94B22820AD2300776A9D /* SceneDelegate.swift */; };
 		ACEF94B52820AD2300776A9D /* RoomCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEF94B42820AD2300776A9D /* RoomCaptureViewController.swift */; };
@@ -22,7 +21,6 @@
 /* Begin PBXFileReference section */
 		05C7567A6B268FC70FFB0FCC /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		35A95C3C90A8D7FA01AA694A /* SampleCode.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = SampleCode.xcconfig; path = Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
-		71B6638428D0CABC00635A15 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/UnsupportedDevice.storyboard; sourceTree = "<group>"; };
 		B10000000000000000000003 /* ObjectExplorerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectExplorerViewController.swift; sourceTree = "<group>"; };
 		B10000000000000000000004 /* Room.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Room.json; sourceTree = "<group>"; };
 		ACEF94AD2820AD2300776A9D /* RoomPlanExampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoomPlanExampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,7 +90,6 @@
 				ACEF94B42820AD2300776A9D /* RoomCaptureViewController.swift */,
 				B10000000000000000000003 /* ObjectExplorerViewController.swift */,
 				ACEF94B62820AD2300776A9D /* Main.storyboard */,
-				71B6638328D0CABC00635A15 /* UnsupportedDevice.storyboard */,
 				ACEF94B92820AD2400776A9D /* Assets.xcassets */,
 				B10000000000000000000005 /* Resources */,
 				ACEF94BB2820AD2400776A9D /* LaunchScreen.storyboard */,
@@ -170,7 +167,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B10000000000000000000002 /* Room.json in Resources */,
-				71B6638528D0CABC00635A15 /* UnsupportedDevice.storyboard in Resources */,
 				ACEF94BD2820AD2400776A9D /* LaunchScreen.storyboard in Resources */,
 				ACEF94BA2820AD2400776A9D /* Assets.xcassets in Resources */,
 				ACEF94B82820AD2300776A9D /* Main.storyboard in Resources */,
@@ -195,14 +191,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		71B6638328D0CABC00635A15 /* UnsupportedDevice.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				71B6638428D0CABC00635A15 /* Base */,
-			);
-			name = UnsupportedDevice.storyboard;
-			sourceTree = "<group>";
-		};
 		ACEF94B62820AD2300776A9D /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -349,7 +337,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = A7Z474KMS6;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RoomPlanExampleApp/Info.plist;
@@ -364,7 +352,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.woozy.RoomPlanTest1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.RoomPlanObjectExplorerTutorial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
@@ -383,7 +371,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = A7Z474KMS6;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RoomPlanExampleApp/Info.plist;
@@ -398,7 +386,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.woozy.RoomPlanTest1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.RoomPlanObjectExplorerTutorial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
