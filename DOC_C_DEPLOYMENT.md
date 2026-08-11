@@ -183,3 +183,23 @@ GitHub의 custom Pages workflow 구조는 [공식 Pages workflow 안내](https:/
 - code와 image resource 누락 없음
 - 브라우저 Network에 404 asset 없음
 - Challenge/Optional의 아직 없는 screenshot을 참조하지 않음
+
+## v2 배포 기록 — 2026-08-11
+
+- Main Tutorial source commit: `52122c3` (`Unify RoomPlan tutorial into one guided page`)
+- GitHub Pages content commit: `cba8cea` (`Deploy RoomPlan DocC v2`)
+- v1 deep-link preservation commit: `3995954` (`Preserve v1 tutorial deep links`)
+- Pages workflow run: `31493436270` — build / deploy 모두 success
+- revision tag: `tutorial-docc-v2`
+- 기존 `v1.0.0` tag, release, `RoomPlanTutorialStarter.zip` asset은 변경하지 않았다.
+
+v2 Overview는 하나의 Main Tutorial만 안내한다. Main page는 기존 Part 1 URL인 `/tutorials/roomplanexampleapp/01-getcapturedroom/`을 재사용하고 Section 1~4를 한 페이지에 담는다. source catalog에서는 이전 Part 2~4 tutorial 파일을 제거했지만, 이미 공유된 공개 deep link는 `gh-pages`에 legacy page로 보존했다.
+
+공개 브라우저에서 다음을 확인했다.
+
+- Overview → Main Tutorial → 한 페이지의 Section 1~4 → Challenge
+- `@Code { @Image }`로 생성된 code + `Preview` 패널
+- Part 1 `Sample Room Loaded`와 Part 4 `Chair 2 Highlight` runtime preview
+- 390 × 844 좁은 viewport에서 단일 열 layout과 접히는 Preview 링크
+- 공개 route와 기존 Part 2 legacy route HTTP 200
+- Starter ZIP HTTP 200, 1,334,065 bytes, SHA-256 `c8655a8b10b9d3fa0e9c7f5cdc746a23e2545837382e4f59fb8cfcbc4c11f024`
