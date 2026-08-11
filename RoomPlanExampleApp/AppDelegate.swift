@@ -6,7 +6,6 @@ The sample app's main entry point.
 */
 
 import UIKit
-import RoomPlan
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,11 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      configurationForConnecting connectingSceneSession: UISceneSession,
                      options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-        var configurationName = "Default Configuration"
-        if !RoomCaptureSession.isSupported {
-            configurationName = "Unsupported Device"
-        }
-        return UISceneConfiguration(name: configurationName, sessionRole: connectingSceneSession.role)
+        return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
 }
-

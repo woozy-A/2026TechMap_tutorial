@@ -73,10 +73,28 @@ class RoomCaptureViewController: UIViewController, RoomCaptureViewDelegate, Room
         finalResults = processedResult
         self.exportButton?.isEnabled = true
         self.activityIndicator?.stopAnimating()
+
+        if let error {
+            print("RoomPlan processing warning: \(error)")
+        }
+
+        guard let explorer = storyboard?.instantiateViewController(
+            withIdentifier: "ObjectExplorerViewController"
+        ) as? ObjectExplorerViewController else {
+            print("ObjectExplorerViewController is not configured in Main.storyboard.")
+            return
+        }
+
+        // STUDY: Live Scan joins the same pipeline as Room.json once CapturedRoom exists.
+        explorer.configure(with: processedResult)
+        navigationController?.setViewControllers([explorer], animated: true)
     }
     
     @IBAction func doneScanning(_ sender: UIBarButtonItem) {
-        if isScanning { stopSession() } else { cancelScanning(sender) }
+        guard isScanning else { return }
+
+        sender.isEnabled = false
+        stopSession()
         self.exportButton?.isEnabled = false
         self.activityIndicator?.startAnimating()
     }
@@ -112,6 +130,8 @@ class RoomCaptureViewController: UIViewController, RoomCaptureViewDelegate, Room
     }
     
     private func setActiveNavBar() {
+        doneButton?.isEnabled = true
+
         UIView.animate(withDuration: 1.0, animations: {
             self.cancelButton?.tintColor = .white
             self.doneButton?.tintColor = .white
@@ -130,4 +150,3 @@ class RoomCaptureViewController: UIViewController, RoomCaptureViewDelegate, Room
         }
     }
 }
-
