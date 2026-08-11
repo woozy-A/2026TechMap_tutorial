@@ -177,7 +177,9 @@ GitHub의 custom Pages workflow 구조는 [공식 Pages workflow 안내](https:/
 - `xcrun docc convert ... --analyze --warnings-as-errors` 통과
 - Xcode `docbuild`에서 `CompileDocumentation`과 `BUILD DOCUMENTATION SUCCEEDED`
 - root/deep page base path가 모두 `/2026TechMap_tutorial/`
-- Overview에서 Part 1~4, Challenge, Optional 연결
+- Overview에서 Main Tutorial, Challenge, Optional 연결
+- Main Tutorial 한 페이지 안에 Section 1~4가 순서대로 존재
+- checkpoint screenshot이 일반 삽입 이미지가 아니라 `@Code { @Image }`의 `runtimePreview`로 연결
 - code와 image resource 누락 없음
 - 브라우저 Network에 404 asset 없음
 - Challenge/Optional의 아직 없는 screenshot을 참조하지 않음

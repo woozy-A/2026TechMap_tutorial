@@ -1,50 +1,190 @@
-@Tutorial(time: 10) {
-    @Intro(title: "Part 1 — Get a CapturedRoom") {
-        저장된 RoomPlan scan snapshot을 `CapturedRoom`으로 복원합니다. JSON 내부 좌표를 직접 읽지 않고, 파일 전체를 RoomPlan의 구조화된 결과 타입으로 decode합니다.
+@Tutorial(time: 55) {
+    @Intro(title: "Build a RoomPlan Object Explorer") {
+        하나의 Starter Project를 계속 실행하면서 RoomPlan Object Explorer를 네 단계로 완성합니다.
 
-        작업 파일은 `RoomPlanExampleApp/OnboardingViewController.swift` 하나입니다.
+        처음에는 방 구조만 준비되어 있습니다. `CapturedRoom`을 얻고, `objects`를 목록에 연결하고, `identifier`로 하나를 선택한 뒤, `dimensions`와 `transform`을 3D Entity에 적용합니다.
 
-        @Image(source: "part1-sample-room-loaded.png", alt: "Sample Room Loaded 상태로 열린 빈 Object Explorer 화면")
+        Section 1의 Goal Preview에서 완성 화면을 먼저 확인하세요. 각 Section이 끝날 때마다 앱이 그 결과에 한 단계씩 가까워집니다.
     }
 
-    @Section(title: "Room.json을 찾기") {
+    @Section(title: "Section 1 — Get a CapturedRoom") {
         @ContentAndMedia {
-            Starter Project에는 `Room.json`, 오류 표시용 `showAlert`, Explorer를 여는 `presentExplorer(with:)`가 이미 준비되어 있습니다.
+            Goal Preview에는 Room structure, object 목록, Chair 2 selection, 선택된 3D box Highlight가 모두 보입니다. 이 화면을 네 Section에 걸쳐 직접 완성합니다.
+
+            Starter의 **Explore Sample Room** 버튼은 아직 안내만 표시합니다. 먼저 저장된 RoomPlan scan snapshot을 `CapturedRoom`으로 복원합니다.
+
+            `Room.json`은 모든 학습자가 같은 결과를 사용하도록 저장한 snapshot입니다. JSON 내부 좌표를 직접 입력하거나 분석하지 않고, 파일 전체를 RoomPlan의 구조화된 결과 타입으로 decode합니다.
+
+            @Image(source: "part4-chair2-highlight.png", alt: "Room structure와 object 목록이 함께 보이고 Chair 2의 3D box만 노란색으로 Highlight된 Main Tutorial Goal Preview")
         }
 
         @Steps {
             @Step {
-                `OnboardingViewController.swift`를 열고 `// MARK: Part 1 — Get a CapturedRoom` 아래의 `showSampleRoom(_:)`로 이동합니다. Starter의 안내용 `showAlert` 호출을 지웁니다.
+                `RoomPlanExampleApp/OnboardingViewController.swift`를 열고 `// MARK: - Part 1 — Get a CapturedRoom` 아래의 `showSampleRoom(_:)`로 이동합니다. Starter의 안내용 `showAlert` 호출을 지웁니다.
             }
 
             @Step {
-                Bundle에서 `Room.json`의 URL을 찾는 코드를 함수 안에 추가합니다.
+                Bundle에서 `Room.json`의 URL을 찾는 코드를 함수 안에 추가합니다. 파일이 없으면 Starter의 오류 UI로 안전하게 멈춥니다.
 
                 @Code(name: "OnboardingViewController.swift", file: "Part1-ResourceURL.swift")
             }
+
+            @Step {
+                `guard` 다음에 Data 읽기, `JSONDecoder`, Explorer 전달 코드를 추가합니다. 코드 옆 Preview는 이 단계가 끝났을 때 확인할 화면입니다.
+
+                @Code(name: "OnboardingViewController.swift", file: "Part1-DecodeCapturedRoom.swift") {
+                    @Image(source: "part1-sample-room-loaded.png", alt: "Sample Room Loaded가 표시되고 room structure만 보이며 object 목록과 box는 비어 있는 Section 1 결과")
+                }
+            }
+
+            @Step {
+                Build하고 Simulator에서 **Explore Sample Room**을 누릅니다. **Sample Room Loaded**가 보이고 목록과 object box가 비어 있으면 성공입니다.
+
+                `CapturedRoom`은 로드했지만 아직 `objects`를 앱에 연결하지 않았기 때문에 비어 있는 것이 정상입니다. 열린 Explorer를 닫고 다음 Section으로 진행합니다.
+            }
         }
     }
 
-    @Section(title: "CapturedRoom으로 복원하기") {
+    @Section(title: "Section 2 — Explore Captured Objects") {
         @ContentAndMedia {
-            `JSONDecoder`는 저장된 snapshot 전체를 `CapturedRoom`으로 복원합니다. decode가 끝나면 Starter helper가 그 값을 같은 Object Explorer에 전달합니다.
+            지금 앱은 `CapturedRoom`을 가지고 있지만 그 안의 object 배열은 아직 읽지 않습니다. `capturedRoom.objects`를 연결해 RoomPlan이 인식한 객체를 목록으로 확인합니다.
+
+            Starter는 `ObjectSection`, category 정렬, table view 반복 코드를 제공합니다. 검증된 Solution 구조상 짧은 `Dictionary(grouping:)` 연결도 입력하지만, 이것은 화면 section을 만들기 위한 표시 코드입니다. 학습의 초점은 RoomPlan이 제공한 `objects`, `category`, `dimensions`입니다.
         }
 
         @Steps {
             @Step {
-                방금 추가한 `guard` 다음에 decode와 화면 전달 코드를 추가합니다.
-
-                @Code(name: "OnboardingViewController.swift", file: "Part1-DecodeCapturedRoom.swift")
+                `RoomPlanExampleApp/ObjectExplorerViewController.swift`를 열고 `// MARK: - Part 2 — Captured Objects`로 이동합니다.
             }
 
             @Step {
-                Build하고 Simulator에서 앱을 실행한 뒤 **Explore Sample Room**을 누릅니다.
+                `loadObjects(from:)`의 안내 주석을 지우고 `room.objects`를 읽은 다음, category별 묶음을 Starter의 section helper에 전달합니다.
+
+                @Code(name: "ObjectExplorerViewController.swift", file: "Part2-LoadObjects.swift")
             }
 
             @Step {
-                상태가 **Sample Room Loaded**인지 확인합니다. 목록과 object box가 아직 비어 있으면 Part 1이 정확히 끝난 것입니다.
+                `configureObjectCell(_:for:number:)`를 완성해 `object.category`와 `object.dimensions`를 각 row에 표시합니다. 코드 옆 Preview에서 **11 Objects Detected**와 category 목록이 나타나는 변화를 확인합니다.
 
-                @Image(source: "part1-sample-room-loaded.png", alt: "상단 상태에 Sample Room Loaded가 표시되고 목록과 object box는 비어 있는 Part 1 checkpoint")
+                @Code(name: "ObjectExplorerViewController.swift", file: "Part2-ConfigureCell.swift") {
+                    @Image(source: "part2-objects-detected.png", alt: "11 Objects Detected와 Bed, Chair category 및 각 object dimensions가 표시된 Section 2 결과")
+                }
+            }
+
+            @Step {
+                Build하고 **Explore Sample Room**을 다시 엽니다. Bed 2, Chair 3, Storage 4, Table 2와 각 row의 dimensions를 확인합니다.
+
+                지금은 `dimensions`를 숫자로 읽었습니다. Section 4에서는 같은 값을 실제 3D box 크기로 사용합니다.
+
+                @Image(source: "part2-storage-table.png", alt: "목록을 아래로 스크롤해 Storage와 Table category 및 dimensions까지 확인한 Section 2 checkpoint")
+            }
+
+            @Step {
+                각 `CapturedRoom.Object`에는 고유한 `identifier`도 있습니다. 아직 선택에는 사용하지 않았으므로, 열린 Explorer를 닫고 다음 Section에서 identity를 연결합니다.
+            }
+        }
+    }
+
+    @Section(title: "Section 3 — Select an Object") {
+        @ContentAndMedia {
+            이제 object를 볼 수 있지만 특정 object를 계속 추적할 방법은 없습니다.
+
+            `Chair 2`는 현재 목록이 만든 표시 이름입니다. `identifier`는 실제 `CapturedRoom.Object`를 구분하는 UUID이며, 같은 category가 여러 개여도 바뀌지 않는 identity입니다.
+        }
+
+        @Steps {
+            @Step {
+                같은 파일의 `// MARK: - Part 3 — Object Selection`으로 이동하고 현재 선택을 저장할 property를 추가합니다.
+
+                @Code(name: "ObjectExplorerViewController.swift", file: "Part3-SelectedObjectID.swift")
+            }
+
+            @Step {
+                `isObjectSelected(_:)`와 `selectObject(at:)`를 완성합니다. row가 가진 `object.identifier`를 저장하고 같은 identifier인지 비교합니다.
+
+                @Code(name: "ObjectExplorerViewController.swift", file: "Part3-Selection.swift") {
+                    @Image(source: "part3-chair2-selected.png", alt: "Chair 2 row에 checkmark가 생기고 상태가 Chair 2 Selected로 바뀐 Section 3 결과")
+                }
+            }
+
+            @Step {
+                Build하고 Sample Room 목록에서 **Chair 2**를 선택합니다. checkmark와 **Chair 2 Selected** 상태가 보이면 성공입니다.
+
+                선택 정보는 저장됐지만 아직 이 object와 3D Entity를 연결하지 않았습니다. 따라서 object box나 Highlight가 없는 것이 의도한 중간 상태입니다.
+            }
+        }
+    }
+
+    @Section(title: "Section 4 — Visualize the Selected Object in 3D") {
+        @ContentAndMedia {
+            마지막으로 RoomPlan Object의 데이터와 RealityKit Entity를 연결합니다.
+
+            `dimensions`는 크기, `transform`은 위치와 방향, `identifier`는 목록의 Object와 3D Entity를 연결하는 key, `selectedObjectID`는 현재 선택된 identity입니다.
+        }
+
+        @Steps {
+            @Step {
+                **Task 1 — dimensions → Box**
+
+                `// MARK: - Part 4 — 3D Visualization`으로 이동합니다. `renderObjectBoxes()`를 다음 코드로 바꿔 각 object의 `dimensions`를 box 크기로 사용합니다.
+
+                @Code(name: "ObjectExplorerViewController.swift", file: "Part4-CreateBoxes.swift")
+            }
+
+            @Step {
+                아직 실행하지 마세요. transform을 적용하기 전에는 모든 box가 원점에 겹쳐 교육적으로 유용한 결과가 되지 않습니다.
+            }
+
+            @Step {
+                **Task 2 — transform → Position / Orientation**
+
+                Entity를 만든 뒤 `objectRoot.addChild(entity)` 바로 전에 다음 줄을 추가합니다. `transform`은 CapturedRoom 좌표계에서 object의 위치와 방향을 함께 나타내는 4×4 matrix입니다. Build하고 Sample Room을 열면 Preview처럼 모든 object box가 방 구조 안의 실제 pose에 배치됩니다.
+
+                @Code(name: "ObjectExplorerViewController.swift", file: "Part4-Transform.swift") {
+                    @Image(source: "part4-all-boxes.png", alt: "Room structure 안에 모든 RoomPlan object box가 각 dimensions와 transform에 따라 배치된 Task 2 결과")
+                }
+            }
+
+            @Step {
+                **Task 3 — identifier → Entity mapping**
+
+                목록의 `CapturedRoom.Object`와 RealityKit `ModelEntity`는 서로 다른 타입입니다. Part 4 MARK의 첫 줄에 identifier를 key로 사용하는 dictionary를 추가합니다.
+
+                @Code(name: "ObjectExplorerViewController.swift", file: "Part4-EntityDictionary.swift")
+            }
+
+            @Step {
+                `renderObjectBoxes()`에서 `objectRoot.children.removeAll()` 다음에 기존 mapping을 비웁니다.
+
+                @Code(name: "ObjectExplorerViewController.swift", file: "Part4-DictionaryCleanup.swift")
+            }
+
+            @Step {
+                `objectRoot.addChild(entity)` 다음에 object의 `identifier`로 entity를 저장합니다.
+
+                @Code(name: "ObjectExplorerViewController.swift", file: "Part4-Identifier.swift")
+            }
+
+            @Step {
+                이 연결은 화면을 새로 그리는 코드가 아니므로 별도 이미지를 사용하지 않습니다.
+
+                `CapturedRoom.Object.identifier` ↔ `entityByID` ↔ RealityKit `ModelEntity`
+            }
+
+            @Step {
+                **Task 4 — selectedObjectID → Highlight**
+
+                비어 있는 `updateHighlight()`를 완성합니다. dictionary key가 `selectedObjectID`와 같을 때만 selected material을 적용합니다. Build하고 **Chair 2**를 선택하면 코드 옆 Preview처럼 해당 identifier의 box 하나만 노란색으로 바뀝니다.
+
+                @Code(name: "ObjectExplorerViewController.swift", file: "Part4-Highlight.swift") {
+                    @Image(source: "part4-chair2-highlight.png", alt: "전체 object box 중 Chair 2의 identifier와 연결된 box 하나만 노란색으로 Highlight된 Main Tutorial 최종 결과")
+                }
+            }
+
+            @Step {
+                **RoomPlan Object Explorer를 완성했습니다.**
+
+                `CapturedRoom` → `objects` → `identifier` → `dimensions` / `transform` → RealityKit Entity → Highlight의 흐름을 직접 연결했습니다. 이제 RoomPlan 결과를 단순 USDZ로 보는 데서 끝나지 않고 앱에서 object data로 활용할 수 있습니다. 다음으로 <doc:05-ScanYourOwnRoom>에서 실제 방을 scan해 같은 Explorer pipeline을 재사용해보세요.
             }
         }
     }

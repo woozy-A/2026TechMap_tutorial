@@ -1,6 +1,6 @@
 # RoomPlan Object Explorer — Tutorial Starter
 
-이 프로젝트는 Xcode에서 DocC 안내를 보며 Part 1부터 Part 4까지 코드를 직접 입력하는 hands-on Starter입니다.
+이 프로젝트는 한 페이지로 이어지는 DocC Main Tutorial을 보며 Section 1부터 Section 4까지 코드를 직접 입력하는 hands-on Starter입니다.
 
 - 공개 Tutorial: <https://woozy-a.github.io/2026TechMap_tutorial/tutorials/roomplanobjectexplorer/>
 - Starter ZIP: <https://github.com/woozy-A/2026TechMap_tutorial/releases/download/v1.0.0/RoomPlanTutorialStarter.zip>
@@ -9,19 +9,19 @@
 
 1. `RoomPlanExampleApp.xcodeproj`를 Xcode에서 엽니다.
 2. 필요하면 Signing & Capabilities에서 자신의 Development Team과 고유 Bundle Identifier를 선택합니다.
-3. Project navigator에서 `RoomPlanObjectExplorer.docc`를 엽니다.
-4. Overview의 Part 1부터 순서대로 진행합니다.
-5. 각 Part가 끝날 때마다 Build / Run하고 화면 checkpoint를 확인합니다.
+3. 공개 Tutorial URL을 열고 **Main Tutorial**을 선택합니다.
+4. 같은 페이지에서 Section 1부터 Section 4까지 위에서 아래로 진행합니다.
+5. 각 Section이 끝날 때마다 Build / Run하고 코드 옆 Preview와 실제 화면을 비교합니다.
 
 Main Tutorial은 Simulator에서 진행할 수 있고 LiDAR가 필요하지 않습니다.
 
 ## 학습 순서
 
 ```text
-Part 1 — Get a CapturedRoom
-Part 2 — Explore Captured Objects
-Part 3 — Select an Object
-Part 4 — Visualize the Selected Object in 3D
+Section 1 — Get a CapturedRoom
+Section 2 — Explore Captured Objects
+Section 3 — Select an Object
+Section 4 — Visualize the Selected Object in 3D
 ```
 
 학습자가 수정하는 위치는 두 파일 상단의 MARK에 모여 있습니다.

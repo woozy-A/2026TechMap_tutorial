@@ -21,10 +21,11 @@ Main Tutorial은 Simulator에서 진행할 수 있고 LiDAR가 필요하지 않�
 
 ## 구성
 
-- Part 1 — Get a CapturedRoom
-- Part 2 — Explore Captured Objects
-- Part 3 — Select an Object
-- Part 4 — Visualize the Selected Object in 3D
+- Main Tutorial — 한 페이지에서 이어지는 네 Section
+  - Section 1 — Get a CapturedRoom
+  - Section 2 — Explore Captured Objects
+  - Section 3 — Select an Object
+  - Section 4 — Visualize the Selected Object in 3D
 - Challenge — Scan Your Own Room
 - Optional — Correct or Remove an Object
 

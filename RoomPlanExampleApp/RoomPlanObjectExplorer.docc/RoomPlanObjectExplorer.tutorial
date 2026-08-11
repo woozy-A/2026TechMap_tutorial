@@ -1,36 +1,25 @@
 @Tutorials(name: "RoomPlan Object Explorer") {
     @Intro(title: "RoomPlan이 읽은 공간을 객체 단위로 탐색하기") {
-        이 hands-on tutorial에서는 Starter Project를 열고 Part 1부터 Part 4까지 코드를 직접 입력합니다.
+        Starter Project를 열고 하나의 Main Tutorial을 위에서 아래로 따라가며 RoomPlan Object Explorer를 완성합니다.
 
-        Main Tutorial의 입력은 모든 학습자에게 같은 결과를 제공하는 `Room.json`입니다. 이 파일은 JSON 값을 분석하기 위한 자료가 아니라, 실제 RoomPlan scan 결과를 저장한 `CapturedRoom` snapshot입니다.
+        최종 화면에는 RoomPlan이 읽은 방 구조와 object 목록이 함께 보이고, 목록에서 선택한 object의 3D box만 Highlight됩니다.
 
-        **Main Tutorial:** `Room.json` → `JSONDecoder` → `CapturedRoom`
+        **배우는 흐름:** `CapturedRoom` → `objects` → `identifier` → `dimensions` / `transform` → RealityKit Entity → Highlight
 
-        **Challenge:** `RoomCaptureView` → `RoomCaptureSession` → `captureView(didPresent:error:)` → `CapturedRoom`
+        **요구 환경:** Xcode 26.6, iOS 17 이상 Simulator 권장. Main Tutorial에는 LiDAR나 카메라가 필요하지 않습니다.
 
-        두 경로는 `CapturedRoom`을 얻는 방법만 다릅니다. 그 뒤의 `objects` 탐색, 선택, 3D 시각화 코드는 같습니다.
+        제공된 `Room.json`은 모든 학습자에게 같은 RoomPlan scan 결과를 전달하는 snapshot입니다. JSON 값을 직접 입력하거나 분석하지 않습니다.
 
-        > Note: `Room.usdz`는 완성된 3D 결과를 사람이 확인하기 좋습니다. 이 tutorial은 USDZ viewer 대신 `CapturedRoom`을 사용해 `objects`, `category`, `identifier`, `dimensions`, `transform`을 앱 기능에 연결합니다. `Room.usdz`는 runtime에서 사용하지 않습니다.
+        > Note: `Room.usdz`는 완성된 3D 결과를 보는 데 유용하지만, 이 tutorial은 객체 데이터를 앱 기능에 연결하기 위해 `CapturedRoom`을 사용합니다.
 
-        Main Tutorial은 Simulator에서 실행할 수 있고 LiDAR가 필요하지 않습니다. 실제 Scan Challenge만 LiDAR를 지원하는 iPhone 또는 iPad가 필요합니다.
+        [Starter Project ZIP 다운로드](https://github.com/woozy-A/2026TechMap_tutorial/releases/download/v1.0.0/RoomPlanTutorialStarter.zip) 후 `START_HERE.md`를 먼저 읽으세요.
 
-        [Starter Project ZIP 다운로드](https://github.com/woozy-A/2026TechMap_tutorial/releases/download/v1.0.0/RoomPlanTutorialStarter.zip)
-
-        @Image(source: "overview-part4-highlight.png", alt: "Room structure 안에 여러 object box가 있고 선택된 object box가 노란색으로 표시된 Part 4 완성 화면")
     }
 
-    @Chapter(name: "Main Tutorial") {
-        @Image(source: "overview-part4-highlight.png", alt: "RoomPlan Object Explorer의 Part 4 완성 화면")
+    @Chapter(name: "Build and Explore") {
+        @Image(source: "part4-chair2-highlight.png", alt: "Room structure와 object 목록이 함께 보이고 Chair 2의 3D box만 노란색으로 Highlight된 최종 화면")
 
         @TutorialReference(tutorial: "doc:01-GetCapturedRoom")
-        @TutorialReference(tutorial: "doc:02-ExploreCapturedObjects")
-        @TutorialReference(tutorial: "doc:03-SelectObject")
-        @TutorialReference(tutorial: "doc:04-VisualizeObjectIn3D")
-    }
-
-    @Chapter(name: "Challenge와 Further Exploration") {
-        @Image(source: "part4-chair2-highlight.png", alt: "Sample CapturedRoom의 선택된 object가 Highlight된 화면")
-
         @TutorialReference(tutorial: "doc:05-ScanYourOwnRoom")
         @TutorialReference(tutorial: "doc:06-OptionalEditing")
     }
