@@ -1,18 +1,20 @@
 @Tutorials(name: "RoomPlan Object Explorer") {
     @Intro(title: "RoomPlan이 읽은 공간을 객체 단위로 탐색하기") {
-        Starter Project를 열고 하나의 Main Tutorial을 위에서 아래로 따라가며 RoomPlan Object Explorer를 완성합니다.
+        Starter Project에 코드를 직접 입력하고 실행하면서 하나의 Main Tutorial을 위에서 아래로 따라가 RoomPlan Object Explorer를 완성합니다.
 
         최종 화면에는 RoomPlan이 읽은 방 구조와 object 목록이 함께 보이고, 목록에서 선택한 object의 3D box만 Highlight됩니다.
 
         **배우는 흐름:** `CapturedRoom` → `objects` → `identifier` → `dimensions` / `transform` → RealityKit Entity → Highlight
 
-        **요구 환경:** Xcode 26.6, iOS 17 이상 Simulator 권장. Main Tutorial에는 LiDAR나 카메라가 필요하지 않습니다.
+        **예상 시간:** 약 55분
+
+        **요구 환경:** Xcode 26.6, iOS 17 이상 iPhone Simulator 권장. Main Tutorial에는 LiDAR나 카메라가 필요하지 않습니다.
 
         제공된 `Room.json`은 모든 학습자에게 같은 RoomPlan scan 결과를 전달하는 snapshot입니다. JSON 값을 직접 입력하거나 분석하지 않습니다.
 
         > Note: `Room.usdz`는 완성된 3D 결과를 보는 데 유용하지만, 이 tutorial은 객체 데이터를 앱 기능에 연결하기 위해 `CapturedRoom`을 사용합니다.
 
-        [Starter Project ZIP 다운로드](https://github.com/woozy-A/2026TechMap_tutorial/releases/download/v1.0.0/RoomPlanTutorialStarter.zip) 후 `START_HERE.md`를 먼저 읽으세요.
+        [Starter Project ZIP 다운로드](https://github.com/woozy-A/2026TechMap_tutorial/releases/download/tutorial-docc-v3/RoomPlanTutorialStarter-v3.zip) 후 아래의 **RoomPlan Object Explorer 만들기**를 선택하세요. 다운로드부터 첫 실행, 파일 찾기, 코드 입력, 결과 확인까지 한 페이지에서 이어집니다.
 
     }
 

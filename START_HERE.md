@@ -3,15 +3,16 @@
 이 프로젝트는 한 페이지로 이어지는 DocC Main Tutorial을 보며 Section 1부터 Section 4까지 코드를 직접 입력하는 hands-on Starter입니다.
 
 - 공개 Tutorial: <https://woozy-a.github.io/2026TechMap_tutorial/tutorials/roomplanobjectexplorer/>
-- Starter ZIP: <https://github.com/woozy-A/2026TechMap_tutorial/releases/download/v1.0.0/RoomPlanTutorialStarter.zip>
+- Starter ZIP: <https://github.com/woozy-A/2026TechMap_tutorial/releases/download/tutorial-docc-v3/RoomPlanTutorialStarter-v3.zip>
 
 ## 시작하기
 
-1. `RoomPlanExampleApp.xcodeproj`를 Xcode에서 엽니다.
-2. 필요하면 Signing & Capabilities에서 자신의 Development Team과 고유 Bundle Identifier를 선택합니다.
-3. 공개 Tutorial URL을 열고 **Main Tutorial**을 선택합니다.
-4. 같은 페이지에서 Section 1부터 Section 4까지 위에서 아래로 진행합니다.
-5. 각 Section이 끝날 때마다 Build / Run하고 코드 옆 Preview와 실제 화면을 비교합니다.
+1. 공개 Tutorial URL을 열고 **RoomPlan Object Explorer 만들기**를 선택합니다.
+2. 페이지 첫 단계의 안내대로 Starter ZIP을 압축 해제합니다.
+3. `RoomPlanExampleApp.xcodeproj`를 Xcode에서 엽니다.
+4. 필요하면 Signing & Capabilities에서 자신의 Development Team과 고유 Bundle Identifier를 선택합니다.
+5. Tutorial의 행동 순서대로 파일을 찾고 코드를 직접 입력합니다.
+6. 각 Section이 끝날 때마다 `Command-R`로 실행하고 코드 옆 Result Preview와 실제 화면을 비교합니다.
 
 Main Tutorial은 Simulator에서 진행할 수 있고 LiDAR가 필요하지 않습니다.
 
@@ -47,4 +48,4 @@ Starter 상태에서 **Explore Sample Room**을 누르면 `Start Part 1` 안내�
 
 `RoomPlanExampleApp/RoomPlanObjectExplorer.docc`
 
-학습 시작점은 이 파일과 DocC Overview입니다. Apple RoomPlan Sample 출처는 `README.md`에 기록되어 있습니다.
+학습 시작점은 공개 DocC Overview입니다. ZIP 안의 이 문서는 링크와 환경을 다시 확인하기 위한 보조 안내입니다. Apple RoomPlan Sample 출처는 `README.md`에 기록되어 있습니다.

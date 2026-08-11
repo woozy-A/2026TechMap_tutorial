@@ -59,6 +59,16 @@ test -f "$ARCHIVE_PATH/index.html"
 
 이 `.doccarchive` 디렉터리 자체가 GitHub Pages에 올릴 static-site root다. 별도의 `2026TechMap_tutorial/` 폴더로 한 번 더 감싸지 않는다.
 
+## 한국어 HTML language 준비
+
+Xcode 26.6의 DocC render template은 static HTML을 `lang="en-US"`로 생성한다. 한국어 본문을 브라우저가 다시 자동 번역해 코드와 문장을 섞지 않도록, build가 끝난 archive에 배포 전용 후처리를 실행한다. 앱의 development language나 `project.pbxproj`는 변경하지 않는다.
+
+```bash
+./scripts/prepare_pages_archive.sh "$ARCHIVE_PATH"
+```
+
+이 스크립트는 archive 안의 모든 `index.html`만 `lang="ko"`로 바꾼다. 전체 index 개수와 `lang="ko"` 개수가 같고 `lang="en-US"`가 0개인 경우에만 성공한다. archive 경로가 잘못됐거나 예상하지 않은 language declaration이 있으면 파일을 삭제하지 않고 nonzero로 종료한다.
+
 ## base path 확인
 
 root와 deep page 모두 같은 base path를 가져야 한다.
@@ -76,7 +86,7 @@ rg 'baseUrl = "/2026TechMap_tutorial/"' \
 find "$ARCHIVE_PATH/tutorials" -type f -name index.html -print
 ```
 
-기대 route는 Overview, Part 1~4, Challenge, Optional의 7개다.
+source archive의 기대 route는 Overview, Section 1~4가 합쳐진 Main Tutorial, Challenge, Optional이다. 기존 Part 2~4 공개 deep link는 archive source가 아니라 아래 v3 overlay 정책에 따라 `gh-pages`에 보존한다.
 
 ## explicit transform 명령
 
@@ -142,6 +152,8 @@ jobs:
           test -f "$ARCHIVE_PATH/index.html"
           rg 'baseUrl = "/2026TechMap_tutorial/"' "$ARCHIVE_PATH/index.html"
 
+          ./scripts/prepare_pages_archive.sh "$ARCHIVE_PATH"
+
           echo "ARCHIVE_PATH=$ARCHIVE_PATH" >> "$GITHUB_ENV"
 
       - name: Upload Pages artifact
@@ -172,11 +184,21 @@ GitHub의 custom Pages workflow 구조는 [공식 Pages workflow 안내](https:/
 4. branch/path: `gh-pages` / `/`
 5. 공개 URL에서 root와 각 tutorial deep link를 직접 확인한다.
 
+## v3 보존 배포 정책
+
+- v3 archive는 현재 `gh-pages` branch 위에 **overlay**한다. branch 전체를 지우거나 force push하지 않는다.
+- 이미 공유된 legacy Part 2~4 route의 HTML, render JSON, 참조 이미지는 유지한다. v3에서 내용이 달라지는 이미지는 새 resource 이름을 사용해 legacy asset을 덮어쓰지 않는다.
+- overlay가 끝난 Pages worktree에도 `./scripts/prepare_pages_archive.sh "$PAGES_WORKTREE"`를 실행한다. 그래야 새 archive뿐 아니라 보존된 legacy route의 HTML도 모두 `lang="ko"`가 된다.
+- source revision은 새 `tutorial-docc-v3` tag로 고정한다. 기존 `v1.0.0`과 `tutorial-docc-v2` tag를 이동하거나 다시 만들지 않는다.
+- Starter **package 내용**이 동일한 동안에만 기존 release asset을 재사용한다. 앱 Swift가 같더라도 `START_HERE.md`, DocC catalog, code snapshot, screenshot이 바뀌면 새 package로 배포한다.
+- v3는 안내 문서와 DocC resource가 달라졌으므로 `tutorial-docc-v3` release에 `RoomPlanTutorialStarter-v3.zip`을 새 asset으로 올린다. 기존 `v1.0.0` asset은 교체하거나 삭제하지 않는다.
+
 ## 배포 acceptance
 
 - `xcrun docc convert ... --analyze --warnings-as-errors` 통과
 - Xcode `docbuild`에서 `CompileDocumentation`과 `BUILD DOCUMENTATION SUCCEEDED`
 - root/deep page base path가 모두 `/2026TechMap_tutorial/`
+- 모든 static `index.html`의 `lang="ko"`, `lang="en-US"` 0개
 - Overview에서 Main Tutorial, Challenge, Optional 연결
 - Main Tutorial 한 페이지 안에 Section 1~4가 순서대로 존재
 - checkpoint screenshot이 일반 삽입 이미지가 아니라 `@Code { @Image }`의 `runtimePreview`로 연결

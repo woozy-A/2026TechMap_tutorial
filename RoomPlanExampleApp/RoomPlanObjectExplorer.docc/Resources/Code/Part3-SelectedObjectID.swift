@@ -1,1 +1,0 @@
-private var selectedObjectID: UUID?

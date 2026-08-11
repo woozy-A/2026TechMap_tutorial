@@ -1,1 +1,0 @@
-entityByID[object.identifier] = entity
