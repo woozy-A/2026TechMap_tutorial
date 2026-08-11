@@ -225,3 +225,24 @@ v2 Overview는 하나의 Main Tutorial만 안내한다. Main page는 기존 Part
 - 390 × 844 좁은 viewport에서 단일 열 layout과 접히는 Preview 링크
 - 공개 route와 기존 Part 2 legacy route HTTP 200
 - Starter ZIP HTTP 200, 1,334,065 bytes, SHA-256 `c8655a8b10b9d3fa0e9c7f5cdc746a23e2545837382e4f59fb8cfcbc4c11f024`
+
+## v4 배포 기록 — 2026-08-12
+
+- visual-learning source commit: `59e9218` (`Improve RoomPlan tutorial visual guidance`)
+- revision tag: `tutorial-docc-v4` — 기존 v1~v3 tag는 이동하거나 변경하지 않았다.
+- GitHub Pages content commit: `879b991` (`Deploy RoomPlan DocC v4`)
+- Pages workflow run: `31514483599` — build / deploy 모두 success
+- release: <https://github.com/woozy-A/2026TechMap_tutorial/releases/tag/tutorial-docc-v4>
+- Starter asset: `RoomPlanTutorialStarter-v4.zip`, 5,328,702 bytes
+- Starter SHA-256: `ecdd8d484057019d476a3ff99a72e6d29c792b13716330f1e6c2eb7287008604`
+
+공개 브라우저에서 다음을 확인했다.
+
+- Overview의 Starter 설명과 Main Tutorial 링크
+- Main Tutorial의 final-result Hero와 `CapturedRoom → objects → Select → 3D Highlight` 흐름
+- Project open, scheme / Simulator / Run, `showSampleRoom(_:)`, Part 2~4 MARK를 안내하는 실제 Xcode screenshot 6개
+- Part 1~3 checkpoint, all-box rendering, Highlight까지 5개의 code-linked runtime Preview
+- Chair 2, Table 1, Table 2 실제 실행 화면에서 checkmark, status, 선명한 분홍색 Highlight의 일치
+- Completion 다음에 중복 없이 한 번만 나타나는 Challenge CTA
+- Overview, Main, Challenge, Optional, 기존 Part 2 legacy route HTTP 200
+- 공개 Starter asset을 다시 내려받아 local archive와 동일한 SHA-256 및 정상 압축 상태 확인
