@@ -14,6 +14,8 @@
 
         Main Tutorial은 Simulator에서 실행할 수 있고 LiDAR가 필요하지 않습니다. 실제 Scan Challenge만 LiDAR를 지원하는 iPhone 또는 iPad가 필요합니다.
 
+        [Starter Project ZIP 다운로드](https://github.com/woozy-A/2026TechMap_tutorial/releases/download/v1.0.0/RoomPlanTutorialStarter.zip)
+
         @Image(source: "overview-part4-highlight.png", alt: "Room structure 안에 여러 object box가 있고 선택된 object box가 노란색으로 표시된 Part 4 완성 화면")
     }
 

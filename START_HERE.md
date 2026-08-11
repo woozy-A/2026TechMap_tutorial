@@ -2,6 +2,9 @@
 
 이 프로젝트는 Xcode에서 DocC 안내를 보며 Part 1부터 Part 4까지 코드를 직접 입력하는 hands-on Starter입니다.
 
+- 공개 Tutorial: <https://woozy-a.github.io/2026TechMap_tutorial/tutorials/roomplanobjectexplorer/>
+- Starter ZIP: <https://github.com/woozy-A/2026TechMap_tutorial/releases/download/v1.0.0/RoomPlanTutorialStarter.zip>
+
 ## 시작하기
 
 1. `RoomPlanExampleApp.xcodeproj`를 Xcode에서 엽니다.
@@ -44,4 +47,4 @@ Starter 상태에서 **Explore Sample Room**을 누르면 `Start Part 1` 안내�
 
 `RoomPlanExampleApp/RoomPlanObjectExplorer.docc`
 
-기존 `README.md`는 기반이 된 Apple RoomPlan Sample의 원본 안내입니다. 학습 시작점은 이 파일과 DocC Overview입니다.
+학습 시작점은 이 파일과 DocC Overview입니다. Apple RoomPlan Sample 출처는 `README.md`에 기록되어 있습니다.
