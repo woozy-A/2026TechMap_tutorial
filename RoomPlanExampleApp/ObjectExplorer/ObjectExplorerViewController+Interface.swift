@@ -60,6 +60,7 @@ extension ObjectExplorerViewController {
         var configuration = UIButton.Configuration.filled()
         configuration.title = "Replace with 3D Chair"
         replaceModelButton.configuration = configuration
+        replaceModelButton.isHidden = true
         replaceModelButton.accessibilityIdentifier = "replaceModelButton"
         replaceModelButton.addAction(
             UIAction { [weak self] _ in
@@ -112,6 +113,7 @@ extension ObjectExplorerViewController {
     }
 
     func updateControls() {
+        replaceModelButton.isHidden = !canReplaceSelectedObject
         replaceModelButton.isEnabled = canReplaceSelectedObject && !isReplacingModel
         rotateModelButton.isHidden = !canRotateSelectedObject
         rotateModelButton.isEnabled = canRotateSelectedObject && !isReplacingModel

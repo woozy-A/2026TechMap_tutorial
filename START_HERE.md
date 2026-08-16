@@ -3,7 +3,7 @@
 이 프로젝트는 한 페이지로 이어지는 DocC Main Tutorial을 보며 Section 1부터 Section 6까지 코드를 직접 입력하는 hands-on Starter입니다.
 
 - 공개 Tutorial: <https://woozy-a.github.io/2026TechMap_tutorial/tutorials/roomplanobjectexplorer/>
-- Starter ZIP: <https://github.com/woozy-A/2026TechMap_tutorial/releases/download/tutorial-docc-v5/RoomPlanTutorialStarter-v2.3.zip>
+- Starter ZIP: <https://github.com/woozy-A/2026TechMap_tutorial/releases/download/tutorial-docc-v5/RoomPlanTutorialStarter-v2.4.zip>
 
 ## 시작하기
 
@@ -46,7 +46,7 @@ Starter 상태에서 **Explore Sample Room**을 누르면 `Start Part 1` 안내�
 
 `Challenge — Scan Your Own Room`은 LiDAR를 지원하는 실제 iPhone 또는 iPad와 카메라 권한이 필요합니다. Starter에 Apple Sample scan과 Explorer 연결이 이미 있으므로, callback을 확인한 뒤 실제 방에서 실행합니다.
 
-`Optional — Correct or Remove an Object`는 Main Tutorial 이후의 Further Exploration입니다. Final Example v1.3의 설계를 설명하지만 Section 6 위의 누적 hands-on snapshot으로 아직 검증되지 않았으므로 Main 완료 조건이나 60~80분 예상에 포함하지 않습니다.
+`Optional — Correct or Remove an Object`는 Main Tutorial 이후의 Further Exploration입니다. Final Example v1.4의 설계를 설명하지만 Section 6 위의 누적 hands-on snapshot으로 아직 검증되지 않았으므로 Main 완료 조건이나 60~80분 예상에 포함하지 않습니다.
 
 ## Catalog 위치
 

@@ -44,6 +44,8 @@ final class FurnitureModelProvider {
         for category: CapturedRoom.Object.Category,
         fitting targetDimensions: SIMD3<Float>
     ) async throws -> Entity {
+        try Task.checkCancellation()
+
         guard category == .chair else {
             throw FurnitureModelProviderError.unsupportedCategory
         }
@@ -57,6 +59,7 @@ final class FurnitureModelProvider {
         }
 
         let asset = try await modelTemplate(named: "Chair").clone(recursive: true)
+        try Task.checkCancellation()
         let assetOrientationCorrection = simd_quatf(angle: 0, axis: [0, 1, 0])
 
         let assetAdjustmentRoot = Entity()

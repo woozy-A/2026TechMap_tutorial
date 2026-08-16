@@ -16,7 +16,7 @@ CapturedRoom
 ## 바로 시작하기
 
 - [공개 DocC Tutorial](https://woozy-a.github.io/2026TechMap_tutorial/tutorials/roomplanobjectexplorer/)
-- [Starter Project ZIP 다운로드](https://github.com/woozy-A/2026TechMap_tutorial/releases/download/tutorial-docc-v5/RoomPlanTutorialStarter-v2.3.zip)
+- [Starter Project ZIP 다운로드](https://github.com/woozy-A/2026TechMap_tutorial/releases/download/tutorial-docc-v5/RoomPlanTutorialStarter-v2.4.zip)
 - 로컬 시작 안내: [`START_HERE.md`](START_HERE.md)
 
 Main Tutorial은 다운로드, 프로젝트 열기, 코드 입력, 실행 결과 확인을 한 페이지에서 안내합니다. Simulator에서 진행할 수 있고 LiDAR가 필요하지 않습니다. 실제 방을 scan하는 Challenge만 LiDAR 지원 iPhone 또는 iPad가 필요합니다.

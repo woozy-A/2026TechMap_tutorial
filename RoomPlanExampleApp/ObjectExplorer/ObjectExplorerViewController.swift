@@ -34,8 +34,6 @@ final class ObjectExplorerViewController: UIViewController {
     func selectObject(_ object: CapturedRoom.Object) {
         selectedObjectID = object.identifier
         refreshListSelection()
-        updateHighlight()
-        updateControls()
         updateStatus()
     }
 
@@ -86,26 +84,21 @@ final class ObjectExplorerViewController: UIViewController {
     }
 
     func replaceSelectedObject() async throws {
-        try Task.checkCancellation()
+        guard let selectedObject, canReplaceSelectedObject else { return }
 
-        guard let selectedObject,
-              selectedObject.category == .chair,
-              !replacedObjectIDs.contains(selectedObject.identifier) else { return }
-
+        let identifier = selectedObject.identifier
         let replacement = try await furnitureModelProvider.makeModel(
             for: selectedObject.category,
             fitting: selectedObject.dimensions
         )
-        try Task.checkCancellation()
-
-        guard selectedObjectID == selectedObject.identifier else { return }
+        guard selectedObjectID == identifier else { return }
 
         replacement.transform = Transform(matrix: selectedObject.transform)
-        displayedEntityByID[selectedObject.identifier]?.removeFromParent()
+        displayedEntityByID[identifier]?.removeFromParent()
         objectRoot.addChild(replacement)
-        displayedEntityByID[selectedObject.identifier] = replacement
-        boxEntityByID.removeValue(forKey: selectedObject.identifier)
-        replacedObjectIDs.insert(selectedObject.identifier)
+        displayedEntityByID[identifier] = replacement
+        boxEntityByID.removeValue(forKey: identifier)
+        replacedObjectIDs.insert(identifier)
 
         updateStatus()
         frameRoom()
@@ -123,9 +116,9 @@ final class ObjectExplorerViewController: UIViewController {
               canRotateSelectedObject,
               let replacement = displayedEntityByID[selectedObject.identifier] else { return }
 
-        let previousTurns = rotationQuarterTurnsByID[selectedObject.identifier] ?? 0
-        let quarterTurns = (previousTurns + 1) % 4
-        rotationQuarterTurnsByID[selectedObject.identifier] = quarterTurns
+        let identifier = selectedObject.identifier
+        let quarterTurns = ((rotationQuarterTurnsByID[identifier] ?? 0) + 1) % 4
+        rotationQuarterTurnsByID[identifier] = quarterTurns
 
         var pose = Transform(matrix: selectedObject.transform)
         let yaw = simd_quatf(

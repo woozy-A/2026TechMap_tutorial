@@ -14,12 +14,12 @@
 
         > Note: `Room.usdz`는 완성된 3D 결과를 보는 데 유용하지만, 이 tutorial은 객체 데이터를 앱 기능에 연결하기 위해 `CapturedRoom`을 사용합니다.
 
-        [Starter Project ZIP 다운로드](https://github.com/woozy-A/2026TechMap_tutorial/releases/download/tutorial-docc-v5/RoomPlanTutorialStarter-v2.3.zip) 후 아래의 **RoomPlan Object Explorer 만들기**를 선택하세요. 다운로드부터 첫 실행, 파일 찾기, 코드 입력, 결과 확인까지 Sections 1~6이 한 페이지에서 이어집니다.
+        [Starter Project ZIP 다운로드](https://github.com/woozy-A/2026TechMap_tutorial/releases/download/tutorial-docc-v5/RoomPlanTutorialStarter-v2.4.zip) 후 아래의 **RoomPlan Object Explorer 만들기**를 선택하세요. 다운로드부터 첫 실행, 파일 찾기, 짧은 코드 입력, 결과 확인까지 Sections 1~6이 한 페이지에서 이어집니다.
 
     }
 
     @Chapter(name: "Build and Explore") {
-        @Image(source: "v23-part6-chair2-rotated-90.png", alt: "Room structure와 object 목록이 함께 보이고 Chair 2가 project-original 3D Chair로 교체된 뒤 90도 회전한 최종 화면")
+        @Image(source: "v24-part6-chair2-rotated-90.png", alt: "Room structure와 object 목록이 함께 보이고 Chair 2가 project-original 3D Chair로 교체된 뒤 90도 회전한 최종 화면")
 
         @TutorialReference(tutorial: "doc:01-GetCapturedRoom")
         @TutorialReference(tutorial: "doc:05-ScanYourOwnRoom")

@@ -187,11 +187,11 @@ GitHub의 custom Pages workflow 구조는 [공식 Pages workflow 안내](https:/
 ## v5 준비 및 기존 공개 route 보존 정책
 
 - v5 archive는 현재 v4 `gh-pages` branch 위에 **overlay**한다. branch 전체를 지우거나 force push하지 않는다.
-- 이미 공유된 legacy Part 2~4 route의 HTML, render JSON, 참조 이미지는 유지한다. v2.3 이미지는 `v23-` resource 이름을 사용해 legacy asset을 덮어쓰지 않는다.
+- 이미 공유된 legacy Part 2~4 route의 HTML, render JSON, 참조 이미지는 유지한다. v2.4 이미지는 `v24-` resource 이름을 사용해 legacy asset을 덮어쓰지 않는다.
 - overlay가 끝난 Pages worktree에도 `./scripts/prepare_pages_archive.sh "$PAGES_WORKTREE"`를 실행한다. 그래야 새 archive뿐 아니라 보존된 legacy route의 HTML도 모두 `lang="ko"`가 된다.
 - source revision은 새 `tutorial-docc-v5` tag로 고정한다. 기존 `v1.0.0`, `tutorial-docc-v2`, `tutorial-docc-v3`, `tutorial-docc-v4` tag를 이동하거나 다시 만들지 않는다.
 - Starter **package 내용**이 동일한 동안에만 기존 release asset을 재사용한다. 앱 Swift가 같더라도 `START_HERE.md`, DocC catalog, code snapshot, screenshot이 바뀌면 새 package로 배포한다.
-- v5는 v2.3 source layout, project-original Chair, Sections 5~6가 추가되므로 `tutorial-docc-v5` release에 `RoomPlanTutorialStarter-v2.3.zip`과 `OriginalOfficeChair-CC0-v1.zip`을 새 asset으로 올린다. 기존 release asset은 교체하거나 삭제하지 않는다.
+- v5는 v2.4 누적 snapshot, project-original Chair, Sections 5~6를 사용하므로 `tutorial-docc-v5` release에 `RoomPlanTutorialStarter-v2.4.zip`과 `OriginalOfficeChair-CC0-v1.zip`을 새 asset으로 올린다. 기존 release asset은 교체하거나 삭제하지 않는다.
 
 ## 배포 acceptance
 

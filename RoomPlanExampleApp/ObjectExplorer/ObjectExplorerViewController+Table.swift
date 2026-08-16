@@ -85,5 +85,7 @@ extension ObjectExplorerViewController: UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let object = objectSections[indexPath.section].objects[indexPath.row]
         selectObject(object)
+        updateHighlight()
+        updateControls()
     }
 }
