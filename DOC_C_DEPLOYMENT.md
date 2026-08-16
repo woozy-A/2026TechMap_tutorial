@@ -86,7 +86,7 @@ rg 'baseUrl = "/2026TechMap_tutorial/"' \
 find "$ARCHIVE_PATH/tutorials" -type f -name index.html -print
 ```
 
-source archive의 기대 route는 Overview, Section 1~4가 합쳐진 Main Tutorial, Challenge, Optional이다. 기존 Part 2~4 공개 deep link는 archive source가 아니라 아래 v4 overlay 정책에 따라 `gh-pages`에 보존한다.
+source archive의 기대 route는 Overview, Sections 1~6이 합쳐진 Main Tutorial, Challenge, Optional이다. 기존 Part 2~4 공개 deep link는 archive source가 아니라 아래 overlay 정책에 따라 `gh-pages`에 보존한다.
 
 ## explicit transform 명령
 
@@ -184,14 +184,14 @@ GitHub의 custom Pages workflow 구조는 [공식 Pages workflow 안내](https:/
 4. branch/path: `gh-pages` / `/`
 5. 공개 URL에서 root와 각 tutorial deep link를 직접 확인한다.
 
-## v4 보존 배포 정책
+## v5 준비 및 기존 공개 route 보존 정책
 
-- v4 archive는 현재 `gh-pages` branch 위에 **overlay**한다. branch 전체를 지우거나 force push하지 않는다.
-- 이미 공유된 legacy Part 2~4 route의 HTML, render JSON, 참조 이미지는 유지한다. v4에서 내용이 달라지는 이미지는 새 resource 이름을 사용해 legacy asset을 덮어쓰지 않는다.
+- v5 archive는 현재 v4 `gh-pages` branch 위에 **overlay**한다. branch 전체를 지우거나 force push하지 않는다.
+- 이미 공유된 legacy Part 2~4 route의 HTML, render JSON, 참조 이미지는 유지한다. v2.3 이미지는 `v23-` resource 이름을 사용해 legacy asset을 덮어쓰지 않는다.
 - overlay가 끝난 Pages worktree에도 `./scripts/prepare_pages_archive.sh "$PAGES_WORKTREE"`를 실행한다. 그래야 새 archive뿐 아니라 보존된 legacy route의 HTML도 모두 `lang="ko"`가 된다.
-- source revision은 새 `tutorial-docc-v4` tag로 고정한다. 기존 `v1.0.0`, `tutorial-docc-v2`, `tutorial-docc-v3` tag를 이동하거나 다시 만들지 않는다.
+- source revision은 새 `tutorial-docc-v5` tag로 고정한다. 기존 `v1.0.0`, `tutorial-docc-v2`, `tutorial-docc-v3`, `tutorial-docc-v4` tag를 이동하거나 다시 만들지 않는다.
 - Starter **package 내용**이 동일한 동안에만 기존 release asset을 재사용한다. 앱 Swift가 같더라도 `START_HERE.md`, DocC catalog, code snapshot, screenshot이 바뀌면 새 package로 배포한다.
-- v4는 Starter material helper와 안내 문서 및 DocC resource가 달라졌으므로 `tutorial-docc-v4` release에 `RoomPlanTutorialStarter-v4.zip`을 새 asset으로 올린다. 기존 release asset은 교체하거나 삭제하지 않는다.
+- v5는 v2.3 source layout, project-original Chair, Sections 5~6가 추가되므로 `tutorial-docc-v5` release에 `RoomPlanTutorialStarter-v2.3.zip`과 `OriginalOfficeChair-CC0-v1.zip`을 새 asset으로 올린다. 기존 release asset은 교체하거나 삭제하지 않는다.
 
 ## 배포 acceptance
 
@@ -200,11 +200,13 @@ GitHub의 custom Pages workflow 구조는 [공식 Pages workflow 안내](https:/
 - root/deep page base path가 모두 `/2026TechMap_tutorial/`
 - 모든 static `index.html`의 `lang="ko"`, `lang="en-US"` 0개
 - Overview에서 Main Tutorial, Challenge, Optional 연결
-- Main Tutorial 한 페이지 안에 Section 1~4가 순서대로 존재
+- Main Tutorial 한 페이지 안에 Section 1~6가 순서대로 존재
 - checkpoint screenshot이 일반 삽입 이미지가 아니라 `@Code { @Image }`의 `runtimePreview`로 연결
 - code와 image resource 누락 없음
 - 브라우저 Network에 404 asset 없음
 - Challenge/Optional의 아직 없는 screenshot을 참조하지 않음
+- app bundle에 `Room.json`과 project-original `Chair.usdz`가 있고 `Room.usdz`는 없음
+- Starter에서 Part 5까지 Rotate 버튼이 숨겨지고 Part 6 replacement 뒤에만 표시
 
 ## v2 배포 기록 — 2026-08-11
 

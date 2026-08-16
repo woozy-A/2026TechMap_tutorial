@@ -9,17 +9,16 @@ import RoomPlan
 import UIKit
 
 class OnboardingViewController: UIViewController {
-    // MARK: - Part 1 — Get a CapturedRoom
+    // MARK: - Tutorial — Get a CapturedRoom
 
     @IBAction func showSampleRoom(_ sender: UIButton) {
-        // Part 1: Load Room.json, decode CapturedRoom, and call presentExplorer(with:).
+        // Part 1: Decode the supplied Room.json as CapturedRoom, then call
+        // presentExplorer(with:). The Starter remains safe to run before that.
         showAlert(
             title: "Start Part 1",
-            message: "Load the Sample CapturedRoom before opening the Object Explorer."
+            message: "Load the supplied Room.json as a CapturedRoom."
         )
     }
-
-    // MARK: - Starter-provided Navigation and Error Handling
 
     @IBAction func startScan(_ sender: UIButton) {
         guard RoomCaptureSession.isSupported else {
@@ -57,4 +56,8 @@ class OnboardingViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         present(alert, animated: true)
     }
+}
+
+private enum SampleRoomError: Error {
+    case resourceMissing
 }

@@ -12,7 +12,7 @@
 
         @Steps {
             @Step {
-                `RoomPlanExampleApp/RoomCaptureViewController.swift`를 열고 `captureView(didPresent:error:)`를 찾습니다.
+                `RoomPlanExampleApp/RoomPlanScan/RoomCaptureViewController.swift`를 열고 `captureView(didPresent:error:)`를 찾습니다.
             }
 
             @Step {
@@ -38,7 +38,7 @@
             }
 
             @Step {
-                object 수와 category는 공간과 scan 품질에 따라 달라집니다. Sample Room과 같은 수치를 기대하지 말고, Part 2~4 코드가 수정 없이 재사용되는지를 확인합니다.
+                object 수와 category는 공간과 scan 품질에 따라 달라집니다. Sample Room과 같은 수치를 기대하지 말고, Sections 2~6의 목록·선택·Highlight·Chair 교체·회전 pipeline이 같은 `CapturedRoom`에서 수정 없이 재사용되는지를 확인합니다.
             }
         }
     }
