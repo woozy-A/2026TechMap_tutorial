@@ -49,7 +49,7 @@ Starter 상태에서 **Explore Sample Room**을 누르면 `Start Part 1` 안내�
 
 `Room.usdz`는 포함되지 않으며 runtime에서도 사용하지 않습니다.
 
-`Resources/Furniture/Chair.usdz`는 project-original CC0 asset입니다. Section 5에서 선택한 Chair의 `dimensions`와 `transform`을 적용하고, Bonus에서 RealityKit 표현만 90° 회전합니다.
+`Resources/Furniture/Chair.usdz`는 프로젝트에서 절차적으로 제작해 CC0로 제공하는 asset입니다. Section 5에서 선택한 Chair의 `dimensions`와 `transform`을 적용하고, Bonus에서 RealityKit 표현만 90° 회전합니다.
 
 ## Conditional Challenge와 Further Exploration
 

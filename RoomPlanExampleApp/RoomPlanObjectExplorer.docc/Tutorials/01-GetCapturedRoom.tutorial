@@ -27,7 +27,7 @@
 
         - UIKit / Storyboard 기본 UI와 table boilerplate
         - non-AR RealityKit scene, camera framing, wall / floor / door / window rendering
-        - sample `Room.json`과 project-original `Chair.usdz`
+        - sample `Room.json`과 프로젝트에서 제작해 CC0로 제공하는 `Chair.usdz`
         - navigation, error handling, 3D asset loading과 fitting support
 
         **학습자가 직접 작성하는 것**
@@ -42,7 +42,7 @@
 
         [Starter Project v2.5 ZIP 다운로드](https://github.com/woozy-A/2026TechMap_tutorial/releases/download/tutorial-docc-v5/RoomPlanTutorialStarter-v2.5.zip)
 
-        @Image(source: "v25-part5-after-replacement.png", alt: "Main Tutorial의 최종 Goal Preview로 Chair 2의 Highlight box가 더 밝은 project-original 3D Chair로 교체된 Object Explorer 화면")
+        @Image(source: "v25-part5-after-replacement.png", alt: "Main Tutorial의 최종 Goal Preview로 Chair 2의 Highlight box가 프로젝트에서 제작해 CC0로 제공하는 더 밝은 3D Chair로 교체된 Object Explorer 화면")
     }
 
     @Section(title: "Section 1 — Get a CapturedRoom") {
@@ -157,7 +157,7 @@
 
     @Section(title: "Section 5 — Replace a Chair with a 3D Model") {
         @ContentAndMedia {
-            Starter에는 project-original CC0 `Chair.usdz`와 asset loading, uniform fitting, bottom alignment 코드가 들어 있습니다. 학습자는 asset boilerplate 대신 선택한 RoomPlan object의 `category`, `identifier`, `dimensions`, `transform`을 교체 Entity에 연결합니다.
+            Starter에는 프로젝트에서 제작해 CC0로 제공하는 `Chair.usdz`와 asset loading, uniform fitting, bottom alignment 코드가 들어 있습니다. 학습자는 asset boilerplate 대신 선택한 RoomPlan object의 `category`, `identifier`, `dimensions`, `transform`을 교체 Entity에 연결합니다.
         }
 
         @Steps {
@@ -183,7 +183,7 @@
                 `Command-R`로 Chair 2를 선택하고 **Replace with 3D Chair**를 누르세요. 앞 단계의 분홍 box와 비교해 같은 위치에 더 밝은 3D chair가 나타나고 **Chair 2 Replaced with 3D Chair**가 보이면 성공입니다. 원본 asset과 editable Blender source는 [CC0 Asset ZIP](https://github.com/woozy-A/2026TechMap_tutorial/releases/download/tutorial-docc-v5/OriginalOfficeChair-CC0-v1.zip)으로 제공합니다.
 
                 @Code(name: "ObjectExplorerViewController.swift", file: "V24-Section5-01-Replacement.swift", previousFile: "V24-Section5-00-Replacement.swift") {
-                    @Image(source: "v25-part5-after-replacement.png", alt: "Section 5 교체 후 화면으로 Chair 2의 Highlight box가 더 밝은 project-original 3D office chair로 바뀌고 selection이 유지된 화면")
+                    @Image(source: "v25-part5-after-replacement.png", alt: "Section 5 교체 후 화면으로 Chair 2의 Highlight box가 프로젝트에서 제작해 CC0로 제공하는 더 밝은 3D office chair로 바뀌고 selection이 유지된 화면")
                 }
             }
 
@@ -221,7 +221,7 @@
                 `Command-R`로 Chair 2를 교체하고 **Rotate 90°**를 누르세요. 바로 앞 Preview와 비교해 **Chair 2 Rotated 90°**와 오른쪽으로 바뀐 등받이 방향이 보이면 성공입니다. 버튼을 세 번 더 눌러 180°, 270°, 원래 방향으로 돌아오는 동안 row checkmark와 위치가 유지되는지도 확인하세요.
 
                 @Code(name: "ObjectExplorerViewController.swift", file: "V24-Section6-01-Rotation.swift", previousFile: "V24-Section6-00-Rotation.swift") {
-                    @Image(source: "v25-bonus-after-rotation.png", alt: "Bonus 회전 후 화면으로 Chair 2 selection과 RoomPlan 위치는 유지된 채 project-original 3D Chair의 등받이 방향만 Y축으로 90도 바뀐 화면")
+                    @Image(source: "v25-bonus-after-rotation.png", alt: "Bonus 회전 후 화면으로 Chair 2 selection과 RoomPlan 위치는 유지된 채 프로젝트에서 제작해 CC0로 제공하는 3D Chair의 등받이 방향만 Y축으로 90도 바뀐 화면")
                 }
             }
 

@@ -191,7 +191,7 @@ GitHub의 custom Pages workflow 구조는 [공식 Pages workflow 안내](https:/
 - overlay가 끝난 Pages worktree에도 `./scripts/prepare_pages_archive.sh "$PAGES_WORKTREE"`를 실행한다. 그래야 새 archive뿐 아니라 보존된 legacy route의 HTML도 모두 `lang="ko"`가 된다.
 - source revision은 새 `tutorial-docc-v5` tag로 고정한다. 기존 `v1.0.0`, `tutorial-docc-v2`, `tutorial-docc-v3`, `tutorial-docc-v4` tag를 이동하거나 다시 만들지 않는다.
 - Starter **package 내용**이 동일한 동안에만 기존 release asset을 재사용한다. 앱 Swift가 같더라도 `START_HERE.md`, DocC catalog, code snapshot, screenshot이 바뀌면 새 package로 배포한다.
-- v5는 v2.5 누적 snapshot, 밝아진 project-original Chair, Main Section 1~5와 Rotation Bonus를 사용하므로 `tutorial-docc-v5` release에 `RoomPlanTutorialStarter-v2.5.zip`과 `OriginalOfficeChair-CC0-v1.zip`을 새 asset으로 올린다. 기존 release asset은 교체하거나 삭제하지 않는다.
+- v5는 v2.5 누적 snapshot, 프로젝트에서 제작해 CC0로 제공하는 밝은 Chair, Main Section 1~5와 Rotation Bonus를 사용하므로 `tutorial-docc-v5` release에 `RoomPlanTutorialStarter-v2.5.zip`과 `OriginalOfficeChair-CC0-v1.zip`을 새 asset으로 올린다. 기존 release asset은 교체하거나 삭제하지 않는다.
 
 ## 배포 acceptance
 
@@ -205,7 +205,7 @@ GitHub의 custom Pages workflow 구조는 [공식 Pages workflow 안내](https:/
 - code와 image resource 누락 없음
 - 브라우저 Network에 404 asset 없음
 - Challenge/Optional의 아직 없는 screenshot을 참조하지 않음
-- app bundle에 `Room.json`과 project-original `Chair.usdz`가 있고 `Room.usdz`는 없음
+- app bundle에 `Room.json`과 프로젝트에서 제작해 CC0로 제공하는 `Chair.usdz`가 있고 `Room.usdz`는 없음
 - Starter에서 Main Section 5의 replacement 전까지 Rotate 버튼이 숨겨지고 Rotation Bonus에서만 표시
 
 ## v2 배포 기록 — 2026-08-11
@@ -263,10 +263,12 @@ v2 Overview는 하나의 Main Tutorial만 안내한다. Main page는 기존 Part
 
 공개 Pages에서 다음을 확인했다.
 
-- Overview의 초급 난이도, 대상, hands-on 진행 방식
+- v5 당시 Overview의 초급 난이도, 대상, hands-on 진행 방식
 - Overview → Main Section 1~5와 Rotation Bonus
 - LiDAR 조건을 명시한 Conditional Challenge
 - `@Article`로 생성된 Further Exploration (`kind: article`, `role: article`)
 - Section 2에서 학습자가 `object.category`와 `object.dimensions`를 직접 쓰는 안내와 code panel
 - Starter/Chair ZIP 공개 Release 연결
 - 기존 Part 2~4 legacy route를 포함한 검증 대상 route HTTP 200
+
+`06-OptionalEditing`은 v5에서 top-level directive를 `@Tutorial`에서 `@Article`로 바꿨지만 기존 공개 route와 `<doc:06-OptionalEditing>` 참조를 보존하기 위해 파일 basename과 `.tutorial` 확장자를 유지했다. Xcode DocC build와 공개 render data에서 `kind: article`, `role: article`을 확인했으므로 파일 이름만을 위한 rename은 하지 않는다.

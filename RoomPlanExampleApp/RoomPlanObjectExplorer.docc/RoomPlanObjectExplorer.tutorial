@@ -19,7 +19,7 @@
 
         **진행 방식:** Section마다 짧은 핵심 코드를 직접 입력하고 Simulator에서 화면 변화를 확인하는 hands-on tutorial
 
-        Main 최종 화면에는 RoomPlan이 읽은 방 구조와 object 목록이 함께 보입니다. 선택한 Chair를 Highlight하고 project-original 3D model로 교체합니다. 이어지는 Bonus에서 같은 Entity를 90° 회전합니다.
+        Main 최종 화면에는 RoomPlan이 읽은 방 구조와 object 목록이 함께 보입니다. 선택한 Chair를 Highlight하고 프로젝트에서 제작해 CC0로 제공하는 3D Chair로 교체합니다. 이어지는 Bonus에서 같은 Entity를 90° 회전합니다.
 
         **Main 흐름:** `CapturedRoom` → `objects` → `category` / `identifier` → `dimensions` / `transform` → Highlight → 3D Chair
 
@@ -27,7 +27,9 @@
 
         **예상 시간:** Main 약 55~65분, Bonus 약 10분
 
-        **요구 환경:** Xcode 26.6, iOS 17 이상 iPhone Simulator 권장. Main Tutorial에는 LiDAR나 카메라가 필요하지 않습니다.
+        **검증 환경:** Xcode 26.6 (`17F113`) / iOS 26.5 iPhone Simulator
+
+        **권장 실행 환경:** iOS 17 이상 iPhone Simulator. Main Tutorial에는 LiDAR나 카메라가 필요하지 않습니다. 프로젝트 deployment target은 iOS 16이지만 제공된 version 2 `Room.json`의 iOS 16 runtime decode는 아직 검증하지 않았습니다.
 
         제공된 `Room.json`은 모든 학습자에게 같은 RoomPlan scan 결과를 전달하는 snapshot입니다. JSON 값을 직접 입력하거나 분석하지 않습니다.
 
@@ -40,7 +42,7 @@
     }
 
     @Chapter(name: "Build and Explore") {
-        @Image(source: "v25-part5-after-replacement.png", alt: "Room structure와 object 목록이 함께 보이고 Chair 2의 Highlight box가 더 밝은 project-original 3D Chair로 교체된 Main 최종 화면")
+        @Image(source: "v25-part5-after-replacement.png", alt: "Room structure와 object 목록이 함께 보이고 Chair 2의 Highlight box가 프로젝트에서 제작해 CC0로 제공하는 더 밝은 3D Chair로 교체된 Main 최종 화면")
 
         @TutorialReference(tutorial: "doc:01-GetCapturedRoom")
         @TutorialReference(tutorial: "doc:05-ScanYourOwnRoom")
