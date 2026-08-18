@@ -322,12 +322,15 @@ release asset:
 배포 결과:
 
 - content source commit / tag: `be2dec0` / `tutorial-docc-v6`
+- runtime light-mode source hotfix: `e9a67db`
 - GitHub Pages content commit: `4c061c5` (`Deploy RoomPlan DocC v6`)
-- Pages workflow run: `32156561141` — build / deploy success
+- runtime light-mode Pages hotfix: `fce2af1`
+- Pages workflow runs: `32156561141`, `32158005035` — build / deploy success
 - release: <https://github.com/woozy-A/2026TechMap_tutorial/releases/tag/tutorial-docc-v6>
 - Release asset 7개와 SHA-256 manifest 공개
 - root, Overview, Main, Conditional Challenge, Further Exploration, legacy Part 2 route HTTP 200
 - 공개 render data에서 Main Section 1~5 + Bonus, 별도 Chair asset 링크, generic `FurnitureAsset` mapping 확인
 - 공개 Starter와 Chair ZIP을 다시 받아 local manifest와 같은 SHA-256 확인
+- 최종 공개 Starter SHA-256: `d3852f00f6a48b15d09e7a1ca5f495b1d2748e3a858c04e84fdae11e26c5f7f6`
 
-첫 공개 확인에서 static HTML은 light였지만 DocC client가 runtime 값을 `auto`로 되돌리는 것을 발견했다. `prepare_pages_archive.sh`에 idempotent runtime guard를 추가해 한국어와 light mode를 load 이후에도 고정하고, Pages의 모든 148개 index에 적용했다. 밝은 환경의 공개 browser에서 body background `rgb(255, 255, 255)`, 검은 본문, 1440 × 900 가로형 goal image가 설명과 함께 표시되는 것을 확인했다. 실제 macOS 창 screenshot은 Mac 잠금 때문에 이번 기록 시점에 추가하지 못했으며, DOM·computed style·public render data 검증과 구분한다.
+첫 공개 확인에서 static HTML은 light였지만 DocC client가 runtime 값을 `auto`로 되돌리는 것을 발견했다. `prepare_pages_archive.sh`에 idempotent runtime guard를 추가해 한국어와 light mode를 load 이후에도 고정하고, Pages의 모든 148개 index에 적용했다. hotfix 공개 page의 load 이후 값은 `htmlLang=ko`, `bodyColorScheme=light`, body background `rgb(255, 255, 255)`, 본문 `rgb(0, 0, 0)`이었다. Intro hero에는 image가 없고 Section 1의 1440 × 900 goal image가 설명 옆에 표시됐다. 실제 macOS 창 screenshot은 Mac 잠금 때문에 이번 기록 시점에 추가하지 못했으며, DOM·computed style·public render data 검증과 구분한다.
