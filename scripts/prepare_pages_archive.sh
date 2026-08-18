@@ -53,6 +53,10 @@ while IFS= read -r -d '' index_file; do
   perl -pi -e 's/<html lang="en-US"/<html lang="ko"/g' "$index_file"
   perl -pi -e 's/data-color-scheme="auto"/data-color-scheme="light"/g' "$index_file"
 
+  if ! grep -q 'id="roomplan-force-light-preload"' "$index_file"; then
+    perl -0pi -e 's#</head>#<script id="roomplan-force-light-preload">try{localStorage.setItem("developer.setting.preferredColorScheme","light");localStorage.setItem("docs.setting.preferredColorScheme","light")}catch(e){}</script><style id="roomplan-force-light-style">body[data-color-scheme="light"]{--color-tutorials-overview-background:white;--color-tutorials-overview-content:rgb(17,17,17);--color-tutorials-overview-content-alt:rgb(51,51,51);--color-tutorials-overview-eyebrow:rgb(102,102,102);--color-tutorials-overview-icon:rgb(102,102,102);--color-tutorials-overview-link:rgb(0,102,204);--color-tutorials-overview-navigation-link:rgb(85,85,85);--color-tutorials-overview-navigation-link-active:rgb(17,17,17);--color-tutorials-overview-navigation-link-hover:rgb(0,102,204);--color-tutorial-hero-background:white;--color-tutorial-hero-text:rgb(17,17,17);--color-hero-eyebrow:rgb(102,102,102)}</style></head>#' "$index_file"
+  fi
+
   if ! grep -q 'id="roomplan-force-korean-light"' "$index_file"; then
     perl -0pi -e 's#</body>#<script id="roomplan-force-korean-light">\(\(\)=>{const force=\(\)=>{if\(document.documentElement.lang!=="ko"\)document.documentElement.lang="ko";if\(document.body&&document.body.dataset.colorScheme!=="light"\)document.body.dataset.colorScheme="light"};force\(\);new MutationObserver\(force\).observe\(document.documentElement,{attributes:true,subtree:true,attributeFilter:["lang","data-color-scheme"]}\)}\)\(\);</script></body>#' "$index_file"
   fi
@@ -63,6 +67,8 @@ en_us_count=0
 light_count=0
 auto_count=0
 runtime_guard_count=0
+preload_count=0
+light_style_count=0
 
 while IFS= read -r -d '' index_file; do
   if grep -q '<html lang="ko"' "$index_file"; then
@@ -83,6 +89,14 @@ while IFS= read -r -d '' index_file; do
 
   if grep -q 'id="roomplan-force-korean-light"' "$index_file"; then
     runtime_guard_count=$((runtime_guard_count + 1))
+  fi
+
+  if grep -q 'id="roomplan-force-light-preload"' "$index_file"; then
+    preload_count=$((preload_count + 1))
+  fi
+
+  if grep -q 'id="roomplan-force-light-style"' "$index_file"; then
+    light_style_count=$((light_style_count + 1))
   fi
 done < <(find_index_files)
 
@@ -111,4 +125,14 @@ if [[ $runtime_guard_count -ne $index_count ]]; then
   exit 65
 fi
 
-echo "Prepared DocC Pages archive: $index_count index files stay lang=ko and light at runtime"
+if [[ $preload_count -ne $index_count ]]; then
+  echo "error: expected $index_count early light-mode preferences, found $preload_count" >&2
+  exit 65
+fi
+
+if [[ $light_style_count -ne $index_count ]]; then
+  echo "error: expected $index_count light overview styles, found $light_style_count" >&2
+  exit 65
+fi
+
+echo "Prepared DocC Pages archive: $index_count index files stay lang=ko with a white overview and light runtime"

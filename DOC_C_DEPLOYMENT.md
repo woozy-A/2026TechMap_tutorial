@@ -333,4 +333,6 @@ release asset:
 - 공개 Starter와 Chair ZIP을 다시 받아 local manifest와 같은 SHA-256 확인
 - 최종 공개 Starter SHA-256: `d3852f00f6a48b15d09e7a1ca5f495b1d2748e3a858c04e84fdae11e26c5f7f6`
 
-첫 공개 확인에서 static HTML은 light였지만 DocC client가 runtime 값을 `auto`로 되돌리는 것을 발견했다. `prepare_pages_archive.sh`에 idempotent runtime guard를 추가해 한국어와 light mode를 load 이후에도 고정하고, Pages의 모든 148개 index에 적용했다. hotfix 공개 page의 load 이후 값은 `htmlLang=ko`, `bodyColorScheme=light`, body background `rgb(255, 255, 255)`, 본문 `rgb(0, 0, 0)`이었다. Intro hero에는 image가 없고 Section 1의 1440 × 900 goal image가 설명 옆에 표시됐다. 실제 macOS 창 screenshot은 Mac 잠금 때문에 이번 기록 시점에 추가하지 못했으며, DOM·computed style·public render data 검증과 구분한다.
+첫 hotfix는 static HTML의 `data-color-scheme`을 light로 고정했지만, DocC Overview가 light mode에서도 별도의 검정 `tutorials-overview` 색상 변수를 사용한다는 점을 놓쳤다. 2026-08-19 공개 URL을 다시 확인한 결과 `bodyColorScheme=light`이어도 Overview body background은 `rgb(0, 0, 0)`으로 남아 있었다.
+
+현재 local 수정본은 `prepare_pages_archive.sh`가 DocC client보다 먼저 light preference를 설정하고, Overview·Tutorial Hero 색상 변수를 흰 배경과 어두운 글자로 override한다. Overview Intro도 필수 학습 흐름·요구 경험·다운로드 링크만 남겨 세로 길이를 줄였다. 이 수정은 Xcode `docbuild`와 138개 static index 변환·guard 검증을 통과했지만 아직 GitHub Pages에 push하지 않았다. 공개 URL은 배포 후 별도로 다시 검증해야 한다.
