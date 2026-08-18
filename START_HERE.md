@@ -2,6 +2,15 @@
 
 이 프로젝트는 한 페이지로 이어지는 DocC Tutorial을 보며 Main Section 1부터 Section 5까지 코드를 직접 입력하고, 원한다면 Rotation Bonus까지 이어가는 hands-on Starter입니다.
 
+## 대상 사용자
+
+- Xcode에서 iOS 프로젝트를 열고 Build/Run 해본 경험이 있는 사람
+- Swift 기본 문법(변수, 함수, 배열, Optional 등)을 이해하는 사람
+- UIKit의 기본 개념(UIViewController, 버튼, 화면 전환 등)을 접해본 사람
+- RoomPlan으로 스캔한 공간과 객체 데이터를 앱에서 활용하는 방법을 배우고 싶은 사람
+
+RoomPlan, RealityKit, LiDAR / AR 개발, 3D 모델 제작, USDZ 구조에 대한 사전 경험은 없어도 괜찮습니다.
+
 - 공개 Tutorial: <https://woozy-a.github.io/2026TechMap_tutorial/tutorials/roomplanobjectexplorer/>
 - Starter ZIP: <https://github.com/woozy-A/2026TechMap_tutorial/releases/download/tutorial-docc-v5/RoomPlanTutorialStarter-v2.5.zip>
 

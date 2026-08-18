@@ -2,9 +2,20 @@
     @Intro(title: "스캔된 객체를 탐색하고 3D로 연결하기") {
         Starter Project에서 RoomPlan의 `CapturedRoom`을 객체 목록과 3D 공간에 연결하고, 선택한 Chair의 box를 3D model로 교체합니다. 마지막 Bonus에서는 같은 Entity를 90° 회전합니다.
 
-        **난이도:** 초급
+        **대상 사용자**
 
-        **대상:** RoomPlan 입문자 · Swift/UIKit 기본 문법과 Xcode 실행 경험 필요
+        - Xcode에서 iOS 프로젝트를 열고 Build/Run 해본 경험이 있는 사람
+        - Swift 기본 문법(변수, 함수, 배열, Optional 등)을 이해하는 사람
+        - UIKit의 기본 개념(UIViewController, 버튼, 화면 전환 등)을 접해본 사람
+        - RoomPlan으로 스캔한 공간과 객체 데이터를 앱에서 활용하는 방법을 배우고 싶은 사람
+
+        **사전 경험이 없어도 괜찮은 것**
+
+        - RoomPlan
+        - RealityKit
+        - LiDAR / AR 개발
+        - 3D 모델 제작
+        - USDZ 구조
 
         **Main:** `CapturedRoom → objects → identifier → dimensions / transform → Highlight → 3D Chair`
 
@@ -12,7 +23,22 @@
 
         Main Tutorial은 iOS Simulator에서 진행할 수 있습니다. 제공된 `Room.json`은 모든 학습자가 같은 `CapturedRoom`으로 시작하게 하는 sample delivery mechanism이며, JSON 문법이나 좌표를 직접 분석하지 않습니다.
 
-        Starter는 UIKit 화면, category section helper, non-AR RealityKit view, room structure, camera framing, 3D asset loading을 제공합니다. 학습자는 `objects`, `category`, `identifier`, `dimensions`, `transform`을 직접 읽고 3D 표현과 연결하는 핵심 코드만 작성합니다.
+        **Starter가 제공하는 것**
+
+        - UIKit / Storyboard 기본 UI와 table boilerplate
+        - non-AR RealityKit scene, camera framing, wall / floor / door / window rendering
+        - sample `Room.json`과 project-original `Chair.usdz`
+        - navigation, error handling, 3D asset loading과 fitting support
+
+        **학습자가 직접 작성하는 것**
+
+        - Sample snapshot에서 `CapturedRoom` 얻기
+        - `CapturedRoom.objects`에 접근하고 `category` / `dimensions` 사용하기
+        - `identifier`로 selection과 Object ↔ Entity 연결하기
+        - `dimensions` / `transform`으로 box를 만들고 Highlight하기
+        - 선택한 Object를 제공된 3D Chair asset과 연결하기
+
+        Starter는 앱을 대신 완성하는 코드가 아니라 RoomPlan 학습과 직접 관계없는 boilerplate를 미리 제공합니다.
 
         [Starter Project v2.5 ZIP 다운로드](https://github.com/woozy-A/2026TechMap_tutorial/releases/download/tutorial-docc-v5/RoomPlanTutorialStarter-v2.5.zip)
 

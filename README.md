@@ -31,7 +31,7 @@ Main Tutorial은 다운로드, 프로젝트 열기, 코드 입력, 실행 결과
   - Section 5 — Replace a Chair with a 3D Model
 - Bonus — Rotate the 3D Chair
 - Challenge — Scan Your Own Room
-- Optional — Correct or Remove an Object
+- Further Exploration Article — Correct or Remove an Object (Optional)
 
 ## 기반 Sample
 
