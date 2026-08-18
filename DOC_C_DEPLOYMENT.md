@@ -272,3 +272,28 @@ v2 Overview는 하나의 Main Tutorial만 안내한다. Main page는 기존 Part
 - 기존 Part 2~4 legacy route를 포함한 검증 대상 route HTTP 200
 
 `06-OptionalEditing`은 v5에서 top-level directive를 `@Tutorial`에서 `@Article`로 바꿨지만 기존 공개 route와 `<doc:06-OptionalEditing>` 참조를 보존하기 위해 파일 basename과 `.tutorial` 확장자를 유지했다. Xcode DocC build와 공개 render data에서 `kind: article`, `role: article`을 확인했으므로 파일 이름만을 위한 rename은 하지 않는다.
+
+## v5.2 배포 기록 — 2026-08-18
+
+- content source commit: `04e5254` (`Clarify RoomPlan tutorial provenance and requirements`)
+- GitHub Pages content commit: `b0f755f` (`Deploy RoomPlan DocC v5.2`)
+- Pages workflow run: `32150083342` — build / deploy 모두 success
+- revision tag: `tutorial-docc-v5.2`
+- 기존 `tutorial-docc-v5` release의 `RoomPlanTutorialStarter-v2.5.zip`과 `OriginalOfficeChair-CC0-v1.zip`은 내용이 바뀌지 않아 그대로 재사용했다.
+
+v5.2에서는 앱 코드와 Section 1~5 / Rotation Bonus의 학습 구조를 바꾸지 않고 공개 설명과 유지보수 문서를 정리했다.
+
+- 모호한 난이도 라벨 없이 대상 사용자와 필요한 Xcode / Swift / UIKit 경험을 유지
+- Xcode 26.6 / iOS 26.5 Simulator는 **검증 환경**, iOS 17+ Simulator는 **권장 실행 환경**으로 구분
+- Chair asset은 외부 mesh를 내려받은 것이 아니라 프로젝트에서 제작해 CC0로 제공하는 sample임을 명시
+- `06-OptionalEditing.tutorial`의 `@Article` 구조와 기존 public route를 의도적으로 함께 보존
+- `DOC_C_SCREENSHOT_PLAN.md`의 현재 screenshot / snapshot 기준을 v2.5로 동기화
+
+공개 브라우저와 HTTP에서 다음을 확인했다.
+
+- Overview → Main Tutorial 연결 및 Main 한 페이지의 Section 1~5 + Rotation Bonus
+- Conditional Challenge와 Further Exploration Article 연결
+- 공개 render data의 `검증 환경`, `권장 실행 환경`, Chair CC0 provenance 반영
+- `06-OptionalEditing`의 `kind: article`
+- root, Overview, Main, Challenge, Further Exploration, legacy Part 2~4 route 모두 HTTP 200
+- Starter v2.5와 CC0 Chair ZIP 다운로드 링크 모두 HTTP 200
