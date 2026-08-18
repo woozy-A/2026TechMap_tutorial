@@ -67,7 +67,7 @@ Xcode 26.6의 DocC render template은 static HTML을 `lang="en-US"`로 생성한
 ./scripts/prepare_pages_archive.sh "$ARCHIVE_PATH"
 ```
 
-이 스크립트는 archive 안의 모든 `index.html`만 `lang="ko"`로 바꾼다. 전체 index 개수와 `lang="ko"` 개수가 같고 `lang="en-US"`가 0개인 경우에만 성공한다. archive 경로가 잘못됐거나 예상하지 않은 language declaration이 있으면 파일을 삭제하지 않고 nonzero로 종료한다.
+이 스크립트는 archive 안의 모든 `index.html`을 `lang="ko"`, `data-color-scheme="light"`로 준비한다. DocC의 client script가 load 뒤 값을 `en-US` 또는 `auto`로 되돌리는 경우도 있으므로, 같은 값을 유지하는 작은 runtime guard도 각 page에 한 번만 넣는다. 전체 index 개수와 한국어·light·runtime guard 개수가 모두 같고 `lang="en-US"`와 `auto`가 0개인 경우에만 성공한다. archive 경로가 잘못됐거나 예상하지 않은 language declaration이 있으면 파일을 삭제하지 않고 nonzero로 종료한다.
 
 ## base path 확인
 
@@ -298,7 +298,7 @@ v5.2에서는 앱 코드와 Section 1~5 / Rotation Bonus의 학습 구조를 바
 - root, Overview, Main, Challenge, Further Exploration, legacy Part 2~4 route 모두 HTTP 200
 - Starter v2.5와 CC0 Chair ZIP 다운로드 링크 모두 HTTP 200
 
-## v6 배포 계획 — 2026-08-19
+## v6 배포 기록 — 2026-08-19
 
 v6는 v5.2의 공개 route를 유지하면서 다음 학습·시각 계약을 변경한다.
 
@@ -309,7 +309,7 @@ v6는 v5.2의 공개 route를 유지하면서 다음 학습·시각 계약을 �
 - runtime result는 상태바/Dynamic Island를 제외한 실제 Simulator capture를 흰 가로형 canvas로 제공한다.
 - generated static archive의 모든 `index.html`은 `data-color-scheme="light"`와 `lang="ko"`를 사용한다.
 
-예정 release asset:
+release asset:
 
 - `RoomPlanTutorialStarter-v2.6.zip`
 - `RoomPlanTutorialSolution-v2.6.zip`
@@ -319,4 +319,15 @@ v6는 v5.2의 공개 route를 유지하면서 다음 학습·시각 계약을 �
 - `RoomPlanDocC-v6-source.zip`
 - `SHA256SUMS-v6.txt`
 
-공개 완료라고 보고하기 전에 Release asset 7개 HTTP 200, Pages workflow success, root/Overview/Main/Challenge/Further Exploration/legacy route HTTP 200, Main render data의 Section 1~5 + Bonus, 공개 HTML의 light color scheme을 각각 확인한다.
+배포 결과:
+
+- content source commit / tag: `be2dec0` / `tutorial-docc-v6`
+- GitHub Pages content commit: `4c061c5` (`Deploy RoomPlan DocC v6`)
+- Pages workflow run: `32156561141` — build / deploy success
+- release: <https://github.com/woozy-A/2026TechMap_tutorial/releases/tag/tutorial-docc-v6>
+- Release asset 7개와 SHA-256 manifest 공개
+- root, Overview, Main, Conditional Challenge, Further Exploration, legacy Part 2 route HTTP 200
+- 공개 render data에서 Main Section 1~5 + Bonus, 별도 Chair asset 링크, generic `FurnitureAsset` mapping 확인
+- 공개 Starter와 Chair ZIP을 다시 받아 local manifest와 같은 SHA-256 확인
+
+첫 공개 확인에서 static HTML은 light였지만 DocC client가 runtime 값을 `auto`로 되돌리는 것을 발견했다. `prepare_pages_archive.sh`에 idempotent runtime guard를 추가해 한국어와 light mode를 load 이후에도 고정하고, Pages의 모든 148개 index에 적용했다. 밝은 환경의 공개 browser에서 body background `rgb(255, 255, 255)`, 검은 본문, 1440 × 900 가로형 goal image가 설명과 함께 표시되는 것을 확인했다. 실제 macOS 창 screenshot은 Mac 잠금 때문에 이번 기록 시점에 추가하지 못했으며, DOM·computed style·public render data 검증과 구분한다.
