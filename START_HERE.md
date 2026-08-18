@@ -7,7 +7,7 @@
 
 ## 시작하기
 
-1. 공개 Tutorial URL을 열고 **RoomPlan Object Explorer 만들기**를 선택합니다.
+1. 공개 Tutorial URL을 열고 **스캔된 객체를 탐색하고 3D로 연결하기**를 선택합니다.
 2. 페이지 첫 단계의 안내대로 Starter ZIP을 압축 해제합니다.
 3. `RoomPlanExampleApp.xcodeproj`를 Xcode에서 엽니다.
 4. 필요하면 Signing & Capabilities에서 자신의 Development Team과 고유 Bundle Identifier를 선택합니다.
@@ -42,11 +42,11 @@ Starter 상태에서 **Explore Sample Room**을 누르면 `Start Part 1` 안내�
 
 `Resources/Furniture/Chair.usdz`는 project-original CC0 asset입니다. Section 5에서 선택한 Chair의 `dimensions`와 `transform`을 적용하고, Bonus에서 RealityKit 표현만 90° 회전합니다.
 
-## Challenge와 Optional
+## Conditional Challenge와 Further Exploration
 
-`Challenge — Scan Your Own Room`은 LiDAR를 지원하는 실제 iPhone 또는 iPad와 카메라 권한이 필요합니다. Starter에 Apple Sample scan과 Explorer 연결이 이미 있으므로, callback을 확인한 뒤 실제 방에서 실행합니다.
+`Conditional Challenge — Scan Your Own Room`은 LiDAR를 지원하는 실제 iPhone 또는 iPad, 카메라 권한, 안전하게 scan할 실내 공간이 모두 있을 때만 진행합니다. 조건을 충족하지 못해도 Main Tutorial과 Bonus는 정상적으로 완료한 것입니다.
 
-`Optional — Correct or Remove an Object`는 Main Tutorial과 Rotation Bonus 이후의 Further Exploration입니다. Final Example v1.5의 설계를 설명하지만 별도 누적 hands-on snapshot으로는 아직 검증되지 않았으므로 Main 완료 조건이나 55~65분 예상에 포함하지 않습니다.
+`Further Exploration — Correct or Remove an Object`는 Main Tutorial과 Rotation Bonus 이후에 읽는 Article입니다. Final Example v1.5의 설계를 설명하지만 별도 누적 hands-on snapshot으로는 아직 검증되지 않았으므로 Main 완료 조건이나 55~65분 예상에 포함하지 않습니다.
 
 ## Catalog 위치
 

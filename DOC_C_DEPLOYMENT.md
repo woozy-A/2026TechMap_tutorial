@@ -86,7 +86,7 @@ rg 'baseUrl = "/2026TechMap_tutorial/"' \
 find "$ARCHIVE_PATH/tutorials" -type f -name index.html -print
 ```
 
-source archive의 기대 route는 Overview, Sections 1~6이 합쳐진 Main Tutorial, Challenge, Optional이다. 기존 Part 2~4 공개 deep link는 archive source가 아니라 아래 overlay 정책에 따라 `gh-pages`에 보존한다.
+source archive의 기대 route는 Overview, Main Sections 1~5와 Rotation Bonus가 합쳐진 Main Tutorial, Conditional Challenge, Further Exploration Article이다. 기존 Part 2~4 공개 deep link는 archive source가 아니라 아래 overlay 정책에 따라 `gh-pages`에 보존한다.
 
 ## explicit transform 명령
 
@@ -199,7 +199,7 @@ GitHub의 custom Pages workflow 구조는 [공식 Pages workflow 안내](https:/
 - Xcode `docbuild`에서 `CompileDocumentation`과 `BUILD DOCUMENTATION SUCCEEDED`
 - root/deep page base path가 모두 `/2026TechMap_tutorial/`
 - 모든 static `index.html`의 `lang="ko"`, `lang="en-US"` 0개
-- Overview에서 Main Tutorial, Challenge, Optional 연결
+- Overview에서 Main Tutorial, Conditional Challenge, Further Exploration Article 연결
 - Main Tutorial 한 페이지 안에 Main Section 1~5와 Rotation Bonus가 순서대로 존재
 - checkpoint screenshot이 일반 삽입 이미지가 아니라 `@Code { @Image }`의 `runtimePreview`로 연결
 - code와 image resource 누락 없음

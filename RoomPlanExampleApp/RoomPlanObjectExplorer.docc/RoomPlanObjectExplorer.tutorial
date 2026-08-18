@@ -1,6 +1,12 @@
-@Tutorials(name: "RoomPlan Object Explorer") {
-    @Intro(title: "RoomPlan이 읽은 공간을 객체 단위로 탐색하기") {
-        Starter Project에 코드를 직접 입력하고 실행하면서 하나의 Main Tutorial을 위에서 아래로 따라가 RoomPlan Object Explorer를 완성합니다.
+@Tutorials(name: "RoomPlan 객체를 3D로 탐색하기") {
+    @Intro(title: "CapturedRoom에서 선택 가능한 3D 공간까지") {
+        Starter Project에서 `CapturedRoom`을 불러오고, RoomPlan이 인식한 object를 분류·선택·Highlight한 뒤 Chair box를 3D model로 교체합니다.
+
+        **난이도:** 초급
+
+        **대상:** RoomPlan을 처음 사용하며 Swift와 UIKit의 기본 문법과 Xcode 실행 방법을 아는 학습자
+
+        **진행 방식:** Section마다 짧은 핵심 코드를 직접 입력하고 Simulator에서 화면 변화를 확인하는 hands-on tutorial
 
         Main 최종 화면에는 RoomPlan이 읽은 방 구조와 object 목록이 함께 보입니다. 선택한 Chair를 Highlight하고 project-original 3D model로 교체합니다. 이어지는 Bonus에서 같은 Entity를 90° 회전합니다.
 
@@ -16,7 +22,9 @@
 
         > Note: `Room.usdz`는 완성된 3D 결과를 보는 데 유용하지만, 이 tutorial은 객체 데이터를 앱 기능에 연결하기 위해 `CapturedRoom`을 사용합니다.
 
-        [Starter Project ZIP 다운로드](https://github.com/woozy-A/2026TechMap_tutorial/releases/download/tutorial-docc-v5/RoomPlanTutorialStarter-v2.5.zip) 후 아래의 **RoomPlan Object Explorer 만들기**를 선택하세요. 다운로드부터 첫 실행, 파일 찾기, 짧은 코드 입력, 결과 확인까지 Main Sections 1~5와 Rotation Bonus가 한 페이지에서 이어집니다.
+        [Starter Project ZIP 다운로드](https://github.com/woozy-A/2026TechMap_tutorial/releases/download/tutorial-docc-v5/RoomPlanTutorialStarter-v2.5.zip) 후 아래의 **스캔된 객체를 탐색하고 3D로 연결하기**를 선택하세요. 다운로드부터 첫 실행, 파일 찾기, 짧은 코드 입력, 결과 확인까지 Main Sections 1~5와 Rotation Bonus가 한 페이지에서 이어집니다.
+
+        LiDAR 기기와 안전한 실내 공간이 있을 때만 **Conditional Challenge**를 진행하세요. Category Correction과 Remove의 상태 설계는 [Further Exploration](<doc:06-OptionalEditing>) Article에서 Main과 분리해 살펴봅니다.
 
     }
 

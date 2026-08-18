@@ -1,8 +1,8 @@
 @Tutorial {
-    @Intro(title: "Challenge — Scan Your Own Room") {
-        실제 RoomPlan scan에서 받은 `CapturedRoom`을 Main Tutorial과 같은 Object Explorer에 전달합니다.
+    @Intro(title: "Conditional Challenge — Scan Your Own Room") {
+        LiDAR를 지원하는 실제 기기와 안전하게 scan할 수 있는 실내 공간이 있을 때, RoomPlan scan에서 받은 `CapturedRoom`을 Main Tutorial과 같은 Object Explorer에 전달합니다.
 
-        **Requirements:** LiDAR를 지원하는 실제 iPhone 또는 iPad, 카메라 권한, scan할 수 있는 안전한 실내 공간이 필요합니다. Simulator에서는 이 Challenge를 검증할 수 없습니다.
+        **진행 조건:** LiDAR를 지원하는 실제 iPhone 또는 iPad, 카메라 권한, scan할 수 있는 안전한 실내 공간이 모두 필요합니다. 조건을 충족하지 못하면 이 Challenge를 건너뛰어도 Main Tutorial과 Bonus는 정상적으로 완료한 것입니다. Simulator에서는 실제 scan을 검증할 수 없습니다.
     }
 
     @Section(title: "같은 CapturedRoom pipeline 확인하기") {
@@ -30,7 +30,7 @@
     @Section(title: "실제 방으로 실행하기") {
         @Steps {
             @Step {
-                LiDAR 기기에서 앱을 실행하고 **Scan Your Own Room**을 선택합니다.
+                위 진행 조건을 모두 충족할 때만 실제 기기에서 앱을 실행하고 **Scan Your Own Room**을 선택합니다.
             }
 
             @Step {
@@ -38,7 +38,7 @@
             }
 
             @Step {
-                object 수와 category는 공간과 scan 품질에 따라 달라집니다. Sample Room과 같은 수치를 기대하지 말고, Main Sections 2~5의 목록·선택·Highlight·Chair 교체 pipeline이 같은 `CapturedRoom`에서 수정 없이 재사용되는지를 확인합니다. Bonus Rotation도 교체 가능한 Chair에서 그대로 사용할 수 있습니다.
+                object 수와 category는 공간과 scan 품질에 따라 달라집니다. Sample Room과 같은 수치를 기대하지 말고, Main Sections 2~4의 목록·선택·Highlight pipeline이 같은 `CapturedRoom`에서 수정 없이 재사용되는지를 확인합니다. 실제 결과에 `.chair` object가 있을 때만 Section 5의 Chair 교체와 Bonus Rotation도 시험하세요. Chair가 인식되지 않아도 Challenge 실패가 아닙니다.
             }
         }
     }
