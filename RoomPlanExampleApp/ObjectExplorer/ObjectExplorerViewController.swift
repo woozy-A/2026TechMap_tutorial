@@ -89,6 +89,12 @@ final class ObjectExplorerViewController: UIViewController {
 
     // MARK: - Tutorial — Replace with 3D Model
 
+    let furnitureAssetsByCategory: [
+        CapturedRoom.Object.Category: FurnitureAsset
+    ] = [
+        .chair: FurnitureAsset(resourceName: "Chair")
+    ]
+
     var selectedObject: CapturedRoom.Object? {
         guard let selectedObjectID else { return nil }
         return objects.first { $0.identifier == selectedObjectID }
@@ -96,16 +102,18 @@ final class ObjectExplorerViewController: UIViewController {
 
     var canReplaceSelectedObject: Bool {
         guard let selectedObject else { return false }
-        return selectedObject.category == .chair
+        return furnitureAssetsByCategory[selectedObject.category] != nil
             && !replacedObjectIDs.contains(selectedObject.identifier)
     }
 
     func replaceSelectedObject() async throws {
-        guard let selectedObject, canReplaceSelectedObject else { return }
+        guard let selectedObject,
+              let furnitureAsset = furnitureAssetsByCategory[selectedObject.category],
+              canReplaceSelectedObject else { return }
 
         let identifier = selectedObject.identifier
         let replacement = try await furnitureModelProvider.makeModel(
-            for: selectedObject.category,
+            furnitureAsset,
             fitting: selectedObject.dimensions
         )
         guard selectedObjectID == identifier else { return }

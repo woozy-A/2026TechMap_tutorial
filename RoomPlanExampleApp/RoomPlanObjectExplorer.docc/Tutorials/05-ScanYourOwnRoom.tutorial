@@ -38,7 +38,7 @@
             }
 
             @Step {
-                object 수와 category는 공간과 scan 품질에 따라 달라집니다. Sample Room과 같은 수치를 기대하지 말고, Main Sections 2~4의 목록·선택·Highlight pipeline이 같은 `CapturedRoom`에서 수정 없이 재사용되는지를 확인합니다. 실제 결과에 `.chair` object가 있을 때만 Section 5의 Chair 교체와 Bonus Rotation도 시험하세요. Chair가 인식되지 않아도 Challenge 실패가 아닙니다.
+                object 수와 category는 공간과 scan 품질에 따라 달라집니다. Sample Room과 같은 수치를 기대하지 말고, Main Sections 2~4의 목록·선택·Highlight pipeline이 같은 `CapturedRoom`에서 수정 없이 재사용되는지를 확인합니다. 실제 결과에 Section 5에서 mapping한 category가 있을 때만 USDZ 교체와 Bonus Rotation도 시험하세요. 해당 category가 인식되지 않아도 Challenge 실패가 아닙니다.
             }
         }
     }

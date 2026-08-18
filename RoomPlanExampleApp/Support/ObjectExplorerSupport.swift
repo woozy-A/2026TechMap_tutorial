@@ -12,6 +12,11 @@ struct ObjectSection {
     let objects: [CapturedRoom.Object]
 }
 
+struct FurnitureAsset {
+    let resourceName: String
+    var yawCorrectionDegrees: Float = 0
+}
+
 extension CapturedRoom.Object.Category {
     var displayName: String {
         switch self {

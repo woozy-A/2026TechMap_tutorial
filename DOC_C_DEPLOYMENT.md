@@ -297,3 +297,26 @@ v5.2에서는 앱 코드와 Section 1~5 / Rotation Bonus의 학습 구조를 바
 - `06-OptionalEditing`의 `kind: article`
 - root, Overview, Main, Challenge, Further Exploration, legacy Part 2~4 route 모두 HTTP 200
 - Starter v2.5와 CC0 Chair ZIP 다운로드 링크 모두 HTTP 200
+
+## v6 배포 계획 — 2026-08-19
+
+v6는 v5.2의 공개 route를 유지하면서 다음 학습·시각 계약을 변경한다.
+
+- Starter `v2.6`에는 furniture USDZ를 미리 넣지 않는다.
+- Section 5에서 별도 `RoomPlanFurnitureAsset-Chair-v1.zip`을 받고 `Chair.usdz`를 Xcode target에 직접 추가한다.
+- `FurnitureAsset`과 `category → asset` mapping을 사용해 Bed, Table 또는 다른 Chair asset으로 확장 가능한 구조를 보여준다.
+- Intro hero background image를 제거하고, 완성 화면 설명 옆에 실제 result image를 놓는다.
+- runtime result는 상태바/Dynamic Island를 제외한 실제 Simulator capture를 흰 가로형 canvas로 제공한다.
+- generated static archive의 모든 `index.html`은 `data-color-scheme="light"`와 `lang="ko"`를 사용한다.
+
+예정 release asset:
+
+- `RoomPlanTutorialStarter-v2.6.zip`
+- `RoomPlanTutorialSolution-v2.6.zip`
+- `RoomPlanTutorialBonus-v2.6.zip`
+- `RoomPlanFinalExample-v1.6.zip`
+- `RoomPlanFurnitureAsset-Chair-v1.zip`
+- `RoomPlanDocC-v6-source.zip`
+- `SHA256SUMS-v6.txt`
+
+공개 완료라고 보고하기 전에 Release asset 7개 HTTP 200, Pages workflow success, root/Overview/Main/Challenge/Further Exploration/legacy route HTTP 200, Main render data의 Section 1~5 + Bonus, 공개 HTML의 light color scheme을 각각 확인한다.

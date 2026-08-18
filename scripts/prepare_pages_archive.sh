@@ -51,10 +51,13 @@ fi
 
 while IFS= read -r -d '' index_file; do
   perl -pi -e 's/<html lang="en-US"/<html lang="ko"/g' "$index_file"
+  perl -pi -e 's/data-color-scheme="auto"/data-color-scheme="light"/g' "$index_file"
 done < <(find_index_files)
 
 ko_count=0
 en_us_count=0
+light_count=0
+auto_count=0
 
 while IFS= read -r -d '' index_file; do
   if grep -q '<html lang="ko"' "$index_file"; then
@@ -63,6 +66,14 @@ while IFS= read -r -d '' index_file; do
 
   if grep -q '<html lang="en-US"' "$index_file"; then
     en_us_count=$((en_us_count + 1))
+  fi
+
+  if grep -q 'data-color-scheme="light"' "$index_file"; then
+    light_count=$((light_count + 1))
+  fi
+
+  if grep -q 'data-color-scheme="auto"' "$index_file"; then
+    auto_count=$((auto_count + 1))
   fi
 done < <(find_index_files)
 
@@ -76,4 +87,14 @@ if [[ $en_us_count -ne 0 ]]; then
   exit 65
 fi
 
-echo "Prepared DocC Pages archive: $index_count index files declare lang=ko"
+if [[ $light_count -ne $index_count ]]; then
+  echo "error: expected $index_count light index files, found $light_count" >&2
+  exit 65
+fi
+
+if [[ $auto_count -ne 0 ]]; then
+  echo "error: $auto_count index files still use the automatic color scheme" >&2
+  exit 65
+fi
+
+echo "Prepared DocC Pages archive: $index_count index files use lang=ko and the light color scheme"

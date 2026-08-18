@@ -12,7 +12,8 @@
 RoomPlan, RealityKit, LiDAR / AR 개발, 3D 모델 제작, USDZ 구조에 대한 사전 경험은 없어도 괜찮습니다.
 
 - 공개 Tutorial: <https://woozy-a.github.io/2026TechMap_tutorial/tutorials/roomplanobjectexplorer/>
-- Starter ZIP: <https://github.com/woozy-A/2026TechMap_tutorial/releases/download/tutorial-docc-v5/RoomPlanTutorialStarter-v2.5.zip>
+- Starter ZIP: <https://github.com/woozy-A/2026TechMap_tutorial/releases/download/tutorial-docc-v6/RoomPlanTutorialStarter-v2.6.zip>
+- Sample Chair Asset ZIP: <https://github.com/woozy-A/2026TechMap_tutorial/releases/download/tutorial-docc-v6/RoomPlanFurnitureAsset-Chair-v1.zip>
 
 ## 시작하기
 
@@ -32,8 +33,8 @@ Section 1 — Get a CapturedRoom
 Section 2 — Explore Captured Objects
 Section 3 — Select an Object
 Section 4 — Visualize the Selected Object in 3D
-Section 5 — Replace a Chair with a 3D Model
-Bonus — Rotate the 3D Chair
+Section 5 — Add and Place a 3D Asset
+Bonus — Rotate the Replacement Model
 ```
 
 학습자가 수정하는 위치는 두 파일 상단의 MARK에 모여 있습니다.
@@ -49,13 +50,13 @@ Starter 상태에서 **Explore Sample Room**을 누르면 `Start Part 1` 안내�
 
 `Room.usdz`는 포함되지 않으며 runtime에서도 사용하지 않습니다.
 
-`Resources/Furniture/Chair.usdz`는 프로젝트에서 절차적으로 제작해 CC0로 제공하는 asset입니다. Section 5에서 선택한 Chair의 `dimensions`와 `transform`을 적용하고, Bonus에서 RealityKit 표현만 90° 회전합니다.
+Starter에는 `Chair.usdz`가 들어 있지 않습니다. Section 5에서 별도 Sample Chair Asset ZIP을 받고 Xcode target에 직접 추가합니다. `category → FurnitureAsset` mapping을 바꾸면 자신의 `Bed.usdz`, `Table.usdz`나 다른 Chair model도 같은 `dimensions` / `transform` pipeline으로 연결할 수 있습니다.
 
 ## Conditional Challenge와 Further Exploration
 
 `Conditional Challenge — Scan Your Own Room`은 LiDAR를 지원하는 실제 iPhone 또는 iPad, 카메라 권한, 안전하게 scan할 실내 공간이 모두 있을 때만 진행합니다. 조건을 충족하지 못해도 Main Tutorial과 Bonus는 정상적으로 완료한 것입니다.
 
-`Further Exploration — Correct or Remove an Object`는 Main Tutorial과 Rotation Bonus 이후에 읽는 Article입니다. Final Example v1.5의 설계를 설명하지만 별도 누적 hands-on snapshot으로는 아직 검증되지 않았으므로 Main 완료 조건이나 55~65분 예상에 포함하지 않습니다.
+`Further Exploration — Correct or Remove an Object`는 Main Tutorial과 Rotation Bonus 이후에 읽는 Article입니다. Final Example v1.6의 설계를 설명하지만 별도 누적 hands-on snapshot으로는 아직 검증되지 않았으므로 Main 완료 조건이나 60~70분 예상에 포함하지 않습니다.
 
 ## Catalog 위치
 

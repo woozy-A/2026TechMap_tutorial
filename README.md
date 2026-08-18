@@ -9,14 +9,15 @@ CapturedRoom
 → dimensions / transform
 → RealityKit Entity
 → Highlight
-→ 3D Chair Replacement
+→ Custom USDZ Replacement
 → Local Y-axis Rotation
 ```
 
 ## 바로 시작하기
 
 - [공개 DocC Tutorial](https://woozy-a.github.io/2026TechMap_tutorial/tutorials/roomplanobjectexplorer/)
-- [Starter Project ZIP 다운로드](https://github.com/woozy-A/2026TechMap_tutorial/releases/download/tutorial-docc-v5/RoomPlanTutorialStarter-v2.5.zip)
+- [Starter Project ZIP 다운로드](https://github.com/woozy-A/2026TechMap_tutorial/releases/download/tutorial-docc-v6/RoomPlanTutorialStarter-v2.6.zip)
+- [Sample Chair Asset ZIP 다운로드](https://github.com/woozy-A/2026TechMap_tutorial/releases/download/tutorial-docc-v6/RoomPlanFurnitureAsset-Chair-v1.zip)
 - 로컬 시작 안내: [`START_HERE.md`](START_HERE.md)
 
 Main Tutorial은 다운로드, 프로젝트 열기, 코드 입력, 실행 결과 확인을 한 페이지에서 안내합니다. Simulator에서 진행할 수 있고 LiDAR가 필요하지 않습니다. 실제 방을 scan하는 Challenge만 LiDAR 지원 iPhone 또는 iPad가 필요합니다.
@@ -28,8 +29,8 @@ Main Tutorial은 다운로드, 프로젝트 열기, 코드 입력, 실행 결과
   - Section 2 — Explore Captured Objects
   - Section 3 — Select an Object
   - Section 4 — Visualize the Selected Object in 3D
-  - Section 5 — Replace a Chair with a 3D Model
-- Bonus — Rotate the 3D Chair
+  - Section 5 — Add and Place a 3D Asset
+- Bonus — Rotate the Replacement Model
 - Challenge — Scan Your Own Room
 - Further Exploration Article — Correct or Remove an Object (Optional)
 

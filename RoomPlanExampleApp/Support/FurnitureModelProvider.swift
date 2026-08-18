@@ -1,10 +1,7 @@
 /*
-The project-original Chair model was created procedurally for this tutorial
-and is released under CC0-1.0. See Chair-LICENSE.md and Chair-SOURCE.md in the
-source tree for provenance.
-
 Abstract:
-Starter-provided loading, fitting, and asset-axis correction support.
+Starter-provided loading, fitting, and asset-axis correction support for a
+USDZ file that the learner adds to the app target.
 */
 
 import Combine
@@ -14,24 +11,21 @@ import RoomPlan
 import simd
 
 enum FurnitureModelProviderError: LocalizedError {
-    case assetMissing
-    case emptyAsset
-    case unsupportedCategory
+    case assetMissing(String)
+    case emptyAsset(String)
     case invalidTargetDimensions
-    case invalidBounds
+    case invalidBounds(String)
 
     var errorDescription: String? {
         switch self {
-        case .assetMissing:
-            return "The bundled Chair.usdz resource could not be found."
-        case .emptyAsset:
-            return "The bundled Chair model did not produce a RealityKit entity."
-        case .unsupportedCategory:
-            return "A bundled 3D model is currently available only for chairs."
+        case .assetMissing(let name):
+            return "The \(name).usdz resource could not be found in the app bundle."
+        case .emptyAsset(let name):
+            return "The \(name).usdz resource did not produce a RealityKit entity."
         case .invalidTargetDimensions:
             return "RoomPlan did not provide usable dimensions for this object."
-        case .invalidBounds:
-            return "The bundled Chair model does not contain usable geometry."
+        case .invalidBounds(let name):
+            return "The \(name).usdz resource does not contain usable geometry."
         }
     }
 }
@@ -41,14 +35,11 @@ final class FurnitureModelProvider {
     private var templateByAssetName: [String: Entity] = [:]
 
     func makeModel(
-        for category: CapturedRoom.Object.Category,
+        _ furnitureAsset: FurnitureAsset,
         fitting targetDimensions: SIMD3<Float>
     ) async throws -> Entity {
         try Task.checkCancellation()
 
-        guard category == .chair else {
-            throw FurnitureModelProviderError.unsupportedCategory
-        }
         guard targetDimensions.x.isFinite,
               targetDimensions.y.isFinite,
               targetDimensions.z.isFinite,
@@ -58,9 +49,14 @@ final class FurnitureModelProvider {
             throw FurnitureModelProviderError.invalidTargetDimensions
         }
 
-        let asset = try await modelTemplate(named: "Chair").clone(recursive: true)
+        let assetName = furnitureAsset.resourceName
+        let asset = try await modelTemplate(named: assetName).clone(recursive: true)
         try Task.checkCancellation()
-        let assetOrientationCorrection = simd_quatf(angle: 0, axis: [0, 1, 0])
+        let correctionRadians = furnitureAsset.yawCorrectionDegrees * .pi / 180
+        let assetOrientationCorrection = simd_quatf(
+            angle: correctionRadians,
+            axis: [0, 1, 0]
+        )
 
         let assetAdjustmentRoot = Entity()
         let orientationRoot = Entity()
@@ -80,7 +76,7 @@ final class FurnitureModelProvider {
               sourceBounds.x > 0.0001,
               sourceBounds.y > 0.0001,
               sourceBounds.z > 0.0001 else {
-            throw FurnitureModelProviderError.invalidBounds
+            throw FurnitureModelProviderError.invalidBounds(assetName)
         }
 
         let uniformScale = min(
@@ -96,7 +92,7 @@ final class FurnitureModelProvider {
         )
 
         let placementRoot = Entity()
-        placementRoot.name = "Chair Replacement"
+        placementRoot.name = "\(assetName) Replacement"
         placementRoot.addChild(assetAdjustmentRoot)
         return placementRoot
     }
@@ -110,14 +106,14 @@ final class FurnitureModelProvider {
             forResource: assetName,
             withExtension: "usdz"
         ) else {
-            throw FurnitureModelProviderError.assetMissing
+            throw FurnitureModelProviderError.assetMissing(assetName)
         }
 
         var iterator = Entity.loadAsync(contentsOf: assetURL)
             .values
             .makeAsyncIterator()
         guard let template = try await iterator.next() else {
-            throw FurnitureModelProviderError.emptyAsset
+            throw FurnitureModelProviderError.emptyAsset(assetName)
         }
 
         templateByAssetName[assetName] = template

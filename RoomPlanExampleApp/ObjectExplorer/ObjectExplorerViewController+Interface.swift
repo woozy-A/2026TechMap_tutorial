@@ -58,7 +58,7 @@ extension ObjectExplorerViewController {
 
     private func configureReplaceButton() {
         var configuration = UIButton.Configuration.filled()
-        configuration.title = "Replace with 3D Chair"
+        configuration.title = "Replace with 3D Model"
         replaceModelButton.configuration = configuration
         replaceModelButton.isHidden = true
         replaceModelButton.accessibilityIdentifier = "replaceModelButton"
@@ -130,7 +130,7 @@ extension ObjectExplorerViewController {
            quarterTurns > 0 {
             statusLabel.text = "\(selectedName) Rotated \(quarterTurns * 90)°"
         } else if replacedObjectIDs.contains(selectedObjectID) {
-            statusLabel.text = "\(selectedName) Replaced with 3D Chair"
+            statusLabel.text = "\(selectedName) Replaced with 3D Model"
         } else {
             statusLabel.text = "\(selectedName) Selected"
         }
