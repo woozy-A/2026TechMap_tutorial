@@ -248,3 +248,25 @@ v2 Overview는 하나의 Main Tutorial만 안내한다. Main page는 기존 Part
 - Completion 다음에 중복 없이 한 번만 나타나는 Challenge CTA
 - Overview, Main, Challenge, Optional, 기존 Part 2 legacy route HTTP 200
 - 공개 Starter asset을 다시 내려받아 local archive와 동일한 SHA-256 및 정상 압축 상태 확인
+
+## v5 배포 기록 — 2026-08-18
+
+- source commit: `e3ea3e0` (`Synchronize RoomPlan DocC learning paths`)
+- revision tag: `tutorial-docc-v5`
+- GitHub Pages content commit: `2058565` (`Deploy RoomPlan DocC v5`)
+- Pages workflow run: `32139915085` — success
+- release: <https://github.com/woozy-A/2026TechMap_tutorial/releases/tag/tutorial-docc-v5>
+- Starter asset: `RoomPlanTutorialStarter-v2.5.zip`, 379,958 bytes
+- Starter SHA-256: `36c5f312352245a8f2e420575a0dc9012d4c2c034c4e1ed5fad278bba6bb69e5`
+- DocC source asset: `RoomPlanDocC-v5-source.zip`
+- source ZIP SHA-256: `d583dbf0cb90d221e6b9851b32526dda7411789ca35f2abf47af9feb4b2ab5ab`
+
+공개 Pages에서 다음을 확인했다.
+
+- Overview의 초급 난이도, 대상, hands-on 진행 방식
+- Overview → Main Section 1~5와 Rotation Bonus
+- LiDAR 조건을 명시한 Conditional Challenge
+- `@Article`로 생성된 Further Exploration (`kind: article`, `role: article`)
+- Section 2에서 학습자가 `object.category`와 `object.dimensions`를 직접 쓰는 안내와 code panel
+- Starter/Chair ZIP 공개 Release 연결
+- 기존 Part 2~4 legacy route를 포함한 검증 대상 route HTTP 200
