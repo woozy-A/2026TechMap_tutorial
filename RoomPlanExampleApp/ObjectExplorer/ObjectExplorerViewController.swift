@@ -27,6 +27,23 @@ final class ObjectExplorerViewController: UIViewController {
         tableView.reloadData()
     }
 
+    func configureObjectCell(
+        _ cell: UITableViewCell,
+        for object: CapturedRoom.Object,
+        number: Int
+    ) {
+        let dimensions = object.dimensions
+        var content = cell.defaultContentConfiguration()
+        content.text = "\(object.category.displayName) \(number)"
+        content.secondaryText = String(
+            format: "%.2f × %.2f × %.2f m",
+            dimensions.x,
+            dimensions.y,
+            dimensions.z
+        )
+        cell.contentConfiguration = content
+    }
+
     // MARK: - Tutorial — Selection
 
     var selectedObjectID: UUID?

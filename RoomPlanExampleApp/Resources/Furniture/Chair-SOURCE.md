@@ -19,8 +19,10 @@ ergonomic office-chair model created procedurally for the RoomPlan tutorial.
 - Visual front convention: +Z
 - Default primitive: Chair
 - RealityKit bounds: 0.725 × 1.192 × 0.709 m
+- Display materials: Brightened graphite, aluminum, coral, and navy palette
+  for readability in the non-AR room overview
 - Bundled USDZ SHA-256:
-  `f86c4d0896646ed971311400d0ca81f5c47acc14bdb6298ea8a6286adc440218`
+  `7d1c084e4c9d4418bb72892b9fc04161b5ab269f4f9b382824da4089ce993d7d`
 
 The visual-front value describes this asset's modeling convention. RoomPlan
 doesn't guarantee the semantic front or back of a detected chair.

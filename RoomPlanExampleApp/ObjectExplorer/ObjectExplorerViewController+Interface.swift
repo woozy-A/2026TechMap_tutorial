@@ -51,7 +51,7 @@ extension ObjectExplorerViewController {
             content.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -12),
             overviewContainerView.heightAnchor.constraint(
                 equalTo: view.safeAreaLayoutGuide.heightAnchor,
-                multiplier: 0.34
+                multiplier: 0.40
             )
         ])
     }

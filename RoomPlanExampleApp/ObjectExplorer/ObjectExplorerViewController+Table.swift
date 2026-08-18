@@ -66,17 +66,7 @@ extension ObjectExplorerViewController: UITableViewDataSource, UITableViewDelega
         let cell = tableView.dequeueReusableCell(withIdentifier: "ObjectCell", for: indexPath)
         let section = objectSections[indexPath.section]
         let object = section.objects[indexPath.row]
-        let dimensions = object.dimensions
-
-        var content = cell.defaultContentConfiguration()
-        content.text = "\(section.category.displayName) \(indexPath.row + 1)"
-        content.secondaryText = String(
-            format: "%.2f × %.2f × %.2f m",
-            dimensions.x,
-            dimensions.y,
-            dimensions.z
-        )
-        cell.contentConfiguration = content
+        configureObjectCell(cell, for: object, number: indexPath.row + 1)
         cell.accessoryType = object.identifier == selectedObjectID ? .checkmark : .none
         cell.accessibilityIdentifier = "object-\(object.identifier.uuidString)"
         return cell

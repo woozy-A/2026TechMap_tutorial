@@ -111,9 +111,12 @@ extension ObjectExplorerViewController {
         let aspect = Float(arView.bounds.width / arView.bounds.height)
         let horizontalFOV = 2 * atan(tan(verticalFOV / 2) * aspect)
         let limitingFOV = min(verticalFOV, horizontalFOV)
-        let radius = max(bounds.boundingRadius, 0.5)
-        let distance = radius / sin(limitingFOV / 2) * 1.05
-        let direction = simd_normalize(SIMD3<Float>(0.7, 2.4, 1))
+        let footprintRadius = simd_length(
+            SIMD2<Float>(bounds.extents.x, bounds.extents.z)
+        ) / 2
+        let radius = max(max(footprintRadius, bounds.extents.y * 0.65), 0.5)
+        let distance = radius / sin(limitingFOV / 2) * 0.94
+        let direction = simd_normalize(SIMD3<Float>(0.85, 1.7, 1.2))
 
         camera.look(
             at: bounds.center,

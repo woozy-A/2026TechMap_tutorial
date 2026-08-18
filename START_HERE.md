@@ -1,9 +1,9 @@
 # RoomPlan Object Explorer — Tutorial Starter
 
-이 프로젝트는 한 페이지로 이어지는 DocC Main Tutorial을 보며 Section 1부터 Section 6까지 코드를 직접 입력하는 hands-on Starter입니다.
+이 프로젝트는 한 페이지로 이어지는 DocC Tutorial을 보며 Main Section 1부터 Section 5까지 코드를 직접 입력하고, 원한다면 Rotation Bonus까지 이어가는 hands-on Starter입니다.
 
 - 공개 Tutorial: <https://woozy-a.github.io/2026TechMap_tutorial/tutorials/roomplanobjectexplorer/>
-- Starter ZIP: <https://github.com/woozy-A/2026TechMap_tutorial/releases/download/tutorial-docc-v5/RoomPlanTutorialStarter-v2.4.zip>
+- Starter ZIP: <https://github.com/woozy-A/2026TechMap_tutorial/releases/download/tutorial-docc-v5/RoomPlanTutorialStarter-v2.5.zip>
 
 ## 시작하기
 
@@ -24,7 +24,7 @@ Section 2 — Explore Captured Objects
 Section 3 — Select an Object
 Section 4 — Visualize the Selected Object in 3D
 Section 5 — Replace a Chair with a 3D Model
-Section 6 — Rotate the 3D Chair
+Bonus — Rotate the 3D Chair
 ```
 
 학습자가 수정하는 위치는 두 파일 상단의 MARK에 모여 있습니다.
@@ -40,13 +40,13 @@ Starter 상태에서 **Explore Sample Room**을 누르면 `Start Part 1` 안내�
 
 `Room.usdz`는 포함되지 않으며 runtime에서도 사용하지 않습니다.
 
-`Resources/Furniture/Chair.usdz`는 project-original CC0 asset입니다. Section 5에서 선택한 Chair의 `dimensions`와 `transform`을 적용하고, Section 6에서 RealityKit 표현만 90° 회전합니다.
+`Resources/Furniture/Chair.usdz`는 project-original CC0 asset입니다. Section 5에서 선택한 Chair의 `dimensions`와 `transform`을 적용하고, Bonus에서 RealityKit 표현만 90° 회전합니다.
 
 ## Challenge와 Optional
 
 `Challenge — Scan Your Own Room`은 LiDAR를 지원하는 실제 iPhone 또는 iPad와 카메라 권한이 필요합니다. Starter에 Apple Sample scan과 Explorer 연결이 이미 있으므로, callback을 확인한 뒤 실제 방에서 실행합니다.
 
-`Optional — Correct or Remove an Object`는 Main Tutorial 이후의 Further Exploration입니다. Final Example v1.4의 설계를 설명하지만 Section 6 위의 누적 hands-on snapshot으로 아직 검증되지 않았으므로 Main 완료 조건이나 60~80분 예상에 포함하지 않습니다.
+`Optional — Correct or Remove an Object`는 Main Tutorial과 Rotation Bonus 이후의 Further Exploration입니다. Final Example v1.5의 설계를 설명하지만 별도 누적 hands-on snapshot으로는 아직 검증되지 않았으므로 Main 완료 조건이나 55~65분 예상에 포함하지 않습니다.
 
 ## Catalog 위치
 

@@ -2,7 +2,7 @@
     @Intro(title: "Optional — Correct or Remove an Object") {
         Main Tutorial을 끝낸 뒤, RoomPlan 원본과 앱의 편집 상태를 분리하는 방법을 더 탐색합니다. 이 페이지의 코드와 시간은 Main Tutorial 합계에 포함하지 않습니다.
 
-        이 Optional 기능은 검증된 Final Example v1.4에 보존되어 있지만, Section 6 Solution 위에 입력하는 별도 hands-on snapshot으로는 아직 만들지 않았습니다. 따라서 여기서는 완성 절차를 가장하지 않고 설계 경계와 실제 상태 모델만 소개합니다.
+        이 Optional 기능은 검증된 Final Example에 보존되어 있지만, Main Section 5 Solution 또는 Rotation Bonus 위에 입력하는 별도 hands-on snapshot으로는 아직 만들지 않았습니다. 따라서 여기서는 완성 절차를 가장하지 않고 설계 경계와 실제 상태 모델만 소개합니다.
     }
 
     @Section(title: "원본과 편집 상태 분리하기") {
@@ -30,11 +30,11 @@
     @Section(title: "Further Exploration 경계") {
         @Steps {
             @Step {
-                실제 Optional 화면과 누적 코딩 단계를 배포하려면 Section 6 Solution 위에 별도 snapshot을 만들고 build/runtime checkpoint를 다시 검증해야 합니다.
+                실제 Optional 화면과 누적 코딩 단계를 배포하려면 Main Solution 또는 Bonus Solution 위에 별도 snapshot을 만들고 build/runtime checkpoint를 다시 검증해야 합니다.
             }
 
             @Step {
-                그 전까지는 Final Example v1.4를 참고 구현으로 사용하고, 이 페이지를 Main Tutorial의 필수 완료 조건이나 예상 시간에 포함하지 않습니다.
+                그 전까지는 Final Example v1.5를 참고 구현으로 사용하고, 이 페이지를 Main Tutorial의 필수 완료 조건이나 예상 시간에 포함하지 않습니다.
             }
         }
     }

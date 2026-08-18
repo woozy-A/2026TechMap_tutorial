@@ -2,11 +2,13 @@
     @Intro(title: "RoomPlan이 읽은 공간을 객체 단위로 탐색하기") {
         Starter Project에 코드를 직접 입력하고 실행하면서 하나의 Main Tutorial을 위에서 아래로 따라가 RoomPlan Object Explorer를 완성합니다.
 
-        최종 화면에는 RoomPlan이 읽은 방 구조와 object 목록이 함께 보입니다. 선택한 Chair를 Highlight하고 project-original 3D model로 교체한 뒤 90° 회전합니다.
+        Main 최종 화면에는 RoomPlan이 읽은 방 구조와 object 목록이 함께 보입니다. 선택한 Chair를 Highlight하고 project-original 3D model로 교체합니다. 이어지는 Bonus에서 같은 Entity를 90° 회전합니다.
 
-        **배우는 흐름:** `CapturedRoom` → `objects` → `identifier` → `dimensions` / `transform` → Highlight → 3D Chair → Rotation
+        **Main 흐름:** `CapturedRoom` → `objects` → `category` / `identifier` → `dimensions` / `transform` → Highlight → 3D Chair
 
-        **예상 시간:** 약 60~80분
+        **Bonus:** Replacement Entity → Rotation
+
+        **예상 시간:** Main 약 55~65분, Bonus 약 10분
 
         **요구 환경:** Xcode 26.6, iOS 17 이상 iPhone Simulator 권장. Main Tutorial에는 LiDAR나 카메라가 필요하지 않습니다.
 
@@ -14,12 +16,12 @@
 
         > Note: `Room.usdz`는 완성된 3D 결과를 보는 데 유용하지만, 이 tutorial은 객체 데이터를 앱 기능에 연결하기 위해 `CapturedRoom`을 사용합니다.
 
-        [Starter Project ZIP 다운로드](https://github.com/woozy-A/2026TechMap_tutorial/releases/download/tutorial-docc-v5/RoomPlanTutorialStarter-v2.4.zip) 후 아래의 **RoomPlan Object Explorer 만들기**를 선택하세요. 다운로드부터 첫 실행, 파일 찾기, 짧은 코드 입력, 결과 확인까지 Sections 1~6이 한 페이지에서 이어집니다.
+        [Starter Project ZIP 다운로드](https://github.com/woozy-A/2026TechMap_tutorial/releases/download/tutorial-docc-v5/RoomPlanTutorialStarter-v2.5.zip) 후 아래의 **RoomPlan Object Explorer 만들기**를 선택하세요. 다운로드부터 첫 실행, 파일 찾기, 짧은 코드 입력, 결과 확인까지 Main Sections 1~5와 Rotation Bonus가 한 페이지에서 이어집니다.
 
     }
 
     @Chapter(name: "Build and Explore") {
-        @Image(source: "v24-part6-chair2-rotated-90.png", alt: "Room structure와 object 목록이 함께 보이고 Chair 2가 project-original 3D Chair로 교체된 뒤 90도 회전한 최종 화면")
+        @Image(source: "v25-part5-after-replacement.png", alt: "Room structure와 object 목록이 함께 보이고 Chair 2의 Highlight box가 더 밝은 project-original 3D Chair로 교체된 Main 최종 화면")
 
         @TutorialReference(tutorial: "doc:01-GetCapturedRoom")
         @TutorialReference(tutorial: "doc:05-ScanYourOwnRoom")

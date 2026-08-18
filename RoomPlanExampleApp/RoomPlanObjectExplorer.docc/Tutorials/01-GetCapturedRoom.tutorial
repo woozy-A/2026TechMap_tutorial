@@ -1,16 +1,18 @@
 @Tutorial(time: 75) {
     @Intro(title: "RoomPlan Object Explorer 만들기") {
-        Starter Project에 코드를 직접 입력하고 실행하면서, RoomPlan이 읽은 가구를 목록으로 탐색하고 선택한 Chair를 3D model로 교체한 뒤 90° 회전하는 앱을 완성합니다.
+        Starter Project에 코드를 직접 입력하고 실행하면서, RoomPlan이 읽은 가구를 목록으로 탐색하고 선택한 Chair를 3D model로 교체하는 앱을 완성합니다. 마지막 Bonus에서는 교체한 Chair를 90° 회전합니다.
 
-        **CapturedRoom → objects → identifier → dimensions / transform → Highlight → 3D Chair → Rotation**
+        **Main:** `CapturedRoom → objects → identifier → dimensions / transform → Highlight → 3D Chair`
+
+        **Bonus:** `Replacement Entity → 90° Rotation`
 
         Main Tutorial은 iOS Simulator에서 진행할 수 있습니다. 제공된 `Room.json`은 모든 학습자가 같은 `CapturedRoom`으로 시작하게 하는 sample delivery mechanism이며, JSON 문법이나 좌표를 직접 분석하지 않습니다.
 
-        Starter는 UIKit 화면, category별 table, non-AR RealityKit view, room structure, camera framing, 3D asset loading을 제공합니다. 학습자는 RoomPlan data를 읽고 identifier로 선택과 Entity를 연결하며, dimensions와 transform으로 3D 표현을 배치하고 회전하는 핵심 코드만 작성합니다.
+        Starter는 UIKit 화면, category section helper, non-AR RealityKit view, room structure, camera framing, 3D asset loading을 제공합니다. 학습자는 `objects`, `category`, `identifier`, `dimensions`, `transform`을 직접 읽고 3D 표현과 연결하는 핵심 코드만 작성합니다.
 
-        [Starter Project v2.4 ZIP 다운로드](https://github.com/woozy-A/2026TechMap_tutorial/releases/download/tutorial-docc-v5/RoomPlanTutorialStarter-v2.4.zip)
+        [Starter Project v2.5 ZIP 다운로드](https://github.com/woozy-A/2026TechMap_tutorial/releases/download/tutorial-docc-v5/RoomPlanTutorialStarter-v2.5.zip)
 
-        @Image(source: "v24-part6-chair2-rotated-90.png", alt: "최종 Goal Preview로 Chair 2를 원본 3D Chair로 교체하고 같은 RoomPlan 위치에서 90도 회전한 Object Explorer 화면")
+        @Image(source: "v25-part5-after-replacement.png", alt: "Main Tutorial의 최종 Goal Preview로 Chair 2의 Highlight box가 더 밝은 project-original 3D Chair로 교체된 Object Explorer 화면")
     }
 
     @Section(title: "Section 1 — Get a CapturedRoom") {
@@ -35,7 +37,7 @@
                 `Command-R`로 다시 실행하고 **Explore Sample Room**을 누르세요. 상단에 **Sample Room Loaded**가 보이고 목록과 object box가 아직 비어 있으면, `CapturedRoom`만 전달된 첫 결과가 정확합니다.
 
                 @Code(name: "OnboardingViewController.swift", file: "V24-Section1-01-GetCapturedRoom.swift", previousFile: "V24-Section1-00-GetCapturedRoom.swift") {
-                    @Image(source: "v24-part1-sample-room-loaded.png", alt: "Section 1 실행 결과로 Object Explorer 상단에 Sample Room Loaded가 보이고 object 목록과 object box는 아직 없는 화면")
+                    @Image(source: "v25-part1-sample-room-loaded.png", alt: "Section 1 실행 결과로 확대된 빈 3D Overview와 Sample Room Loaded가 보이고 object 목록과 object box는 아직 없는 화면")
                 }
             }
         }
@@ -43,23 +45,23 @@
 
     @Section(title: "Section 2 — Explore Captured Objects") {
         @ContentAndMedia {
-            이제 `CapturedRoom.objects`를 app의 `[CapturedRoom.Object]` 배열에 연결합니다. Starter의 table helper는 각 object의 `category`와 `dimensions`를 읽어 category section과 meter 단위 크기를 표시합니다.
+            이제 `CapturedRoom.objects`를 app의 `[CapturedRoom.Object]` 배열에 연결합니다. 학습자가 각 object의 `category`와 `dimensions`를 직접 읽어 이름과 meter 단위 크기를 구성하고, Starter helper는 category별 section 계산만 맡습니다.
         }
 
         @Steps {
             @Step {
-                실행을 멈추고 Project Navigator의 `Object Explorer` 그룹에서 `ObjectExplorerViewController.swift`를 여세요. 파일 위쪽의 `// MARK: - Tutorial — Explore Objects`와 `loadObjects(from:)`를 찾고, 아래 instruction image와 같은 위치인지 확인합니다.
+                실행을 멈추고 Project Navigator의 `Object Explorer` 그룹에서 `ObjectExplorerViewController.swift`를 여세요. 파일 위쪽의 `// MARK: - Tutorial — Explore Objects` 아래 `loadObjects(from:)`와 `configureObjectCell(_:for:number:)` 두 함수를 찾고, 아래 instruction image와 같은 위치인지 확인합니다.
 
-                @Image(source: "v24-instruction-part2.jpg", alt: "Xcode Starter의 ObjectExplorerViewController.swift 상단에서 Explore Objects MARK와 loadObjects 함수가 보이는 실제 수정 위치")
+                @Image(source: "v25-instruction-part2.png", alt: "Xcode Starter의 ObjectExplorerViewController.swift 상단에서 Explore Objects MARK와 loadObjects 및 configureObjectCell 함수가 함께 보이는 실제 수정 위치")
             }
 
             @Step {
-                `loadObjects(from:)`의 안내 코드를 강조된 네 줄로 교체하세요. `objects = room.objects`가 RoomPlan 결과를 연결하고, 나머지 세 줄은 Starter helper로 category section, object 수와 table을 갱신합니다.
+                `loadObjects(from:)`에서는 `objects = room.objects`로 RoomPlan 결과를 연결하고 category section, object 수와 table을 갱신하세요. 이어서 `configureObjectCell`에서 `object.category`를 row 이름에, `object.dimensions`의 x/y/z를 meter 단위 설명에 직접 사용합니다.
 
-                `Command-R`로 Sample Room을 다시 여세요. **11 Objects Detected**와 `Bed (2)`, `Chair (3)`, `Storage (4)`, `Table (2)`가 나타나고 각 row 아래에 `dimensions`가 meter로 보이면 성공입니다.
+                `Command-R`로 Sample Room을 다시 여세요. **11 Objects Detected**와 `Bed (2)`, `Chair (3)`, `Storage (4)`, `Table (2)`가 나타나고 각 row 아래에 방금 읽은 `dimensions`가 meter로 보이면 성공입니다.
 
-                @Code(name: "ObjectExplorerViewController.swift", file: "V24-Section2-01-ExploreObjects.swift", previousFile: "V24-Section2-00-ExploreObjects.swift") {
-                    @Image(source: "v24-part2-objects-detected.png", alt: "Section 2 실행 결과로 11 Objects Detected와 category별 object 목록 및 각 object dimensions가 보이는 화면")
+                @Code(name: "ObjectExplorerViewController.swift", file: "V25-Section2-01-ExploreObjects.swift", previousFile: "V25-Section2-00-ExploreObjects.swift") {
+                    @Image(source: "v25-part2-objects-detected.png", alt: "Section 2 실행 결과로 11 Objects Detected와 category별 object 목록 및 학습자가 직접 읽은 각 object dimensions가 보이는 화면")
                 }
             }
         }
@@ -74,7 +76,7 @@
             @Step {
                 실행을 멈추고 같은 파일의 `// MARK: - Tutorial — Selection`으로 이동하세요. `selectedObjectID`와 비어 있는 `selectObject(_:)`가 수정 위치입니다.
 
-                @Image(source: "v24-instruction-part3.jpg", alt: "Xcode Starter에서 Selection MARK와 selectedObjectID 및 selectObject 함수가 화면 중앙에 보이는 실제 수정 위치")
+                @Image(source: "v25-instruction-part3.png", alt: "Xcode Section 2 완료본에서 Selection MARK와 빈 selectObject 함수가 화면 중앙에 보이는 실제 수정 위치")
             }
 
             @Step {
@@ -83,7 +85,7 @@
                 `Command-R`로 Sample Room을 열고 **Chair 2**를 누르세요. **Chair 2 Selected**와 같은 row의 checkmark가 보이면 UUID로 정확한 object를 선택한 것입니다.
 
                 @Code(name: "ObjectExplorerViewController.swift", file: "V24-Section3-01-Selection.swift", previousFile: "V24-Section3-00-Selection.swift") {
-                    @Image(source: "v24-part3-chair2-selected.png", alt: "Section 3 실행 결과로 Chair 2 Selected 상태와 row checkmark가 보이지만 object box는 아직 없는 화면")
+                    @Image(source: "v25-part3-chair2-selected.png", alt: "Section 3 실행 결과로 Chair 2 Selected 상태와 row checkmark가 보이지만 확대된 3D Overview에 object box는 아직 없는 화면")
                 }
             }
         }
@@ -98,7 +100,7 @@
             @Step {
                 실행을 멈추고 같은 파일의 `// MARK: - Tutorial — Visualize Objects`를 찾으세요. 아래 instruction image에 보이는 `renderObjectBoxes()`와 `updateHighlight()` 두 함수만 차례로 수정합니다.
 
-                @Image(source: "v24-instruction-part4.jpg", alt: "Xcode Starter에서 Visualize Objects MARK와 빈 renderObjectBoxes 및 updateHighlight 함수가 보이는 실제 수정 위치")
+                @Image(source: "v25-instruction-part4.png", alt: "Xcode Section 3 완료본에서 Visualize Objects MARK와 빈 renderObjectBoxes 및 updateHighlight 함수가 보이는 실제 수정 위치")
             }
 
             @Step {
@@ -107,7 +109,7 @@
                 바로 `Command-R`로 Sample Room을 다시 여세요. room structure 안에 모든 object box가 나타나면, 방금 입력한 `dimensions → box`와 `transform → pose` 연결이 눈에 보이는 결과를 만든 것입니다.
 
                 @Code(name: "ObjectExplorerViewController.swift", file: "V24-Section4-01-Boxes.swift", previousFile: "V24-Section4-00-Boxes.swift") {
-                    @Image(source: "v24-part4-all-boxes.png", alt: "Section 4 첫 실행 결과로 RoomPlan dimensions와 transform을 적용한 모든 object box가 room structure 안에 나타난 화면")
+                    @Image(source: "v25-part4-all-boxes.png", alt: "Section 4 첫 실행 결과로 확대된 3D Overview 안에 RoomPlan dimensions와 transform을 적용한 모든 object box가 나타난 화면")
                 }
             }
 
@@ -117,7 +119,7 @@
                 `Command-R`로 다시 실행해 **Chair 2**를 누르세요. row checkmark와 status가 바뀌는 동시에 같은 UUID의 box 하나만 분홍색이 되면 selection과 3D Entity가 연결된 것입니다.
 
                 @Code(name: "ObjectExplorerViewController.swift", file: "V24-Section4-01-Highlight.swift", previousFile: "V24-Section4-00-Highlight.swift") {
-                    @Image(source: "v24-part4-chair2-highlight.png", alt: "Section 4 완료 결과로 모든 object box가 보이고 Chair 2와 같은 identifier의 box 하나만 분홍색으로 Highlight된 화면")
+                    @Image(source: "v25-part4-chair2-highlight.png", alt: "Section 4 완료 결과로 확대된 3D Overview에서 Chair 2와 같은 identifier의 box 하나만 분홍색으로 Highlight된 화면")
                 }
             }
         }
@@ -132,65 +134,69 @@
             @Step {
                 같은 파일의 `// MARK: - Tutorial — Replace with 3D Model`로 이동하세요. 아래 instruction image에 보이는 `canReplaceSelectedObject`와 `replaceSelectedObject()`가 수정 위치입니다.
 
-                @Image(source: "v24-instruction-part5.jpg", alt: "Xcode Starter에서 Replace with 3D Model MARK와 canReplaceSelectedObject 및 replaceSelectedObject 함수가 중앙에 보이는 실제 수정 위치")
+                @Image(source: "v25-instruction-part5.png", alt: "Xcode Section 4 완료본에서 Replace with 3D Model MARK와 빈 canReplaceSelectedObject 및 replaceSelectedObject 함수가 보이는 실제 수정 위치")
             }
 
             @Step {
                 MARK 아래에 `selectedObject`를 추가하고 `canReplaceSelectedObject`의 안내 코드를 강조된 코드로 교체하세요. 저장한 UUID로 원본 `CapturedRoom.Object`를 다시 찾고, category가 Chair이며 아직 교체되지 않았을 때만 버튼을 허용합니다.
 
-                `Command-R`로 Sample Room을 열고 **Chair 2**를 누르세요. 선택 전에는 없던 **Replace with 3D Chair** 버튼이 나타나면 `identifier → object → category` 조건이 UI에 반영된 것입니다.
+                `Command-R`로 Sample Room을 열고 **Chair 2**를 누르세요. 선택 전에는 없던 **Replace with 3D Chair** 버튼이 나타나면 `identifier → object → category` 조건이 UI에 반영된 것입니다. 아래 화면에서 분홍 Highlight box의 위치와 크기를 먼저 확인하세요.
 
                 @Code(name: "ObjectExplorerViewController.swift", file: "V24-Section5-01-ReplacementAvailability.swift", previousFile: "V24-Section5-00-ReplacementAvailability.swift") {
-                    @Image(source: "v24-part5-replace-button.png", alt: "Section 5 첫 실행 결과로 Chair 2를 선택했을 때 Replace with 3D Chair 버튼이 나타난 화면")
+                    @Image(source: "v25-part5-before-replacement.png", alt: "Section 5 교체 전 화면으로 Chair 2를 선택했을 때 분홍 Highlight box와 Replace with 3D Chair 버튼이 함께 보이는 화면")
                 }
             }
 
             @Step {
                 실행을 멈추고 `replaceSelectedObject()`의 안내 주석을 강조된 코드로 교체하세요. Provider에 `selectedObject.dimensions`를 전달해 model을 맞추고, `selectedObject.transform`으로 배치한 뒤 같은 identifier의 box를 replacement Entity로 바꿉니다.
 
-                `Command-R`로 Chair 2를 선택하고 **Replace with 3D Chair**를 누르세요. 같은 위치의 분홍 box가 3D chair로 바뀌고 **Chair 2 Replaced with 3D Chair**가 보이면 성공입니다. 원본 asset과 editable Blender source는 [CC0 Asset ZIP](https://github.com/woozy-A/2026TechMap_tutorial/releases/download/tutorial-docc-v5/OriginalOfficeChair-CC0-v1.zip)으로 제공합니다.
+                `Command-R`로 Chair 2를 선택하고 **Replace with 3D Chair**를 누르세요. 앞 단계의 분홍 box와 비교해 같은 위치에 더 밝은 3D chair가 나타나고 **Chair 2 Replaced with 3D Chair**가 보이면 성공입니다. 원본 asset과 editable Blender source는 [CC0 Asset ZIP](https://github.com/woozy-A/2026TechMap_tutorial/releases/download/tutorial-docc-v5/OriginalOfficeChair-CC0-v1.zip)으로 제공합니다.
 
                 @Code(name: "ObjectExplorerViewController.swift", file: "V24-Section5-01-Replacement.swift", previousFile: "V24-Section5-00-Replacement.swift") {
-                    @Image(source: "v24-part5-chair2-replaced.png", alt: "Section 5 완료 결과로 Chair 2의 box가 project-original 3D office chair로 교체되고 selection이 유지된 화면")
+                    @Image(source: "v25-part5-after-replacement.png", alt: "Section 5 교체 후 화면으로 Chair 2의 Highlight box가 더 밝은 project-original 3D office chair로 바뀌고 selection이 유지된 화면")
                 }
+            }
+
+            @Step {
+                **Main Tutorial Completion — RoomPlan Object Explorer를 완성했습니다.** 직접 만든 핵심 흐름은 `Room.json → CapturedRoom → objects → category / identifier → dimensions / transform → Entity → Highlight → Replacement`입니다. 여기까지가 RoomPlan 학습의 필수 범위입니다.
             }
         }
     }
 
-    @Section(title: "Section 6 — Rotate the 3D Chair") {
+    @Section(title: "Bonus — Rotate the 3D Chair") {
         @ContentAndMedia {
-            마지막으로 scan data를 수정하지 않고 RealityKit 표현만 회전합니다. 매번 원본 `object.transform`에서 pose를 다시 만든 뒤 local Y-axis quaternion을 합성해 위치는 유지하고 방향만 90°씩 바꿉니다.
+            이 Bonus는 새로운 RoomPlan data를 배우는 필수 Section이 아닙니다. Main에서 만든 `CapturedRoom.Object → Entity` 연결을 확장해 scan data는 그대로 두고 RealityKit 표현만 회전합니다. 매번 원본 `object.transform`에서 pose를 다시 만든 뒤 local Y-axis quaternion을 합성해 위치는 유지하고 방향만 90°씩 바꿉니다.
         }
 
         @Steps {
             @Step {
                 같은 파일의 `// MARK: - Tutorial — Rotate the 3D Model`로 이동하세요. 아래 instruction image에 보이는 `canRotateSelectedObject`와 `rotateSelectedObject()`가 마지막 수정 위치입니다.
 
-                @Image(source: "v24-instruction-part6.jpg", alt: "Xcode Starter에서 Rotate the 3D Model MARK와 canRotateSelectedObject 및 rotateSelectedObject 함수가 중앙에 보이는 실제 수정 위치")
+                @Image(source: "v25-instruction-bonus.png", alt: "Xcode Main Section 5 완료본에서 Rotate the 3D Model MARK와 빈 canRotateSelectedObject 및 rotateSelectedObject 함수가 보이는 Bonus 수정 위치")
             }
 
             @Step {
                 `canRotateSelectedObject`의 안내 코드를 강조된 두 줄로 교체하세요. 선택 UUID가 `replacedObjectIDs`에 있을 때만 Rotate 버튼을 보이게 하므로 아직 box인 object에는 설명되지 않은 회전 UI가 나타나지 않습니다.
 
-                `Command-R`로 Chair 2를 선택하고 3D Chair로 교체하세요. 교체 직후 **Rotate 90°** 버튼이 나타나면 replacement 상태가 UUID로 연결된 것입니다.
+                `Command-R`로 Chair 2를 선택하고 3D Chair로 교체하세요. 교체 직후 **Rotate 90°** 버튼이 나타나면 replacement 상태가 UUID로 연결된 것입니다. 회전 전 등받이 방향을 아래 화면에서 확인하세요.
 
                 @Code(name: "ObjectExplorerViewController.swift", file: "V24-Section6-01-RotationAvailability.swift", previousFile: "V24-Section6-00-RotationAvailability.swift") {
-                    @Image(source: "v24-part6-rotate-button.png", alt: "Section 6 첫 실행 결과로 Chair 2를 3D model로 교체한 뒤 Rotate 90도 버튼이 나타난 화면")
+                    @Image(source: "v25-bonus-before-rotation.png", alt: "Bonus 회전 전 화면으로 Chair 2를 3D model로 교체한 뒤 Rotate 90도 버튼과 원래 등받이 방향이 보이는 화면")
                 }
             }
 
             @Step {
                 실행을 멈추고 `rotateSelectedObject()`의 안내 주석을 강조된 코드로 교체하세요. UUID로 replacement Entity와 quarter-turn을 찾고, 원본 `selectedObject.transform`으로 pose를 복원한 뒤 Y축 quaternion을 곱합니다.
 
-                `Command-R`로 Chair 2를 교체하고 **Rotate 90°**를 누르세요. **Chair 2 Rotated 90°**와 회전된 model이 보이면 완성입니다. 버튼을 세 번 더 눌러 180°, 270°, 원래 방향으로 돌아오는 동안 row checkmark와 위치가 유지되는지도 확인하세요.
+                `Command-R`로 Chair 2를 교체하고 **Rotate 90°**를 누르세요. 바로 앞 Preview와 비교해 **Chair 2 Rotated 90°**와 오른쪽으로 바뀐 등받이 방향이 보이면 성공입니다. 버튼을 세 번 더 눌러 180°, 270°, 원래 방향으로 돌아오는 동안 row checkmark와 위치가 유지되는지도 확인하세요.
 
                 @Code(name: "ObjectExplorerViewController.swift", file: "V24-Section6-01-Rotation.swift", previousFile: "V24-Section6-00-Rotation.swift") {
-                    @Image(source: "v24-part6-chair2-rotated-90.png", alt: "Section 6 완료 결과로 Chair 2 selection과 RoomPlan 위치는 유지된 채 project-original 3D Chair만 Y축으로 90도 회전한 화면")
+                    @Image(source: "v25-bonus-after-rotation.png", alt: "Bonus 회전 후 화면으로 Chair 2 selection과 RoomPlan 위치는 유지된 채 project-original 3D Chair의 등받이 방향만 Y축으로 90도 바뀐 화면")
                 }
             }
 
             @Step {
-                **Completion — RoomPlan Object Explorer를 완성했습니다.** 직접 만든 흐름은 `Room.json → CapturedRoom → objects → identifier → dimensions / transform → Entity → Highlight → Replacement → Rotation`입니다. 다음에는 같은 표현 계층에서 drag, 자유 회전 gesture, custom model library나 wall/object 공간 관계 검사로 확장할 수 있습니다.
+                **Bonus Completion — 3D Chair 회전까지 확장했습니다.** 다음에는 같은 표현 계층에서 drag, 자유 회전 gesture, custom model library나 wall/object 공간 관계 검사로 확장할 수 있습니다.
             }
         }
     }

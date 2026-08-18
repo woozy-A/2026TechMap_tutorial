@@ -191,7 +191,7 @@ GitHub의 custom Pages workflow 구조는 [공식 Pages workflow 안내](https:/
 - overlay가 끝난 Pages worktree에도 `./scripts/prepare_pages_archive.sh "$PAGES_WORKTREE"`를 실행한다. 그래야 새 archive뿐 아니라 보존된 legacy route의 HTML도 모두 `lang="ko"`가 된다.
 - source revision은 새 `tutorial-docc-v5` tag로 고정한다. 기존 `v1.0.0`, `tutorial-docc-v2`, `tutorial-docc-v3`, `tutorial-docc-v4` tag를 이동하거나 다시 만들지 않는다.
 - Starter **package 내용**이 동일한 동안에만 기존 release asset을 재사용한다. 앱 Swift가 같더라도 `START_HERE.md`, DocC catalog, code snapshot, screenshot이 바뀌면 새 package로 배포한다.
-- v5는 v2.4 누적 snapshot, project-original Chair, Sections 5~6를 사용하므로 `tutorial-docc-v5` release에 `RoomPlanTutorialStarter-v2.4.zip`과 `OriginalOfficeChair-CC0-v1.zip`을 새 asset으로 올린다. 기존 release asset은 교체하거나 삭제하지 않는다.
+- v5는 v2.5 누적 snapshot, 밝아진 project-original Chair, Main Section 1~5와 Rotation Bonus를 사용하므로 `tutorial-docc-v5` release에 `RoomPlanTutorialStarter-v2.5.zip`과 `OriginalOfficeChair-CC0-v1.zip`을 새 asset으로 올린다. 기존 release asset은 교체하거나 삭제하지 않는다.
 
 ## 배포 acceptance
 
@@ -200,13 +200,13 @@ GitHub의 custom Pages workflow 구조는 [공식 Pages workflow 안내](https:/
 - root/deep page base path가 모두 `/2026TechMap_tutorial/`
 - 모든 static `index.html`의 `lang="ko"`, `lang="en-US"` 0개
 - Overview에서 Main Tutorial, Challenge, Optional 연결
-- Main Tutorial 한 페이지 안에 Section 1~6가 순서대로 존재
+- Main Tutorial 한 페이지 안에 Main Section 1~5와 Rotation Bonus가 순서대로 존재
 - checkpoint screenshot이 일반 삽입 이미지가 아니라 `@Code { @Image }`의 `runtimePreview`로 연결
 - code와 image resource 누락 없음
 - 브라우저 Network에 404 asset 없음
 - Challenge/Optional의 아직 없는 screenshot을 참조하지 않음
 - app bundle에 `Room.json`과 project-original `Chair.usdz`가 있고 `Room.usdz`는 없음
-- Starter에서 Part 5까지 Rotate 버튼이 숨겨지고 Part 6 replacement 뒤에만 표시
+- Starter에서 Main Section 5의 replacement 전까지 Rotate 버튼이 숨겨지고 Rotation Bonus에서만 표시
 
 ## v2 배포 기록 — 2026-08-11
 
