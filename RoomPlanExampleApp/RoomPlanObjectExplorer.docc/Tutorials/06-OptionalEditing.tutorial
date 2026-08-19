@@ -1,4 +1,4 @@
-@Article(time: 10) {
+@Article(time: 0) {
     @Intro(title: "Further Exploration — Correct or Remove an Object") {
         Main Tutorial을 완료한 뒤, RoomPlan 원본과 앱이 소유한 편집 상태를 어떻게 분리할지 살펴봅니다.
 

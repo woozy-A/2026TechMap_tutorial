@@ -6,7 +6,7 @@
 
         Xcode에서 iOS 프로젝트를 Build/Run해본 경험과 Swift 기본 문법이면 충분합니다. RoomPlan, RealityKit, LiDAR, 3D model 제작 경험은 필요하지 않습니다.
 
-        Main은 iOS 17 이상 iPhone Simulator에서 진행하며 약 60~70분, Rotation Bonus는 약 10분입니다. 검증 환경은 Xcode 26.6 (`17F113`) / iOS 26.5 Simulator입니다.
+        Main Sections 1~5와 Rotation Bonus를 합쳐 약 80분입니다. iOS 17 이상 iPhone Simulator에서 진행할 수 있으며, 검증 환경은 Xcode 26.6 (`17F113`) / iOS 26.5 Simulator입니다.
 
         [Starter Project ZIP](https://github.com/woozy-A/2026TechMap_tutorial/releases/download/tutorial-docc-v6/RoomPlanTutorialStarter-v2.6.zip)을 다운로드하세요. Section 5에서는 [Sample Chair Asset ZIP](https://github.com/woozy-A/2026TechMap_tutorial/releases/download/tutorial-docc-v6/RoomPlanFurnitureAsset-Chair-v1.zip)의 `Chair.usdz`를 Xcode target에 직접 추가하고, 같은 방법으로 자신의 Bed나 Table asset을 연결하는 방법을 배웁니다.
 

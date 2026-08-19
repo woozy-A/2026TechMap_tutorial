@@ -164,7 +164,13 @@
             }
 
             @Step {
-                자신의 `Bed.usdz`를 추가했다면 같은 dictionary에 `.bed: FurnitureAsset(resourceName: "Bed")`를 넣어 확장할 수 있습니다. model의 앞 방향이 다를 때만 `yawCorrectionDegrees`로 asset 축을 보정하세요. 이 값은 RoomPlan이 가구의 의미상 앞뒤를 보장한다는 뜻이 아닙니다.
+                **Try Your Own USDZ — 아래 중 하나만 선택해 교체 지점을 확인하세요.** 제공된 Chair를 다른 의자로 빠르게 바꾸려면 새 파일을 `Chair.usdz`로 이름 바꿔 기존 파일과 교체하세요. `furnitureAssetsByCategory`는 고칠 필요가 없으며, File Inspector에서 **RoomPlanExampleApp** Target Membership만 다시 확인하면 됩니다.
+
+                파일 이름을 `MyChair.usdz`로 유지하고 싶다면 target에 추가한 뒤 mapping의 한 곳만 `.chair: FurnitureAsset(resourceName: "MyChair")`로 바꾸세요. `Bed.usdz`나 `Table.usdz`는 같은 dictionary에 `.bed: FurnitureAsset(resourceName: "Bed")` 또는 `.table: FurnitureAsset(resourceName: "Table")`를 한 줄 추가합니다. model의 앞 방향이 다를 때만 `yawCorrectionDegrees`로 asset 축을 보정하세요.
+            }
+
+            @Step {
+                `Command-R`로 다시 실행해 mapping한 category의 object를 선택하고 **Replace with 3D Model**을 누르세요. 새 USDZ가 같은 RoomPlan 위치와 크기 안에 보이면 성공입니다. 현재 예제는 category마다 하나의 asset을 연결합니다. Chair 1·2·3에 서로 다른 model을 고르는 per-object picker와 runtime Files import는 이 tutorial의 범위에 포함하지 않습니다.
             }
 
             @Step {

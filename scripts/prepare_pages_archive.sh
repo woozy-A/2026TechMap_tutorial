@@ -46,6 +46,20 @@ if ! grep -Fq "var baseUrl = \"$expected_base_url\"" "$archive_path/index.html";
   exit 65
 fi
 
+# DocC requires a time value for @Article, so the optional article uses
+# `time: 0` to keep it out of the Main Tutorial total. Remove that generated
+# metadata from the static render data so the Overview doesn't show "0min".
+if [[ -d "$archive_path/data" ]]; then
+  while IFS= read -r -d '' data_file; do
+    perl -0pi -e 's/,"estimatedTime":"0min"//g' "$data_file"
+  done < <(find "$archive_path/data" -type f -name '*.json' -print0)
+fi
+
+if grep -R -q '"estimatedTime":"0min"' "$archive_path/data"; then
+  echo "error: optional zero-minute metadata remains in the static render data" >&2
+  exit 65
+fi
+
 index_count=0
 invalid_count=0
 
@@ -80,6 +94,16 @@ while IFS= read -r -d '' index_file; do
     perl -0pi -e 's#</head>#<style id="roomplan-force-light-surfaces">body[data-color-scheme="light"]{background:white!important;color:rgb(17,17,17)!important}body[data-color-scheme="light"] .tutorials-overview,body[data-color-scheme="light"] .tutorials-overview .learning-path{background:white!important;color:rgb(17,17,17)!important}body[data-color-scheme="light"] nav.nav{color:rgb(17,17,17)!important}body[data-color-scheme="light"] nav.nav *{color:rgb(17,17,17)!important}body[data-color-scheme="light"] nav.nav .nav__background{background:rgba(255,255,255,.96)!important;border-bottom:1px solid rgb(210,210,215)!important}</style></head>#' "$index_file"
   fi
 
+  # The generated Tutorial hero carries a hard-coded `.dark` class even when
+  # the rest of the site is light. Keep the whole learning flow consistent.
+  perl -0pi -e 's#<style id="roomplan-tutorial-hero-light">.*?</style>##s' "$index_file"
+  perl -0pi -e 's#</head>#<style id="roomplan-tutorial-hero-light">body[data-color-scheme="light"] .tutorial-hero .hero.dark{background:white!important;color:rgb(17,17,17)!important}body[data-color-scheme="light"] .tutorial-hero .hero.dark .row,body[data-color-scheme="light"] .tutorial-hero .hero.dark .row *{color:rgb(17,17,17)!important}body[data-color-scheme="light"] .tutorial-hero .hero.dark a,body[data-color-scheme="light"] .tutorial-hero .hero.dark a *{color:rgb(0,102,204)!important}</style></head>#' "$index_file"
+
+  # Recreate this style on every pass so an older malformed injection cannot
+  # survive. Escape `@` because Perl otherwise treats `@media` as an array.
+  perl -0pi -e 's#<style id="roomplan-overview-desktop-layout">.*?</style>##s' "$index_file"
+  perl -0pi -e 's#</head>#<style id="roomplan-overview-desktop-layout">\@media only screen and (min-width:1251px){body[data-color-scheme="light"] .tutorials-overview .hero,body[data-color-scheme="light"] .tutorials-overview .learning-path .main-container{width:min(1180px,calc(100% - 96px))!important}body[data-color-scheme="light"] .tutorials-overview .hero{padding:3.25rem 0 2.75rem!important}body[data-color-scheme="light"] .tutorials-overview .hero .copy-container{width:min(780px,100%)!important;margin-left:0!important;margin-right:0!important;text-align:left!important}body[data-color-scheme="light"] .tutorials-overview .hero .meta{justify-content:flex-start!important}body[data-color-scheme="light"] .tutorials-overview .learning-path{padding:3.25rem 0!important}body[data-color-scheme="light"] .tutorials-overview .learning-path .main-container{justify-content:flex-start!important}body[data-color-scheme="light"] .tutorials-overview .secondary-content-container{display:none!important}body[data-color-scheme="light"] .tutorials-overview .primary-content-container{flex:0 1 980px!important;max-width:980px!important}}</style></head>#' "$index_file"
+
   if ! grep -q 'id="roomplan-force-korean-light"' "$index_file"; then
     perl -0pi -e 's#</body>#<script id="roomplan-force-korean-light">\(\(\)=>{const force=\(\)=>{if\(document.documentElement.lang!=="ko"\)document.documentElement.lang="ko";if\(document.body&&document.body.dataset.colorScheme!=="light"\)document.body.dataset.colorScheme="light"};force\(\);new MutationObserver\(force\).observe\(document.documentElement,{attributes:true,subtree:true,attributeFilter:["lang","data-color-scheme"]}\)}\)\(\);</script></body>#' "$index_file"
   fi
@@ -93,6 +117,8 @@ runtime_guard_count=0
 preload_count=0
 light_style_count=0
 light_surface_count=0
+overview_layout_count=0
+tutorial_hero_light_count=0
 
 while IFS= read -r -d '' index_file; do
   if grep -q '<html lang="ko"' "$index_file"; then
@@ -125,6 +151,14 @@ while IFS= read -r -d '' index_file; do
 
   if grep -q 'id="roomplan-force-light-surfaces"' "$index_file"; then
     light_surface_count=$((light_surface_count + 1))
+  fi
+
+  if grep -q 'id="roomplan-overview-desktop-layout"' "$index_file"; then
+    overview_layout_count=$((overview_layout_count + 1))
+  fi
+
+  if grep -q 'id="roomplan-tutorial-hero-light"' "$index_file"; then
+    tutorial_hero_light_count=$((tutorial_hero_light_count + 1))
   fi
 done < <(find_index_files)
 
@@ -168,4 +202,14 @@ if [[ $light_surface_count -ne $index_count ]]; then
   exit 65
 fi
 
-echo "Prepared DocC Pages archive: $index_count index files stay lang=ko with a white overview and light runtime"
+if [[ $overview_layout_count -ne $index_count ]]; then
+  echo "error: expected $index_count desktop overview layouts, found $overview_layout_count" >&2
+  exit 65
+fi
+
+if [[ $tutorial_hero_light_count -ne $index_count ]]; then
+  echo "error: expected $index_count light Tutorial heroes, found $tutorial_hero_light_count" >&2
+  exit 65
+fi
+
+echo "Prepared DocC Pages archive: $index_count index files stay lang=ko with a white, desktop-friendly overview and light runtime"

@@ -50,13 +50,19 @@ Starter 상태에서 **Explore Sample Room**을 누르면 `Start Part 1` 안내�
 
 `Room.usdz`는 포함되지 않으며 runtime에서도 사용하지 않습니다.
 
-Starter에는 `Chair.usdz`가 들어 있지 않습니다. Section 5에서 별도 Sample Chair Asset ZIP을 받고 Xcode target에 직접 추가합니다. `category → FurnitureAsset` mapping을 바꾸면 자신의 `Bed.usdz`, `Table.usdz`나 다른 Chair model도 같은 `dimensions` / `transform` pipeline으로 연결할 수 있습니다.
+Starter에는 `Chair.usdz`가 들어 있지 않습니다. Section 5에서 별도 Sample Chair Asset ZIP을 받고 Xcode target에 직접 추가합니다.
+
+- 다른 의자를 `Chair.usdz`로 이름 바꿔 교체하면 mapping 코드는 그대로 사용할 수 있습니다. 교체 후 Target Membership을 확인하세요.
+- `MyChair.usdz`처럼 다른 이름을 쓰면 `.chair: FurnitureAsset(resourceName: "MyChair")`로 mapping 한 곳만 바꿉니다.
+- `Bed.usdz`나 `Table.usdz`는 dictionary에 해당 category mapping을 한 줄 추가하면 같은 `dimensions` / `transform` pipeline으로 연결됩니다.
+
+이 예제는 category마다 하나의 asset을 연결합니다. object마다 서로 다른 model을 고르는 picker와 runtime Files import는 tutorial 범위에 포함하지 않습니다.
 
 ## Conditional Challenge와 Further Exploration
 
 `Conditional Challenge — Scan Your Own Room`은 LiDAR를 지원하는 실제 iPhone 또는 iPad, 카메라 권한, 안전하게 scan할 실내 공간이 모두 있을 때만 진행합니다. 조건을 충족하지 못해도 Main Tutorial과 Bonus는 정상적으로 완료한 것입니다.
 
-`Further Exploration — Correct or Remove an Object`는 Main Tutorial과 Rotation Bonus 이후에 읽는 Article입니다. Final Example v1.6의 설계를 설명하지만 별도 누적 hands-on snapshot으로는 아직 검증되지 않았으므로 Main 완료 조건이나 60~70분 예상에 포함하지 않습니다.
+`Further Exploration — Correct or Remove an Object`는 Main Tutorial과 Rotation Bonus 이후에 읽는 Article입니다. Final Example v1.6의 설계를 설명하지만 별도 누적 hands-on snapshot으로는 아직 검증되지 않았으므로 Main 완료 조건이나 80분 예상에 포함하지 않습니다.
 
 ## Catalog 위치
 
