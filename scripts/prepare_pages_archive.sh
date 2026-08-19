@@ -29,6 +29,13 @@ if [[ ! -f "$archive_path/index.html" ]]; then
   exit 66
 fi
 
+touch "$archive_path/.nojekyll"
+
+if [[ ! -f "$archive_path/.nojekyll" ]]; then
+  echo "error: failed to create .nojekyll in the archive root" >&2
+  exit 65
+fi
+
 # DocC can leave only the archive root pointing at `/` even when the deep
 # tutorial routes use the requested static-hosting base path. GitHub Project
 # Pages serves this site below the repository name, so fix the root shell too.
