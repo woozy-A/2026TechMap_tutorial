@@ -76,4 +76,29 @@ Swift module cache 쓰기가 제한된 자동화 환경에서는 `SWIFT_MODULE_C
 4. Section 5에서는 Rotate 버튼이 숨겨지고 Section 6에서 replacement 후 처음 나타나는가?
 5. `docc convert --analyze --warnings-as-errors`와 Xcode `docbuild`가 모든 image/code reference를 해석하는가?
 
-Challenge는 물리 LiDAR 기기 evidence가 생기기 전까지 screenshot을 추가하지 않는다. Optional Editing도 별도 누적 snapshot이 검증되기 전에는 hands-on checkpoint로 표현하지 않는다.
+## Conditional Challenge 실제 기기 이미지 교체 슬롯
+
+가짜 scan 화면은 만들지 않는다. 물리 LiDAR 기기에서 아래 두 상태를 직접 캡처한 뒤 하나의 가로형 비교 이미지로 구성한다.
+
+| 왼쪽 | 오른쪽 |
+| --- | --- |
+| `RoomCaptureView`에서 실제 방을 scan하는 중간 상태 | **Done** 뒤 같은 scan의 category 목록·object box·선택 Highlight가 보이는 Object Explorer |
+
+완성 파일은 1440 × 900 PNG이며 이름을 정확히 `v7-challenge-scan-to-explorer.png`로 정한다. iOS 상태바와 기기 frame은 제거하되 app UI 비율을 늘이지 않는다. 오른쪽 결과의 object 수와 category는 실제 공간에 따라 달라져도 되며, 같은 scan에서 얻은 결과여야 한다.
+
+파일을 다음 위치에 넣는다.
+
+```text
+RoomPlanExampleApp/RoomPlanObjectExplorer.docc/Resources/Images/v7-challenge-scan-to-explorer.png
+```
+
+그다음 `Tutorials/05-ScanYourOwnRoom.tutorial`의 **실제 방으로 실행하기** Section에 다음 image directive를 추가한다.
+
+```text
+@Image(
+    source: "v7-challenge-scan-to-explorer.png",
+    alt: "실제 LiDAR scan 진행 화면과 Done 뒤 같은 CapturedRoom이 Object Explorer의 목록과 3D box로 표시된 결과"
+)
+```
+
+실제 기기 evidence가 생기기 전에는 source가 존재하지 않는 `@Image`를 먼저 참조하거나 Sample Room 이미지를 실제 scan 결과처럼 재사용하지 않는다. Optional Editing도 별도 누적 snapshot이 검증되기 전에는 hands-on checkpoint로 표현하지 않는다.

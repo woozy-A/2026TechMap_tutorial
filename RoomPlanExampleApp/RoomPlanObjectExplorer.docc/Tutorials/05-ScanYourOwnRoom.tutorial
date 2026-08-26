@@ -16,7 +16,7 @@
             }
 
             @Step {
-                delegate가 받은 `processedResult`가 `CapturedRoom`이며, 다음 기존 코드가 Main Tutorial의 같은 Explorer에 전달하는지 확인합니다. 이 코드는 Starter에 이미 있으므로 다시 입력하지 않습니다.
+                delegate가 받은 `processedResult`가 `CapturedRoom`이며, 다음 기존 코드가 Main Tutorial의 같은 Explorer에 전달하는지 확인합니다. **지금 확인하는 코드:** `explorer.configure(with: processedResult)`는 실제 scan 결과를 같은 Explorer에 전달하고, `setViewControllers([explorer], animated:)`는 scan 화면에서 Explorer로 전환합니다. 이 코드는 Starter에 이미 있으므로 다시 입력하지 않습니다.
 
                 @Code(name: "RoomCaptureViewController.swift", file: "Challenge-CapturedRoomPipeline.swift")
             }
@@ -38,7 +38,9 @@
             }
 
             @Step {
-                object 수와 category는 공간과 scan 품질에 따라 달라집니다. Sample Room과 같은 수치를 기대하지 말고, Main Sections 2~4의 목록·선택·Highlight pipeline이 같은 `CapturedRoom`에서 수정 없이 재사용되는지를 확인합니다. 실제 결과에 Section 5에서 mapping한 category가 있을 때만 USDZ 교체와 Bonus Rotation도 시험하세요. 해당 category가 인식되지 않아도 Challenge 실패가 아닙니다.
+                **실행 체크포인트:** **Done** 뒤 Object Explorer가 열리고, 자신의 방에서 인식된 category 목록과 object box가 함께 보이는지 확인하세요. row를 선택했을 때 같은 UUID의 box가 Highlight되면 Main Sections 2~4의 pipeline이 실제 `CapturedRoom`에서도 수정 없이 재사용된 것입니다.
+
+                object 수와 category는 공간과 scan 품질에 따라 달라집니다. Sample Room과 같은 수치를 기대하지 마세요. 실제 결과에 Section 5에서 mapping한 category가 있을 때만 USDZ 교체와 Bonus Rotation도 시험하세요. 해당 category가 인식되지 않아도 Challenge 실패가 아닙니다.
             }
         }
     }
