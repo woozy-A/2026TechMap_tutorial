@@ -103,11 +103,11 @@ while IFS= read -r -d '' index_file; do
   perl -0pi -e 's#<style id="roomplan-force-light-surfaces">.*?</style>##s' "$index_file"
   perl -0pi -e 's#</head>#<style id="roomplan-force-light-surfaces">body[data-color-scheme="light"]{background:white!important;color:rgb(17,17,17)!important}body[data-color-scheme="light"] .tutorials-overview{background:radial-gradient(circle at 78% 8%,rgba(41,151,255,.18),transparent 38%),rgb(15,16,18)!important;color:rgb(245,245,247)!important}body[data-color-scheme="light"] .tutorials-overview .learning-path{background:rgb(250,250,252)!important;color:rgb(17,17,17)!important}body[data-color-scheme="light"] nav.nav{color:rgb(17,17,17)!important}body[data-color-scheme="light"] nav.nav *{color:rgb(17,17,17)!important}body[data-color-scheme="light"] nav.nav .nav__background{background:rgba(255,255,255,.96)!important;border-bottom:1px solid rgb(210,210,215)!important}</style></head>#' "$index_file"
 
-  # The generated Tutorial hero carries a hard-coded `.dark` class even when
-  # the rest of the site is light. Keep the flow light, and preserve a subtle
-  # boundary before the first tutorial section.
+  # Recreate a focused Apple-style dark intro on every Tutorial and Article.
+  # Step, code, Preview, and article body surfaces remain light for readability.
   perl -0pi -e 's#<style id="roomplan-tutorial-hero-light">.*?</style>##s' "$index_file"
-  perl -0pi -e 's#</head>#<style id="roomplan-tutorial-hero-light">body[data-color-scheme="light"] .tutorial-hero .hero.dark{background:white!important;color:rgb(17,17,17)!important;border-bottom:1px solid rgb(210,210,215)!important}body[data-color-scheme="light"] .tutorial-hero .hero.dark .row,body[data-color-scheme="light"] .tutorial-hero .hero.dark .row *{color:rgb(17,17,17)!important}body[data-color-scheme="light"] .tutorial-hero .hero.dark a,body[data-color-scheme="light"] .tutorial-hero .hero.dark a *{color:rgb(0,102,204)!important}</style></head>#' "$index_file"
+  perl -0pi -e 's#<style id="roomplan-tutorial-hero-brand">.*?</style>##s' "$index_file"
+  perl -0pi -e 's#</head>#<style id="roomplan-tutorial-hero-brand">body[data-color-scheme="light"] .tutorial .tutorial-hero>.hero.dark,body[data-color-scheme="light"] .article .tutorial-hero>.hero.dark{background:radial-gradient(circle at 82% 0,rgba(41,151,255,.2),transparent 38%),rgb(15,16,18)!important;border-bottom:1px solid rgb(58,58,60)!important;color:rgb(245,245,247)!important;overflow:hidden!important;position:relative!important}body[data-color-scheme="light"] .tutorial .tutorial-hero>.hero.dark:after,body[data-color-scheme="light"] .article .tutorial-hero>.hero.dark:after{background:linear-gradient(90deg,rgb(100,210,255),rgb(10,132,255),rgb(94,92,230))!important;bottom:0!important;content:""!important;height:3px!important;left:0!important;position:absolute!important;right:0!important}body[data-color-scheme="light"] .tutorial .tutorial-hero>.hero.dark .heading,body[data-color-scheme="light"] .tutorial .tutorial-hero>.hero.dark .intro,body[data-color-scheme="light"] .tutorial .tutorial-hero>.hero.dark .intro p,body[data-color-scheme="light"] .tutorial .tutorial-hero>.hero.dark .intro strong,body[data-color-scheme="light"] .tutorial .tutorial-hero>.hero.dark .intro code,body[data-color-scheme="light"] .article .tutorial-hero>.hero.dark .heading,body[data-color-scheme="light"] .article .tutorial-hero>.hero.dark .intro,body[data-color-scheme="light"] .article .tutorial-hero>.hero.dark .intro p,body[data-color-scheme="light"] .article .tutorial-hero>.hero.dark .intro strong,body[data-color-scheme="light"] .article .tutorial-hero>.hero.dark .intro code{color:rgb(245,245,247)!important}body[data-color-scheme="light"] .tutorial .tutorial-hero>.hero.dark .eyebrow,body[data-color-scheme="light"] .tutorial .tutorial-hero>.hero.dark .metadata,body[data-color-scheme="light"] .tutorial .tutorial-hero>.hero.dark .metadata *,body[data-color-scheme="light"] .article .tutorial-hero>.hero.dark .eyebrow,body[data-color-scheme="light"] .article .tutorial-hero>.hero.dark .metadata,body[data-color-scheme="light"] .article .tutorial-hero>.hero.dark .metadata *{color:rgb(161,161,166)!important}body[data-color-scheme="light"] .tutorial .tutorial-hero>.hero.dark a,body[data-color-scheme="light"] .tutorial .tutorial-hero>.hero.dark a *,body[data-color-scheme="light"] .article .tutorial-hero>.hero.dark a,body[data-color-scheme="light"] .article .tutorial-hero>.hero.dark a *{color:rgb(100,210,255)!important}body[data-color-scheme="light"] .tutorial .tutorial-hero>.hero.dark .row,body[data-color-scheme="light"] .article .tutorial-hero>.hero.dark .row{box-sizing:border-box!important;margin:0 auto!important;max-width:1100px!important;padding:4.5rem 0 4.25rem!important;width:calc(100% - 64px)!important}body[data-color-scheme="light"] .tutorial .tutorial-hero>.hero.dark .col.large-7,body[data-color-scheme="light"] .article .tutorial-hero>.hero.dark .col.large-7{flex-basis:720px!important;max-width:720px!important}\@media only screen and (max-width:979px){body[data-color-scheme="light"] .tutorial .tutorial-hero>.hero.dark .row,body[data-color-scheme="light"] .article .tutorial-hero>.hero.dark .row{padding:3rem 0!important;width:calc(100% - 40px)!important}body[data-color-scheme="light"] .tutorial .tutorial-hero>.hero.dark .col.large-7,body[data-color-scheme="light"] .article .tutorial-hero>.hero.dark .col.large-7{flex-basis:100%!important;max-width:720px!important}}\@media only screen and (max-width:735px){body[data-color-scheme="light"] .tutorial .tutorial-hero>.hero.dark .row,body[data-color-scheme="light"] .article .tutorial-hero>.hero.dark .row{padding:2.5rem 0!important;width:calc(100% - 32px)!important}}</style></head>#' "$index_file"
 
   # Recreate this style on every pass so an older malformed injection cannot
   # survive. The secondary surface separates the overview copy from the
@@ -135,7 +135,7 @@ light_style_count=0
 light_surface_count=0
 overview_layout_count=0
 overview_chapter_color_count=0
-tutorial_hero_light_count=0
+tutorial_hero_brand_count=0
 
 while IFS= read -r -d '' index_file; do
   if grep -q '<html lang="ko"' "$index_file"; then
@@ -178,8 +178,8 @@ while IFS= read -r -d '' index_file; do
     overview_chapter_color_count=$((overview_chapter_color_count + 1))
   fi
 
-  if grep -q 'id="roomplan-tutorial-hero-light"' "$index_file"; then
-    tutorial_hero_light_count=$((tutorial_hero_light_count + 1))
+  if grep -q 'id="roomplan-tutorial-hero-brand"' "$index_file"; then
+    tutorial_hero_brand_count=$((tutorial_hero_brand_count + 1))
   fi
 done < <(find_index_files)
 
@@ -233,9 +233,9 @@ if [[ $overview_chapter_color_count -ne $index_count ]]; then
   exit 65
 fi
 
-if [[ $tutorial_hero_light_count -ne $index_count ]]; then
-  echo "error: expected $index_count light Tutorial heroes, found $tutorial_hero_light_count" >&2
+if [[ $tutorial_hero_brand_count -ne $index_count ]]; then
+  echo "error: expected $index_count branded Tutorial heroes, found $tutorial_hero_brand_count" >&2
   exit 65
 fi
 
-echo "Prepared DocC Pages archive: $index_count index files stay lang=ko with a dark Overview hero and light tutorial runtime"
+echo "Prepared DocC Pages archive: $index_count index files stay lang=ko with dark branded heroes and light learning surfaces"
