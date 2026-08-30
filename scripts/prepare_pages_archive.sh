@@ -39,10 +39,15 @@ fi
 # DocC can leave only the archive root pointing at `/` even when the deep
 # tutorial routes use the requested static-hosting base path. GitHub Project
 # Pages serves this site below the repository name, so fix the root shell too.
-perl -0pi -e "s#var baseUrl = \"/\"#var baseUrl = \"$expected_base_url\"#g; s#(href|src)=\"/#\$1=\"$expected_base_url#g" "$archive_path/index.html"
+perl -0pi -e "s#var baseUrl = \"/\"#var baseUrl = \"$expected_base_url\"#g; s#(href|src)=\"/(?!$hosting_base_path/)#\$1=\"$expected_base_url#g" "$archive_path/index.html"
 
 if ! grep -Fq "var baseUrl = \"$expected_base_url\"" "$archive_path/index.html"; then
   echo "error: archive root does not use the expected base URL: $expected_base_url" >&2
+  exit 65
+fi
+
+if grep -Fq "$expected_base_url$hosting_base_path/" "$archive_path/index.html"; then
+  echo "error: archive root contains a duplicated hosting base path: $expected_base_url$hosting_base_path/" >&2
   exit 65
 fi
 
