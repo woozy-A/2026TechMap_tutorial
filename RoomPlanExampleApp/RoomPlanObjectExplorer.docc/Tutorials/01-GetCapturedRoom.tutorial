@@ -133,9 +133,9 @@
 
     @Section(title: "Section 5 — Add and Place a 3D Asset") {
         @ContentAndMedia {
-            이번에는 Starter에 없던 USDZ 파일을 학습자가 직접 앱 target에 추가합니다. `category → asset` mapping만 바꾸면 Chair가 아닌 Bed나 Table model도 같은 pipeline으로 교체할 수 있습니다.
+            이번에는 Starter에 없던 USDZ 파일을 학습자가 직접 앱 target에 추가합니다. 아래 이미지는 교체 전 box가 아니라, 앱에 넣을 **Original Office Chair 3D asset 자체**의 디자인 렌더입니다. `category → asset` mapping만 바꾸면 Chair가 아닌 Bed나 Table model도 같은 pipeline으로 교체할 수 있습니다.
 
-            @Image(source: "v6-section5-before-after.png", alt: "흰 가로형 비교 화면으로 왼쪽에는 선택한 RoomPlan box가, 오른쪽 같은 위치에는 직접 추가한 Chair.usdz가 보임")
+            @Image(source: "chair-asset-three-quarter.png", alt: "앱에 직접 추가할 Original Office Chair 3D asset의 3분의 4 방향 렌더")
         }
 
         @Steps {

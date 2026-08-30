@@ -6,9 +6,9 @@
     }
 
     @Chapter(name: "Build and Explore") {
-        `CapturedRoom.objects`를 목록과 3D 공간에 연결하고, `identifier`로 선택과 Highlight를 맞춘 뒤 직접 추가한 USDZ asset으로 교체합니다.
+        `CapturedRoom.objects`를 목록과 3D 공간에 연결하고, `identifier`로 선택과 Highlight를 맞춘 뒤 프로젝트에서 직접 제작한 Chair USDZ asset으로 교체합니다.
 
-        @Image(source: "v6-section5-asset-ready.png", alt: "RoomPlan 방 구조와 category별 Object List, 선택한 Chair를 3D model로 교체하는 버튼이 함께 보이는 화면")
+        @Image(source: "chair-asset-three-quarter.png", alt: "프로젝트에서 제작한 Original Office Chair 3D asset의 3분의 4 방향 렌더")
 
         @TutorialReference(tutorial: "doc:01-GetCapturedRoom")
         @TutorialReference(tutorial: "doc:05-ScanYourOwnRoom")
