@@ -1,18 +1,11 @@
-@Tutorials(name: "RoomPlan 객체를 3D로 탐색하기") {
+@Tutorials(name: "RoomPlan") {
     @Intro(title: "RoomPlan Object Explorer") {
         Starter Project에 짧은 코드를 추가하며 RoomPlan이 인식한 객체를 목록으로 보고, 선택한 객체를 3D 공간에서 찾아 직접 추가한 USDZ model로 교체합니다.
-
-        **핵심 흐름:** `CapturedRoom` → `objects` → `identifier` → `dimensions` / `transform` → Highlight → Custom USDZ
-
-        Xcode에서 iOS 프로젝트를 Build/Run해본 경험과 Swift 기본 문법이면 충분합니다. RoomPlan, RealityKit, LiDAR, 3D model 제작 경험은 필요하지 않습니다.
-
-        Main Sections 1~5와 Rotation Bonus를 합쳐 약 80분입니다. iOS 17 이상 iPhone Simulator에서 진행할 수 있으며, 검증 환경은 Xcode 26.6 (`17F113`) / iOS 26.5 Simulator입니다.
-
-        [Starter Project ZIP](https://github.com/woozy-A/2026TechMap_tutorial/releases/download/tutorial-docc-v6/RoomPlanTutorialStarter-v2.6.zip)을 다운로드하세요. Section 5에서는 [Sample Chair Asset ZIP](https://github.com/woozy-A/2026TechMap_tutorial/releases/download/tutorial-docc-v6/RoomPlanFurnitureAsset-Chair-v1.zip)의 `Chair.usdz`를 Xcode target에 직접 추가하고, 같은 방법으로 자신의 Bed나 Table asset을 연결하는 방법을 배웁니다.
-
     }
 
     @Chapter(name: "Build and Explore") {
+        `CapturedRoom.objects`를 목록과 3D 공간에 연결하고, `identifier`로 선택과 Highlight를 맞춘 뒤 직접 추가한 USDZ asset으로 교체합니다.
+
         @Image(source: "v6-goal-object-explorer.png", alt: "상태바를 제거한 흰 가로 캔버스 안에 RoomPlan 방 구조와 직접 추가한 3D Chair model이 보이는 Main 최종 화면")
 
         @TutorialReference(tutorial: "doc:01-GetCapturedRoom")
