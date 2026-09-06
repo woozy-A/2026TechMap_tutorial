@@ -15,15 +15,15 @@ Main의 Preview는 고정 Sample Room의 Simulator 결과입니다.
 ## 어디에 넣나요?
 
 `RoomPlanExampleApp/RoomPlanObjectExplorer.docc/Resources/Images/`에 위 두 파일명으로 저장하세요.
-그다음 `Tutorials/05-ScanYourOwnRoom.tutorial`의 실제 실행 Step에 다음 한 줄씩 추가합니다.
+그다음 `Tutorials/05-ScanYourOwnRoom.tutorial`의 아래 두 Step에 한 줄씩 추가합니다.
 
-스캔 실행 Step:
+**「실제 방으로 실행하기」Step 2** (`Scan Your Own Room`과 카메라 권한 안내):
 
 ```text
 @Image(source: "challenge-live-scan.png", alt: "LiDAR 실제 기기에서 촬영한 RoomPlan 스캔 화면. 벽과 객체를 인식하고 Done 버튼이 보임")
 ```
 
-Done 뒤 실행 체크포인트 Step:
+**「결과를 확인하고 마무리하기」Step 2** (row checkmark와 같은 box의 Highlight 확인):
 
 ```text
 @Image(source: "challenge-live-result.png", alt: "실제 방 스캔 뒤 Object Explorer의 객체 목록과 같은 UUID의 Highlight box가 보이는 화면")
@@ -32,3 +32,7 @@ Done 뒤 실행 체크포인트 Step:
 처음 연결한 뒤부터는 **같은 파일명으로 PNG만 교체하고 문서를 재빌드·배포**하면 됩니다.
 흐름도는 그대로 두어도 됩니다. 실제 캡처가 준비되기 전에는 이 이름의 가짜 UI 이미지를 넣지 않습니다.
 문서 검증 예: `xcrun docc convert RoomPlanExampleApp/RoomPlanObjectExplorer.docc --analyze --warnings-as-errors --output-path /private/tmp/roomplan-capture-check.doccarchive`.
+
+빌드 성공만으로 이미지 표시까지 검증한 것은 아닙니다. 로컬 또는 배포 페이지에서
+세 Section이 모두 보이는지, 위 두 Step의 이미지가 열리는지 실제 브라우저에서도 확인하세요.
+실제 기기 캡처를 추가한 뒤에는 본문의 「예시 이미지의 범위」와 이 안내의 검증 범위도 함께 갱신합니다.
