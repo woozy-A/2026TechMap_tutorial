@@ -1,3 +1,3 @@
     func replaceSelectedObject() async throws {
-        // Section 5: Fit, place, and install the mapped USDZ by identifier.
+        // Part 5: Fit with dimensions, place with transform, and replace by ID.
     }

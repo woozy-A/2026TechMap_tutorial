@@ -1,6 +1,6 @@
     // MARK: - Tutorial — Replace with 3D Model
 
     var canReplaceSelectedObject: Bool {
-        // Section 5: Map a RoomPlan category to the USDZ you added.
+        // Part 5: Find the selected object by identifier and check its category.
         false
     }

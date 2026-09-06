@@ -2,6 +2,8 @@
     @Intro(title: "RoomPlan Object Explorer") {
         Starter Project에 짧은 코드를 추가하며 RoomPlan이 인식한 객체를 목록으로 보고, 선택한 객체를 3D 공간에서 찾아 직접 추가한 USDZ model로 교체합니다.
 
+        Xcode에서 앱을 실행해 본 경험과 Swift 기초, UIKit의 화면·버튼 개념이 있으면 시작할 수 있습니다. RoomPlan·RealityKit 사전 경험이나 LiDAR 기기는 Main 실습에 필요하지 않습니다.
+
         @Image(source: "v6-section5-before-after.png", alt: "RoomPlan이 인식한 Chair box가 직접 추가한 Chair.usdz로 같은 위치에서 교체되는 전후 화면")
     }
 

@@ -8,7 +8,7 @@
 
 **Main의 학습 순서를 다시 설계할 필요는 없습니다.** 데이터 읽기 → 목록 → 선택 → 3D 표시 → 모델 교체 → 선택적 회전의 연결이 자연스럽습니다. 현재 발견한 주요 약점은 기능 누락보다 **Starter가 대신 해주는 일과 방금 작성한 코드의 효과를 구별하는 설명**, 그리고 **Section 5의 난도 상승을 잇는 설명**입니다.
 
-이번에는 Challenge를 수정하고, 그 전의 Overview·Main Sections 1~5·Bonus는 읽기 전용으로 검토했습니다. Main 본문·앱 실행 코드·USDZ·기존 이미지는 수정하지 않았습니다. 아래 Main 개선안은 아직 적용 전입니다.
+첫 검토에서는 Challenge를 수정하고, 그 전의 Overview·Main Sections 1~5·Bonus는 읽기 전용으로 검토했습니다. 이후 사용자의 승인으로 아래 Main 설명 개선안 1~5번을 반영했습니다. 문제 설명과 행 번호는 수정 전 검토 기록이며, 최신 반영·검증 결과는 문서 마지막에 정리합니다. 앱 실행 코드·USDZ·기존 이미지는 변경하지 않았습니다.
 
 이는 문서·코드·제공 이미지의 정합성 검토입니다. 처음 보는 학습자의 사용성 실험이나 이번 차례의 Simulator/LiDAR 실행 검증을 대체하지 않습니다.
 
@@ -91,7 +91,7 @@
 
 RoomPlan이 처리된 방 결과를 전달하는 시점은 [Apple의 captureView(didPresent:error:) 문서](https://developer.apple.com/documentation/roomplan/roomcaptureviewdelegate/captureview%28didpresent%3Aerror%3A%29)와 현재 앱의 delegate 연결을 함께 확인했습니다.
 
-## 검증 결과와 한계
+## 첫 검토의 검증 결과와 한계
 
 - 자동 검사: 기존 9개 + Challenge 3개 = **12/12 통과**.
 - DocC: `--analyze --warnings-as-errors` 변환 및 Pages용 후처리 통과. 생성 결과의 Section·이미지 참조를 대조했습니다.
@@ -102,11 +102,31 @@ RoomPlan이 처리된 방 결과를 전달하는 시점은 [Apple의 captureView
 - **이전 판단 정정:** 기존 공개 Challenge의 “실제 방으로 실행하기” Section이 빠진다는 관찰은 이번 새 브라우저 세션에서 재현되지 않았습니다. 기존 두 Section과 흐름도가 실제로 표시되었습니다. 원인은 확정하지 않았고 화면 코드를 수정하지 않았습니다.
 - 이번 차례에는 Xcode 빌드, 단계별 앱 재실행, LiDAR 실기기 스캔을 새로 수행하지 않았습니다. 문서 검사나 정적 코드 일치를 실기기 성공으로 보고하지 않습니다.
 
+## Main 설명 개선 반영 결과
+
+시작점: `8e95552`의 깨끗한 작업 트리. 승인받은 설명 보강을 하나의 기능 단위로 적용했습니다.
+
+- Overview와 Main에 선행 지식·Simulator 진행 조건을 추가하고, Starter 제공 기능과 학습자 구현 범위를 구분했습니다.
+- Section 1의 방 구조 설명과 Preview 대체 텍스트를 일치시켰습니다.
+- Section 2에 category별 개수와 목록 스크롤 안내, Section 3에 아직 Highlight가 없어도 정상이라는 안내를 넣었습니다.
+- Section 5 도입부에 `async`·`await`·`throws`·`try`와 로딩 뒤 선택 재확인의 이유를 설명했습니다. 실제 장면 변경과 dictionary·교체 상태 갱신을 구분하고, 모델의 비율 유지·바닥 정렬·여백을 설명했습니다.
+- 사용자 지정 mapping을 Recap으로 덮어쓰지 않게 안내하고, Bonus에 90도·local Y축·네 번 후 원위치를 짧게 해설했습니다.
+- Section 5 교체 전 예시 두 곳은 배포 Starter의 주석과 정확히 맞췄습니다. 실행 코드는 바꾸지 않았습니다.
+- DocC의 Step은 지시 문단 하나와 선택적 캡션 문단 하나만 허용하므로, 별도 개념 설명은 Section 도입부에 배치했습니다. 최종 엄격 빌드에서 설명 누락 진단이 없는 것을 확인했습니다.
+
+### 이번 반영의 검증
+
+- `python3 -m unittest discover -s tests -v`: **16/16 통과**. 새 Main 검사 4개는 Starter부터 완성 코드까지의 연결, Recap, 기존 학습 구조·Preview, 새 설명과 실제 샘플 개수를 검사합니다.
+- 교체 전 코드 예시는 이제 **주석까지 9/9 일치**합니다. 이를 순서대로 적용한 두 학습 파일은 공백·주석을 제외하면 현재 완성 앱과 일치합니다.
+- **6 Sections · 25 Steps · 9개 실행 Preview · 3개 Recap · 80분**을 그대로 유지했습니다. URL, ZIP, asset, 스타일도 변경하지 않았습니다.
+- DocC `--analyze --warnings-as-errors`와 Pages용 후처리 통과. 로컬 브라우저에서 Overview, Main 도입부, Section 1·5의 설명/코드/Preview 표시를 확인했고, Main 콘솔 오류·경고는 관찰되지 않았습니다.
+- 앱 실행 코드를 변경하지 않아 이번에도 Xcode 빌드나 Simulator·LiDAR 실기기 재실행은 하지 않았습니다. 선택적 퀴즈와 신규 캡처는 추가하지 않았습니다.
+
 ## 인계 상태
 
 - Challenge 변경은 `215d1c0`에 로컬 커밋했습니다.
-- 이 검토 문서는 별도 로컬 체크포인트로 남깁니다.
-- 원격 push·Pages 배포는 이번 작업에서 하지 않습니다. 공개 사이트에는 아직 이번 Challenge 보강이 반영되지 않습니다.
-- 다음 수정의 추천 범위는 위 1~4번 설명 보강입니다. 앱 로직·3D asset·웹 디자인을 다시 만들 필요는 없습니다.
+- 최초 검토 보고서는 `8e95552`에 별도 로컬 커밋했습니다. 후속 Main 설명·예시 주석·관련 검사와 이 반영 기록은 하나의 로컬 체크포인트로 묶습니다.
+- 원격 push·Pages 배포는 하지 않았습니다. 공개 사이트에는 아직 이번 Challenge와 Main 설명 보강이 반영되지 않습니다.
+- 변경 범위는 학습 설명과 문서 정합성입니다. 앱 로직·3D asset·웹 디자인을 다시 만들지 않았습니다.
 
 경로 안내: 위 `Tutorials/`와 `Resources/Code/`는 `RoomPlanExampleApp/RoomPlanObjectExplorer.docc/` 기준입니다. 앱 소스는 `RoomPlanExampleApp/` 아래에 있습니다.
