@@ -67,4 +67,17 @@ Challenge의 목록·선택 Step은 기존 `v6-section4-all-boxes.png`와
   Challenge의 읽기 코드 Preview 표시 및 열기/닫기도 확인했습니다. 14개 SVG의 텍스트 경계 검사를 수행했습니다.
 - 앱 Swift 코드, Chair USDZ, 기존 캡처, 실습 ZIP, 사이트 스타일은 변경하지 않았습니다.
   이번 작업에서 앱 빌드·실기기 스캔·모바일 화면 검증을 새로 수행한 것은 아닙니다.
-- 이번 시각화 변경은 로컬 체크포인트 대상입니다. 공개 사이트 반영은 별도 push·배포가 필요합니다.
+- 위 검증 당시에는 로컬 체크포인트 상태였습니다. 이후 공개 반영 결과는 아래에 기록합니다.
+
+## 공개 배포 완료 — 2026-09-06
+
+- 시각화 소스 `649e1ca`를 기존 `main`에 반영했습니다.
+- Xcode `docbuild` 성공. 별도 임시 DerivedData를 사용했고 서명·Simulator 실행은 하지 않았습니다.
+- 공개 파일 커밋: `6dbf077`. 기존 `gh-pages` 위에 overlay하여 예전 route를 삭제하지 않았습니다.
+- [Pages 배포 34038986776](https://github.com/woozy-A/2026TechMap_tutorial/actions/runs/34038986776): build·deploy 성공.
+- 공개 문서·이미지·실습 ZIP 40개 모두 HTTP 200이며 배포 파일과 SHA-256이 같습니다.
+  새 SVG 14개는 검증한 소스와 동일하며, Main·Bonus 25/25 및 Challenge 9/9 Step의 미디어 연결을 확인했습니다.
+- 새 공개 브라우저에서 Section 5의 파일 추가 작업 그림이 본문 옆에 표시되는 것을 확인했습니다.
+- 기존 이미지·CSS·JavaScript·실습 ZIP은 변경하지 않았습니다. JSON의 실질적 내용 변경은 Main과 Challenge뿐이며,
+  나머지 JSON 136개는 직렬화 순서 차이입니다. 한국어·다크 소개·라이트 학습 화면을 유지한 HTML은 138개입니다.
+- [Section 5 바로 보기](https://woozy-a.github.io/2026TechMap_tutorial/tutorials/roomplanexampleapp/01-getcapturedroom/#Section-5-Add-and-Place-a-3D-Asset)
