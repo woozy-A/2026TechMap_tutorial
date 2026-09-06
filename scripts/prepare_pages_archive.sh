@@ -56,11 +56,13 @@ fi
 # metadata from the static render data so the Overview doesn't show "0min".
 if [[ -d "$archive_path/data" ]]; then
   while IFS= read -r -d '' data_file; do
-    perl -0pi -e 's/,"estimatedTime":"0min"//g' "$data_file"
+    # DocC does not guarantee object-key order. Cover first, middle, last,
+    # and sole properties, including whitespace, without leaving a comma.
+    perl -0pi -e 's/"estimatedTime"\s*:\s*"0min"\s*,\s*//g; s/,\s*"estimatedTime"\s*:\s*"0min"//g; s/"estimatedTime"\s*:\s*"0min"//g' "$data_file"
   done < <(find "$archive_path/data" -type f -name '*.json' -print0)
 fi
 
-if grep -R -q '"estimatedTime":"0min"' "$archive_path/data"; then
+if grep -R -Eq '"estimatedTime"[[:space:]]*:[[:space:]]*"0min"' "$archive_path/data"; then
   echo "error: optional zero-minute metadata remains in the static render data" >&2
   exit 65
 fi
