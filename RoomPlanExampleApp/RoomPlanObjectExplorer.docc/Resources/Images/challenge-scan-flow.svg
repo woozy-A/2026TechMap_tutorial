@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="780" viewBox="0 0 1440 780" role="img" aria-labelledby="title desc">
+  <title id="title">실제 방 스캔에서 Object Explorer까지</title>
+  <desc id="desc">실제 기기 캡처가 아닌 설명용 흐름도. 방 스캔 후 Done을 누르면 CapturedRoom이 전달되고 객체 목록과 3D box가 연결됩니다.</desc>
+  <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="none" stroke="#0071e3" stroke-width="1.5"/></marker></defs>
+  <rect width="1440" height="780" rx="32" fill="#f5f5f7"/>
+  <g font-family="-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo',sans-serif">
+    <text x="64" y="82" fill="#1d1d1f" font-size="34" font-weight="650">Scan → CapturedRoom → Explore</text>
+    <rect x="1050" y="45" width="325" height="48" rx="24" fill="#e4eaf2"/>
+    <text x="1212" y="77" fill="#38465b" font-size="21" text-anchor="middle">설명용 흐름도 · 실제 캡처 아님</text>
+    <g fill="#fff" stroke="#d2d2d7" stroke-width="2">
+      <rect x="64" y="148" width="382" height="460" rx="24"/>
+      <rect x="528" y="148" width="382" height="460" rx="24"/>
+      <rect x="992" y="148" width="382" height="460" rx="24"/>
+    </g>
+    <g fill="#0071e3" font-size="20" font-weight="650"><text x="94" y="194">01 · 실제 기기</text><text x="558" y="194">02 · 결과 전달</text><text x="1022" y="194">03 · 같은 Explorer</text></g>
+    <g fill="#1d1d1f" font-size="28" font-weight="650"><text x="94" y="236">Scan Your Own Room</text><text x="558" y="236">Done → CapturedRoom</text><text x="1022" y="236">목록 · 3D · Highlight</text></g>
+    <g fill="none" stroke="#91a3b7" stroke-width="4" stroke-linejoin="round">
+      <path d="M140 425V315L255 275L370 315V425L255 478Z M140 315L255 356L370 315 M255 356V478"/>
+    </g>
+    <path d="M178 400V360L215 346L248 358V400L215 414Z" fill="#b4eaf3" stroke="#42bdd5" stroke-width="2"/>
+    <rect x="175" y="510" width="160" height="48" rx="24" fill="#0071e3"/><text x="255" y="542" text-anchor="middle" fill="#fff" font-size="23">Done</text>
+    <g font-family="ui-monospace,Menlo,monospace" font-size="24" fill="#38465b"><text x="570" y="334">objects</text><text x="595" y="383">identifier</text><text x="595" y="424">category</text><text x="595" y="465">dimensions</text><text x="595" y="506">transform</text></g>
+    <g fill="#edf3f8"><rect x="1022" y="280" width="322" height="168" rx="14"/><rect x="1022" y="464" width="322" height="96" rx="14"/></g>
+    <path d="M1080 385L1160 316L1277 350L1213 421Z" fill="#fff" stroke="#91a3b7" stroke-width="3"/>
+    <path d="M1157 365V339L1184 327L1213 341V370L1185 382Z" fill="#fa8bb7" stroke="#ce4580" stroke-width="2"/>
+    <text x="1044" y="502" fill="#1d1d1f" font-size="22">선택한 object</text>
+    <text x="1044" y="538" fill="#64646a" font-size="19">같은 UUID의 box만 강조</text>
+    <path d="M465 376H503" stroke="#0071e3" stroke-width="4" marker-end="url(#arrow)"/>
+    <path d="M929 376H967" stroke="#0071e3" stroke-width="4" marker-end="url(#arrow)"/>
+    <text x="64" y="672" fill="#1d1d1f" font-size="25" font-weight="600">확인할 것: Done 뒤 Explorer 열림 → 내 방의 목록과 box → 선택한 객체 Highlight</text>
+    <text x="64" y="718" fill="#64646a" font-size="22">객체 수와 category는 공간·스캔 품질에 따라 달라집니다. LiDAR 실제 기기가 없으면 건너뛰어도 됩니다.</text>
+  </g>
+</svg>

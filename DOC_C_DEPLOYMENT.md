@@ -335,4 +335,6 @@ release asset:
 
 첫 hotfix는 static HTML의 `data-color-scheme`을 light로 고정했지만, DocC Overview가 light mode에서도 별도의 검정 `tutorials-overview` 색상 변수를 사용한다는 점을 놓쳤다. 2026-08-19 공개 URL을 다시 확인한 결과 `bodyColorScheme=light`이어도 Overview body background은 `rgb(0, 0, 0)`으로 남아 있었다.
 
-현재 source의 `prepare_pages_archive.sh`는 DocC client보다 먼저 light preference를 설정하고, Overview·Tutorial Hero 색상 변수를 흰 배경과 어두운 글자로 override한다. 1251px 이상에서는 Overview 본문을 왼쪽 정렬하고 한 개뿐인 chapter navigation을 숨겨 큰 모니터의 불필요한 중앙 여백을 줄이며, 1250px 이하와 일반 Tutorial page의 native layout은 유지한다. Further Exploration Article은 Main에 포함되지 않는 선택 자료이므로 source에서는 DocC가 요구하는 `time: 0`을 사용하고, static render data에서는 생성된 `0min` metadata를 제거해 Overview와 Main Tutorial 예상 시간을 모두 80분으로 맞춘다. 배포 전에는 Xcode `docbuild`, static index 변환·guard, 공개 URL을 다시 검증해야 한다.
+이후 디자인은 업데이트되었다. 현재 `prepare_pages_archive.sh`는 light preference를 기본으로 설정하되 Overview·Tutorial·Article의 소개 영역에는 어두운 브랜드 배경과 밝은 글자, 색상 구분선을 적용한다. 학습 본문은 밝은 배경을 유지한다. Overview는 넓은 화면에서 텍스트·결과 이미지를 나란히 배치하고, 좁은 화면에서는 세로로 배치한다. 실제 breakpoint와 스타일의 source of truth는 이 스크립트이며, 과거 배포 기록의 색상·폭 수치를 현재 사양으로 사용하지 않는다.
+
+Further Exploration Article은 Main에 포함되지 않는 선택 자료이므로 source에서는 DocC가 요구하는 `time: 0`을 사용하고, static render data에서는 생성된 `0min` metadata를 제거해 Overview와 Main Tutorial 예상 시간을 모두 80분으로 맞춘다. 배포 전에는 DocC 경고 검사, static index 변환·guard, 데스크톱·모바일 렌더와 공개 URL을 다시 검증해야 한다.

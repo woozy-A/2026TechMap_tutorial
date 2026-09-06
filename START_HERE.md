@@ -17,12 +17,12 @@ RoomPlan, RealityKit, LiDAR / AR 개발, 3D 모델 제작, USDZ 구조에 대한
 
 ## 시작하기
 
-1. 공개 Tutorial URL을 열고 **스캔된 객체를 탐색하고 3D로 연결하기**를 선택합니다.
+1. 공개 Tutorial URL을 열고 **RoomPlan Object Explorer 만들기**를 선택합니다.
 2. 페이지 첫 단계의 안내대로 Starter ZIP을 압축 해제합니다.
 3. `RoomPlanExampleApp.xcodeproj`를 Xcode에서 엽니다.
 4. 필요하면 Signing & Capabilities에서 자신의 Development Team과 고유 Bundle Identifier를 선택합니다.
 5. Tutorial의 행동 순서대로 파일을 찾고 코드를 직접 입력합니다.
-6. 각 Section이 끝날 때마다 `Command-R`로 실행하고 코드 옆 Result Preview와 실제 화면을 비교합니다.
+6. 실행 체크포인트마다 `Command-R`로 실행하고 결과 Preview와 실제 화면을 비교합니다. 넓은 화면에서는 코드 옆 Preview를 펼치고, 좁은 화면에서는 코드 아래로 스크롤합니다. Recap은 관련 코드만 모은 요약이므로 별도 Preview가 없습니다.
 
 Main Tutorial은 Simulator에서 진행할 수 있고 LiDAR가 필요하지 않습니다.
 
