@@ -122,7 +122,7 @@ RoomPlan이 처리된 방 결과를 전달하는 시점은 [Apple의 captureView
 - DocC `--analyze --warnings-as-errors`와 Pages용 후처리 통과. 로컬 브라우저에서 Overview, Main 도입부, Section 1·5의 설명/코드/Preview 표시를 확인했고, Main 콘솔 오류·경고는 관찰되지 않았습니다.
 - 앱 실행 코드를 변경하지 않아 이번에도 Xcode 빌드나 Simulator·LiDAR 실기기 재실행은 하지 않았습니다. 선택적 퀴즈와 신규 캡처는 추가하지 않았습니다.
 
-## 인계 상태
+## 배포 전 인계 상태 (이전 기록)
 
 - Challenge 변경은 `215d1c0`에 로컬 커밋했습니다.
 - 최초 검토 보고서는 `8e95552`에 별도 로컬 커밋했습니다. 후속 Main 설명·예시 주석·관련 검사와 이 반영 기록은 하나의 로컬 체크포인트로 묶습니다.
@@ -130,3 +130,14 @@ RoomPlan이 처리된 방 결과를 전달하는 시점은 [Apple의 captureView
 - 변경 범위는 학습 설명과 문서 정합성입니다. 앱 로직·3D asset·웹 디자인을 다시 만들지 않았습니다.
 
 경로 안내: 위 `Tutorials/`와 `Resources/Code/`는 `RoomPlanExampleApp/RoomPlanObjectExplorer.docc/` 기준입니다. 앱 소스는 `RoomPlanExampleApp/` 아래에 있습니다.
+
+## 공개 배포 완료 — 2026-09-06
+
+- 사용자 승인 후 위 세 로컬 커밋을 `origin/main`에 일반 push했습니다. 배포에 사용한 소스는 `ae14a8baaff40ca452d1283f560f117073fa54c0`입니다.
+- Pages 커밋은 `e81f7f2e624fbf3062790fb02a37f018edbf0844`입니다. [GitHub Pages 실행 34033960099](https://github.com/woozy-A/2026TechMap_tutorial/actions/runs/34033960099)의 build·deploy가 모두 성공했습니다.
+- 배포 직전 자동 검사 **16/16**, DocC `--analyze --warnings-as-errors`, Xcode 26.6의 generic iOS `docbuild`가 통과했습니다. 최초 샌드박스 빌드는 플랫폼 서비스 접근 문제로 실패했지만, 승인된 재실행에서 앱 컴파일·리소스 처리·문서 빌드가 성공했습니다. 코드 서명이나 앱 설치는 수행하지 않았습니다.
+- 전체 Xcode DocC archive에 기존 Pages 후처리를 적용하고 기존 파일을 삭제하지 않는 방식으로 반영했습니다. 한국어·라이트 학습 화면·다크 소개 영역을 유지한 HTML은 **138개**입니다. JSON 134개의 차이는 키 직렬화 순서뿐이며, 실제 내용 변경은 Main·Challenge·Overview와 이들의 공통 탐색 참조가 있는 Further Exploration입니다.
+- 사이트 루트와 기존 튜토리얼 주소 4개가 HTTP 200입니다. 이 HTML 5개와 공개 튜토리얼 JSON 4개의 SHA-256이 배포 파일과 일치합니다. 따라서 단순히 배포 작업이 끝난 상태를 넘어 새 내용이 공개 서버에 반영됐음을 확인했습니다.
+- Main **6 Sections · 25 Steps · 9개 실행 Preview**, Challenge **3 Sections · 9 Steps**를 확인했습니다. 두 페이지의 이미지·실습 자료 URL **19개가 모두 HTTP 200**이며, `RoomPlanTutorialMaterials-v2.7.zip`은 기존 파일과 동일한 SHA-256 `2c5949016ac4571790e59111fc2b7a2c91a2a4fdd88537fbd440fe12cd701ab9`입니다.
+- 새 브라우저 탭에서 공개 Overview → Main → Challenge를 이동했습니다. Overview의 선행 지식, Main의 Starter 역할·Section 5 설명, Challenge의 3개 Section과 완료 기준을 확인했고, Main·Challenge 콘솔 오류·경고는 관찰되지 않았습니다.
+- 기존 [Overview 주소](https://woozy-a.github.io/2026TechMap_tutorial/tutorials/roomplanobjectexplorer/)를 계속 사용합니다. 기존 디자인·이미지·USDZ·실습 ZIP을 변경하지 않았습니다. Simulator나 LiDAR 실기기를 새로 실행한 검증은 아닙니다.
