@@ -1,7 +1,8 @@
-# Chair v2 / Tutorial Materials v2.7 — local checkpoint
+# Chair v2 / Tutorial Materials v2.7 — published checkpoint
 
-검증일: 2026-09-06. **로컬 수정·검증 완료, 아직 push / Pages 배포하지 않음.**
+검증일: 2026-09-06. **main push / GitHub Pages 배포 / 공개 사이트 검증 완료.**
 기존 공개 URL과 v2.6 / Chair v1 release ZIP은 변경하지 않았다.
+이번 배포에서는 추가 3D 모델 수정 없이 검증된 Chair v2를 그대로 반영했다.
 
 ## 바뀐 것
 
@@ -32,7 +33,21 @@
   모델 바닥 y는 부동소수 오차 범위 내 0(-0.000000019 m).
 - DocC `--analyze --warnings-as-errors` 성공. 기본 다운로드 로컬 HTTP 수신 해시 일치.
 - 자동 검사 9개 통과: ZIP 내용·manifest·재현성·Starter 무변경 입력·캐시 제외·문서 안내·배포 스크립트.
-- 배포 후 공용 CDN에서 다시 확인해야 한다. 현재 확인한 것은 로컬 생성본이다.
+- 공개 사이트의 기존 튜토리얼 경로 4곳이 HTTP 200으로 응답했다.
+- 공용 CDN의 문서 JSON 3개, Materials ZIP, 의자 렌더·프리뷰 5개, Challenge 흐름도까지
+  총 10개 파일의 SHA-256이 검증된 로컬 배포본과 일치했다.
+- Chrome에서 소개 화면 → Get started → Main 연결과 Project files v2.7 링크를 확인했다.
+  어두운 소개 영역·구분선·80분 표시는 유지됐다.
+
+## 배포 기록
+
+- 콘텐츠 기준 main 커밋: `dc2c8bc66c4d08f9f598998189e136262f850eb1`
+- Pages 커밋: `46a94b92ed7b3a39c8054e0e0460d6c8a49d22e5`
+- [GitHub Pages 실행 34031841853 — 성공](https://github.com/woozy-A/2026TechMap_tutorial/actions/runs/34031841853)
+- [기존 튜토리얼 주소](https://woozy-a.github.io/2026TechMap_tutorial/tutorials/roomplanobjectexplorer/)
+- [Materials v2.7 다운로드](https://woozy-a.github.io/2026TechMap_tutorial/downloads/com.example.apple-samplecode.RoomPlanObjectExplorer/RoomPlanTutorialMaterials-v2.7.zip)
+- 배포 직전 자동 검사 9/9, Xcode docbuild, DocC analyze warnings-as-errors 통과.
+- 기존 gh-pages에 덮어쓰되 기존 경로 삭제나 force push 없이 배포했다.
 
 ## 재생성
 
