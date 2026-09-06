@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="680" viewBox="0 0 1000 680" role="img" aria-labelledby="title desc">
+  <title id="title">스캔할 때 할 일</title>
+  <desc id="desc">첫 화면에서 Scan Your Own Room을 누르고 카메라를 허용합니다. LiDAR 지원과 안전한 실내 환경을 확인하고 벽과 가구를 천천히 살펴봅니다. 설명용 도식이며 실제 앱이나 Xcode 캡처가 아닙니다.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M1 1L7 4.5L1 8" fill="none" stroke="#0071e3" stroke-width="1.5"/>
+    </marker>
+  </defs>
+  <rect width="1000" height="680" rx="24" fill="#f5f5f7"/>
+  <g font-family="-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo',sans-serif">
+    <text x="44" y="65" font-size="31" fill="#1d1d1f" font-weight="650" text-anchor="start">스캔할 때 할 일</text>
+    <rect x="660" y="28" width="296" height="44" rx="22" fill="#e5edf6" stroke="none" stroke-width="2"/>
+    <text x="808" y="57" font-size="19" fill="#33465c" font-weight="500" text-anchor="middle">설명용 도식 · 실제 캡처 아님</text>
+    <rect x="44" y="126" width="425" height="420" rx="18" fill="#fff" stroke="#dce2e9" stroke-width="2"/>
+    <circle cx="79" cy="169" r="21" fill="#0071e3"/>
+    <text x="79" y="177" font-size="24" fill="#fff" font-weight="600" text-anchor="middle">1</text>
+    <text x="112" y="179" font-size="25" fill="#1d1d1f" font-weight="600" text-anchor="start">Scan Your Own Room</text>
+    <path d="M255 213V252" fill="none" stroke="#0071e3" stroke-width="3" marker-end="url(#arrow)"/>
+    <text x="255" y="295" font-size="27" fill="#1d1d1f" font-weight="600" text-anchor="middle">카메라 접근 허용</text>
+    <rect x="70" y="335" width="374" height="158" rx="18" fill="#eaf3ff" stroke="none" stroke-width="2"/>
+    <text x="93" y="376" font-size="23" fill="#33465c" font-weight="400" text-anchor="start">LiDAR Required가 보이나요?</text>
+    <text x="93" y="411" font-size="23" fill="#33465c" font-weight="400" text-anchor="start">진행 중지 → Sample Room</text>
+    <text x="93" y="446" font-size="23" fill="#33465c" font-weight="400" text-anchor="start">지원 기기에서만 실제 스캔</text>
+    <rect x="493" y="126" width="463" height="420" rx="18" fill="#fff" stroke="#dce2e9" stroke-width="2"/>
+    <circle cx="527" cy="169" r="21" fill="#0071e3"/>
+    <text x="527" y="177" font-size="24" fill="#fff" font-weight="600" text-anchor="middle">2</text>
+    <text x="563" y="179" font-size="26" fill="#1d1d1f" font-weight="600" text-anchor="start">벽과 가구를 천천히</text>
+    <path d="M566 404V279L713 222L868 279V404L713 463Z M566 279L713 340L868 279 M713 340V463" fill="none" stroke="#92a5ba" stroke-width="3"/>
+    <path d="M613 381V340L657 321L703 341V383L657 401Z" fill="#b8edf4" stroke="#4ab4c9" stroke-width="2"/>
+    <path d="M588 483Q716 532 858 466" fill="none" stroke="#0071e3" stroke-width="3" marker-end="url(#arrow)"/>
+    <text x="720" y="432" font-size="23" fill="#33465c" font-weight="500" text-anchor="middle">안전한 이동 경로</text>
+    <path d="M44 580H956" stroke="#dce2e9" stroke-width="2"/>
+    <text x="44" y="622" font-size="25" fill="#1d1d1f" font-weight="600" text-anchor="start">공유해도 되는 안전한 실내에서 진행하세요.</text>
+    <text x="44" y="656" font-size="21" fill="#515d6b" font-weight="400" text-anchor="start">사람·주소·개인 물건이 드러나는 실제 캡처는 공개하지 않습니다.</text>
+  </g>
+</svg>

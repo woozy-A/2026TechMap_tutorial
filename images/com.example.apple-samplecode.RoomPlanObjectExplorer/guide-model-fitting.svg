@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="680" viewBox="0 0 1000 680" role="img" aria-labelledby="title desc">
+  <title id="title">모양 유지 · 바닥 맞춤</title>
+  <desc id="desc">세 축 중 가장 작은 배율을 공통 적용해 모델 비율을 유지합니다. 중심은 X와 Z축에서 맞추고 바닥은 추정 box 아래쪽에 맞추므로 여백이 생길 수 있습니다. 설명용 도식이며 실제 앱이나 Xcode 캡처가 아닙니다.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M1 1L7 4.5L1 8" fill="none" stroke="#0071e3" stroke-width="1.5"/>
+    </marker>
+  </defs>
+  <rect width="1000" height="680" rx="24" fill="#f5f5f7"/>
+  <g font-family="-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo',sans-serif">
+    <text x="44" y="65" font-size="31" fill="#1d1d1f" font-weight="650" text-anchor="start">모양 유지 · 바닥 맞춤</text>
+    <rect x="660" y="28" width="296" height="44" rx="22" fill="#e5edf6" stroke="none" stroke-width="2"/>
+    <text x="808" y="57" font-size="19" fill="#33465c" font-weight="500" text-anchor="middle">설명용 도식 · 실제 캡처 아님</text>
+    <text x="214" y="151" font-size="27" fill="#1d1d1f" font-weight="600" text-anchor="middle">새 USDZ</text>
+    <text x="711" y="151" font-size="27" fill="#1d1d1f" font-weight="600" text-anchor="middle">RoomPlan의 추정 box</text>
+    <g transform="translate(142 239) scale(1.02)" stroke="#49616e" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="35" y="0" width="68" height="98" rx="17" fill="#84b8c9"/>
+      <path d="M67 96v14 M16 88v24 M122 88v24"/>
+      <path d="M4 86h26 M108 86h27"/>
+      <rect x="12" y="106" width="116" height="22" rx="10" fill="#84b8c9"/>
+      <path d="M70 131v64 M70 185L12 216 M70 185L127 216 M70 185v33" fill="none"/>
+      <g fill="#49616e">
+        <circle cx="12" cy="220" r="6"/>
+        <circle cx="70" cy="220" r="6"/>
+        <circle cx="127" cy="220" r="6"/>
+      </g>
+    </g>
+    <path d="M348 333H493" fill="none" stroke="#0071e3" stroke-width="3" marker-end="url(#arrow)"/>
+    <text x="419" y="294" font-size="24" fill="#0060c0" font-weight="600" text-anchor="middle">같은 배율</text>
+    <text x="419" y="384" font-size="24" fill="#515d6b" font-weight="400" text-anchor="middle">x · y · z</text>
+    <rect x="552" y="187" width="318" height="332" rx="4" fill="#eaf3ff" stroke="#0071e3" stroke-width="2" stroke-dasharray="9 7"/>
+    <g transform="translate(640 259) scale(1.15)" stroke="#49616e" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="35" y="0" width="68" height="98" rx="17" fill="#84b8c9"/>
+      <path d="M67 96v14 M16 88v24 M122 88v24"/>
+      <path d="M4 86h26 M108 86h27"/>
+      <rect x="12" y="106" width="116" height="22" rx="10" fill="#84b8c9"/>
+      <path d="M70 131v64 M70 185L12 216 M70 185L127 216 M70 185v33" fill="none"/>
+      <g fill="#49616e">
+        <circle cx="12" cy="220" r="6"/>
+        <circle cx="70" cy="220" r="6"/>
+        <circle cx="127" cy="220" r="6"/>
+      </g>
+    </g>
+    <path d="M529 519H901" stroke="#208166" stroke-width="4"/>
+    <text x="710" y="554" font-size="24" fill="#17664f" font-weight="600" text-anchor="middle">box 아래쪽에 바닥 정렬</text>
+    <text x="710" y="225" font-size="23" fill="#0060c0" font-weight="500" text-anchor="middle">남는 공간은 정상</text>
+    <text x="88" y="526" font-size="22" fill="#515d6b" font-weight="400" text-anchor="start">정면에서 본 크기 비교 도식</text>
+    <path d="M44 580H956" stroke="#dce2e9" stroke-width="2"/>
+    <text x="44" y="622" font-size="25" fill="#1d1d1f" font-weight="600" text-anchor="start">늘려 찌그러뜨리지 않고, box 안에 들어오도록 맞춥니다.</text>
+    <text x="44" y="656" font-size="21" fill="#515d6b" font-weight="400" text-anchor="start">배율 = min(x 비율, y 비율, z 비율) · 실제 model마다 여백은 달라집니다.</text>
+  </g>
+</svg>

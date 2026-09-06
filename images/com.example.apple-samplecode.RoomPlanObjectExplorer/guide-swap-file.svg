@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="680" viewBox="0 0 1000 680" role="img" aria-labelledby="title desc">
+  <title id="title">방법 A · 파일 내용만 교체</title>
+  <desc id="desc">새 모델을 Chair.usdz로 이름 바꾸고 기존 파일을 교체합니다. resourceName Chair와 category mapping은 그대로 유지합니다. 설명용 도식이며 실제 앱이나 Xcode 캡처가 아닙니다.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M1 1L7 4.5L1 8" fill="none" stroke="#0071e3" stroke-width="1.5"/>
+    </marker>
+  </defs>
+  <rect width="1000" height="680" rx="24" fill="#f5f5f7"/>
+  <g font-family="-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo',sans-serif">
+    <text x="44" y="65" font-size="31" fill="#1d1d1f" font-weight="650" text-anchor="start">방법 A · 파일 내용만 교체</text>
+    <rect x="660" y="28" width="296" height="44" rx="22" fill="#e5edf6" stroke="none" stroke-width="2"/>
+    <text x="808" y="57" font-size="19" fill="#33465c" font-weight="500" text-anchor="middle">설명용 도식 · 실제 캡처 아님</text>
+    <rect x="44" y="121" width="410" height="418" rx="18" fill="#fff" stroke="#dce2e9" stroke-width="2"/>
+    <text x="249" y="166" font-size="27" fill="#1d1d1f" font-weight="600" text-anchor="middle">새로 받은 모델</text>
+    <path d="M187 204h90l34 34v108h-124z" fill="#e9f5f0" stroke="#0071e3" stroke-width="2"/>
+    <path d="M277 204v34h34" fill="none" stroke="#0071e3" stroke-width="2"/>
+    <text x="249" y="291" font-size="25" fill="#0060c0" font-weight="650" text-anchor="middle">USDZ</text>
+    <text x="249" y="386" font-size="25" fill="#1d1d1f" font-weight="600" text-anchor="middle">MyChair.usdz</text>
+    <text x="249" y="463" font-size="24" fill="#515d6b" font-weight="400" text-anchor="middle">파일 이름 바꾸기</text>
+    <path d="M471 292H515" fill="none" stroke="#0071e3" stroke-width="3" marker-end="url(#arrow)"/>
+    <rect x="542" y="121" width="414" height="418" rx="18" fill="#fff" stroke="#dce2e9" stroke-width="2"/>
+    <text x="749" y="166" font-size="27" fill="#1d1d1f" font-weight="600" text-anchor="middle">프로젝트 · Resources</text>
+    <path d="M687 204h90l34 34v108h-124z" fill="#e5f1ff" stroke="#0071e3" stroke-width="2"/>
+    <path d="M777 204v34h34" fill="none" stroke="#0071e3" stroke-width="2"/>
+    <text x="749" y="291" font-size="25" fill="#0060c0" font-weight="650" text-anchor="middle">USDZ</text>
+    <text x="749" y="386" font-size="25" fill="#1d1d1f" font-weight="600" text-anchor="middle">Chair.usdz</text>
+    <text x="749" y="463" font-size="23" fill="#515d6b" font-weight="400" text-anchor="middle">기존 Chair.usdz를 이 파일로 교체</text>
+    <path d="M44 580H956" stroke="#dce2e9" stroke-width="2"/>
+    <text x="44" y="622" font-size="25" fill="#1d1d1f" font-weight="600" text-anchor="start">유지할 코드: resourceName: "Chair"</text>
+    <text x="44" y="656" font-size="21" fill="#515d6b" font-weight="400" text-anchor="start">같은 이름의 파일을 중복 추가하지 않고, 교체 후 target 소속을 확인합니다.</text>
+  </g>
+</svg>
