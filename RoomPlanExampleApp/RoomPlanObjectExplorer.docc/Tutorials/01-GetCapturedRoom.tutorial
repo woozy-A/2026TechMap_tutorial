@@ -1,4 +1,4 @@
-@Tutorial(time: 80) {
+@Tutorial(time: 80, projectFiles: "RoomPlanTutorialMaterials-v2.7.zip") {
     @Intro(title: "RoomPlan Object Explorer 만들기") {
         Starter Project에 짧은 코드를 차례로 입력하면서 `CapturedRoom`의 객체를 목록화하고, 선택한 객체를 3D 공간에서 찾은 뒤 직접 추가한 USDZ model로 교체합니다.
 
@@ -6,7 +6,7 @@
 
         **Bonus:** `Replacement Entity → 90° Rotation`
 
-        [Starter Project v2.6 ZIP 다운로드](https://github.com/woozy-A/2026TechMap_tutorial/releases/download/tutorial-docc-v6/RoomPlanTutorialStarter-v2.6.zip)
+        **실습 자료:** 아래 다운로드 아이콘 **Project files**로 Starter 코드와 Chair v2를 함께 받으세요. 압축 안의 `Starter`로 시작하고, `Assets/Chair.usdz`는 Section 5에서 직접 앱에 추가합니다. Starter 앱 코드는 검증된 v2.6과 같습니다.
     }
 
     @Section(title: "Section 1 — Get a CapturedRoom") {
@@ -24,7 +24,7 @@
 
         @Steps {
             @Step {
-                위의 ZIP을 다운로드해 압축을 풀고 `RoomPlanExampleApp.xcodeproj`를 Xcode에서 여세요. scheme은 **RoomPlanExampleApp**, destination은 iOS 17 이상의 iPhone Simulator로 정합니다. `Command-R`로 실행해 **Explore Sample Room**을 누르고 **Start Part 1** 안내를 확인한 뒤, **OK**와 `Command-.`을 차례로 눌러 실행을 멈춥니다.
+                상단 **Project files**에서 실습 자료 ZIP을 받아 압축을 풀고 `Starter/RoomPlanExampleApp.xcodeproj`를 Xcode에서 여세요. scheme은 **RoomPlanExampleApp**, destination은 iOS 17 이상의 iPhone Simulator로 정합니다. `Command-R`로 실행해 **Explore Sample Room**을 누르고 **Start Part 1** 안내를 확인한 뒤, **OK**와 `Command-.`을 차례로 눌러 실행을 멈춥니다.
             }
 
             @Step {
@@ -142,7 +142,7 @@
 
         @Steps {
             @Step {
-                [Sample Chair Asset ZIP](https://github.com/woozy-A/2026TechMap_tutorial/releases/download/tutorial-docc-v6/RoomPlanFurnitureAsset-Chair-v1.zip)을 다운로드해 압축을 푸세요. Xcode Project Navigator에서 `RoomPlanExampleApp`의 `Resources`를 선택하고 `Chair.usdz`를 끌어 놓은 뒤 **Copy items if needed**와 **RoomPlanExampleApp target**을 체크합니다.
+                Section 1에서 받은 실습 자료의 `Assets/Chair.usdz`를 찾으세요. 이것이 소개 이미지와 같은 **Original Office Chair v2**입니다. Xcode Project Navigator에서 `RoomPlanExampleApp`의 `Resources`를 선택하고 `Chair.usdz`를 끌어 놓은 뒤 **Copy items if needed**와 **RoomPlanExampleApp target**을 체크합니다.
 
                 이 동작은 3D 파일을 앱 bundle에 넣습니다. 파일명이 `Chair.usdz`인지, File Inspector의 Target Membership에 `RoomPlanExampleApp`이 선택됐는지 확인하세요.
             }

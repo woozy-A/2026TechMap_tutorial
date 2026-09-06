@@ -13,12 +13,13 @@ RoomPlan, RealityKit, LiDAR / AR 개발, 3D 모델 제작, USDZ 구조에 대한
 
 - 공개 Tutorial: <https://woozy-a.github.io/2026TechMap_tutorial/tutorials/roomplanobjectexplorer/>
 - Starter ZIP: <https://github.com/woozy-A/2026TechMap_tutorial/releases/download/tutorial-docc-v6/RoomPlanTutorialStarter-v2.6.zip>
-- Sample Chair Asset ZIP: <https://github.com/woozy-A/2026TechMap_tutorial/releases/download/tutorial-docc-v6/RoomPlanFurnitureAsset-Chair-v1.zip>
+- 최신 실습 자료: Main 페이지 상단 다운로드 아이콘 **Project files** (`RoomPlanTutorialMaterials-v2.7.zip`). `Starter`와 `Assets/Chair.usdz`(의자 v2)를 함께 제공합니다.
+- 위 Starter 단독 링크는 기존 v2.6 코드만 받는 호환용 링크입니다.
 
 ## 시작하기
 
 1. 공개 Tutorial URL을 열고 **RoomPlan Object Explorer 만들기**를 선택합니다.
-2. 페이지 첫 단계의 안내대로 Starter ZIP을 압축 해제합니다.
+2. Main 페이지 상단 Project files로 실습 자료를 받고 압축을 풉니다. `Starter` 폴더가 학습 프로젝트입니다.
 3. `RoomPlanExampleApp.xcodeproj`를 Xcode에서 엽니다.
 4. 필요하면 Signing & Capabilities에서 자신의 Development Team과 고유 Bundle Identifier를 선택합니다.
 5. Tutorial의 행동 순서대로 파일을 찾고 코드를 직접 입력합니다.
@@ -50,7 +51,7 @@ Starter 상태에서 **Explore Sample Room**을 누르면 `Start Part 1` 안내�
 
 `Room.usdz`는 포함되지 않으며 runtime에서도 사용하지 않습니다.
 
-Starter에는 `Chair.usdz`가 들어 있지 않습니다. Section 5에서 별도 Sample Chair Asset ZIP을 받고 Xcode target에 직접 추가합니다.
+Starter target에는 `Chair.usdz`가 들어 있지 않습니다. Section 5에서 실습 자료의 `Assets/Chair.usdz`를 Xcode target에 직접 추가합니다. `Assets/README.md`에는 파일 교체 방법과 방향·크기 보정의 범위가 있습니다.
 
 - 다른 의자를 `Chair.usdz`로 이름 바꿔 교체하면 mapping 코드는 그대로 사용할 수 있습니다. 교체 후 Target Membership을 확인하세요.
 - `MyChair.usdz`처럼 다른 이름을 쓰면 `.chair: FurnitureAsset(resourceName: "MyChair")`로 mapping 한 곳만 바꿉니다.
