@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="680" viewBox="0 0 1000 680" role="img" aria-labelledby="title desc">
+  <title id="title">방법 B · 이름을 연결</title>
+  <desc id="desc">category가 가리키는 resourceName과 프로젝트에 포함된 USDZ 파일 이름을 일치시킵니다. 확장자는 resourceName에 넣지 않습니다. 설명용 도식이며 실제 앱이나 Xcode 캡처가 아닙니다.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M1 1L7 4.5L1 8" fill="none" stroke="#0071e3" stroke-width="1.5"/>
+    </marker>
+  </defs>
+  <rect width="1000" height="680" rx="24" fill="#f5f5f7"/>
+  <g font-family="-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo',sans-serif">
+    <text x="44" y="65" font-size="31" fill="#1d1d1f" font-weight="650" text-anchor="start">방법 B · 이름을 연결</text>
+    <rect x="660" y="28" width="296" height="44" rx="22" fill="#e5edf6" stroke="none" stroke-width="2"/>
+    <text x="808" y="57" font-size="19" fill="#33465c" font-weight="500" text-anchor="middle">설명용 도식 · 실제 캡처 아님</text>
+    <text x="66" y="157" font-size="24" fill="#515d6b" font-weight="600" text-anchor="start">category</text>
+    <text x="338" y="157" font-size="24" fill="#515d6b" font-weight="600" text-anchor="start">resourceName</text>
+    <text x="710" y="157" font-size="24" fill="#515d6b" font-weight="600" text-anchor="start">Resources의 파일</text>
+    <rect x="48" y="190" width="208" height="77" rx="18" fill="#fff" stroke="#dce2e9" stroke-width="2"/>
+    <text x="71" y="237" font-size="28" fill="#0060c0" font-weight="500" text-anchor="start" font-family="ui-monospace,Menlo,monospace">.chair</text>
+    <path d="M272 229H310" fill="none" stroke="#0071e3" stroke-width="3" marker-end="url(#arrow)"/>
+    <rect x="329" y="190" width="267" height="77" rx="18" fill="#eaf3ff" stroke="none" stroke-width="2"/>
+    <text x="350" y="237" font-size="26" fill="#0060c0" font-weight="500" text-anchor="start" font-family="ui-monospace,Menlo,monospace">"MyChair"</text>
+    <path d="M611 229H649" fill="none" stroke="#0071e3" stroke-width="3" marker-end="url(#arrow)"/>
+    <rect x="669" y="190" width="287" height="77" rx="18" fill="#fff" stroke="#dce2e9" stroke-width="2"/>
+    <text x="690" y="237" font-size="25" fill="#1d1d1f" font-weight="500" text-anchor="start" font-family="ui-monospace,Menlo,monospace">MyChair.usdz</text>
+    <rect x="48" y="308" width="208" height="77" rx="18" fill="#fff" stroke="#dce2e9" stroke-width="2"/>
+    <text x="71" y="355" font-size="28" fill="#0060c0" font-weight="500" text-anchor="start" font-family="ui-monospace,Menlo,monospace">.bed</text>
+    <path d="M272 347H310" fill="none" stroke="#0071e3" stroke-width="3" marker-end="url(#arrow)"/>
+    <rect x="329" y="308" width="267" height="77" rx="18" fill="#eaf3ff" stroke="none" stroke-width="2"/>
+    <text x="350" y="355" font-size="26" fill="#0060c0" font-weight="500" text-anchor="start" font-family="ui-monospace,Menlo,monospace">"Bed"</text>
+    <path d="M611 347H649" fill="none" stroke="#0071e3" stroke-width="3" marker-end="url(#arrow)"/>
+    <rect x="669" y="308" width="287" height="77" rx="18" fill="#fff" stroke="#dce2e9" stroke-width="2"/>
+    <text x="690" y="355" font-size="25" fill="#1d1d1f" font-weight="500" text-anchor="start" font-family="ui-monospace,Menlo,monospace">Bed.usdz</text>
+    <rect x="48" y="426" width="208" height="77" rx="18" fill="#fff" stroke="#dce2e9" stroke-width="2"/>
+    <text x="71" y="473" font-size="28" fill="#0060c0" font-weight="500" text-anchor="start" font-family="ui-monospace,Menlo,monospace">.table</text>
+    <path d="M272 465H310" fill="none" stroke="#0071e3" stroke-width="3" marker-end="url(#arrow)"/>
+    <rect x="329" y="426" width="267" height="77" rx="18" fill="#eaf3ff" stroke="none" stroke-width="2"/>
+    <text x="350" y="473" font-size="26" fill="#0060c0" font-weight="500" text-anchor="start" font-family="ui-monospace,Menlo,monospace">"Table"</text>
+    <path d="M611 465H649" fill="none" stroke="#0071e3" stroke-width="3" marker-end="url(#arrow)"/>
+    <rect x="669" y="426" width="287" height="77" rx="18" fill="#fff" stroke="#dce2e9" stroke-width="2"/>
+    <text x="690" y="473" font-size="25" fill="#1d1d1f" font-weight="500" text-anchor="start" font-family="ui-monospace,Menlo,monospace">Table.usdz</text>
+    <path d="M44 580H956" stroke="#dce2e9" stroke-width="2"/>
+    <text x="44" y="622" font-size="25" fill="#1d1d1f" font-weight="600" text-anchor="start">resourceName에는 .usdz를 제외한 이름만 넣습니다.</text>
+    <text x="44" y="656" font-size="21" fill="#515d6b" font-weight="400" text-anchor="start">Chair는 한 줄 수정 · Bed와 Table은 파일을 넣은 뒤 해당 category를 추가합니다.</text>
+  </g>
+</svg>

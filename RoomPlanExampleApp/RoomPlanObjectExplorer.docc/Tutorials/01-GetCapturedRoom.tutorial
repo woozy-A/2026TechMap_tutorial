@@ -19,9 +19,9 @@
 
             **Starter와 내가 만드는 부분:** Starter는 화면 배치·버튼 연결·벽·문·창문 표시와 모델 로딩·크기 맞춤을 제공합니다. 학습자는 두 파일의 `Tutorial` MARK 아래에서 객체 목록·선택·box·Highlight·모델 교체를 연결하고, 원하면 회전까지 확장합니다.
 
-            **Preview 사용법:** 실행 결과를 확인하는 코드 Step에는 예시 이미지가 함께 있습니다. 넓은 화면에서는 코드 옆 **Preview**를 펼쳐 확인하고, 좁은 화면에서는 코드 아래로 스크롤하세요. 이미지는 실제 앱을 실시간으로 실행하는 화면이 아니라, 해당 단계의 기대 결과를 보여주는 캡처입니다.
+            **이미지 사용법:** 파일을 옮기거나 연결을 이해하는 Step에는 작업 도식을, 실행 결과를 확인하는 Step에는 기존 Simulator 캡처를 제공합니다. 도식에는 **실제 캡처 아님**을 표시했습니다. 넓은 화면에서는 코드 옆 **Preview**를 펼쳐 확인하고, 좁은 화면에서는 코드 아래로 스크롤하세요. 어떤 이미지도 앱을 실시간으로 실행하는 화면은 아닙니다.
 
-            **Recap 사용법:** Section 4·5와 Bonus 마지막의 Recap은 앞에서 작성한 관련 코드를 한 번에 읽는 요약입니다. 새 실행 단계가 아니므로 별도 Preview는 제공하지 않습니다.
+            **Recap 사용법:** Section 4·5와 Bonus 마지막의 Recap은 앞에서 작성한 관련 코드를 한 번에 읽는 요약입니다. 옆의 Preview에는 실행 캡처 대신 **코드가 연결하는 관계를 보여주는 도식**을 제공합니다. 이미 입력한 코드를 다시 붙여 넣는 단계가 아닙니다.
 
             @Image(source: "v6-goal-object-explorer.png", alt: "흰 가로 캔버스 안에 상태바 없이 정리된 Object Explorer 최종 화면으로 방 구조 안에 3D Chair model이 배치되어 있음")
         }
@@ -29,6 +29,8 @@
         @Steps {
             @Step {
                 상단 **Project files**에서 실습 자료 ZIP을 받아 압축을 풀고 `Starter/RoomPlanExampleApp.xcodeproj`를 Xcode에서 여세요. scheme은 **RoomPlanExampleApp**, destination은 iOS 17 이상의 iPhone Simulator로 정합니다. `Command-R`로 실행해 **Explore Sample Room**을 누르고 **Start Part 1** 안내를 확인한 뒤, **OK**와 `Command-.`을 차례로 눌러 실행을 멈춥니다.
+
+                @Image(source: "guide-starter-path.svg", alt: "작업 도식: 실습 ZIP에서 Starter 프로젝트를 열고 iPhone Simulator로 실행해 Start Part 1 안내를 확인하는 순서. Assets 폴더는 Section 5에서 사용")
             }
 
             @Step {
@@ -64,7 +66,7 @@
             @Step {
                 `loadObjects(from:)`에서는 `objects = room.objects`로 RoomPlan 결과를 연결하고 category section, object 수와 table을 갱신하세요. 이어서 `configureObjectCell`에서 `object.category`를 row 이름에, `object.dimensions`의 x/y/z를 meter 단위 설명에 직접 사용합니다. **지금 확인하는 코드:** `objects`와 `statusLabel.text`는 **11 Objects Detected**를, `makeObjectSections`는 네 category header를, `object.category.displayName`은 `Chair 2` 같은 이름을, `object.dimensions`는 meter 단위 크기를 만듭니다.
 
-                **실행 체크포인트:** `Command-R`로 Sample Room을 다시 여세요. 앱의 목록을 아래로 스크롤해 **Bed (2), Chair (3), Storage (4), Table (2)**와 각 객체의 크기를 확인하세요. Preview는 목록 윗부분만 보여주므로 네 category가 한꺼번에 보이지 않습니다. 객체 수·category·이름·크기를 확인했다면 `CapturedRoom.objects`, `category`, `dimensions`가 목록에 연결된 것입니다.
+                **실행 체크포인트:** `Command-R`로 Sample Room을 다시 여세요. 앱의 목록을 아래로 스크롤해 네 category인 **Bed (2), Chair (3), Storage (4), Table (2)** 및 각 객체의 크기를 확인하세요. Preview는 목록 윗부분만 보여주므로 네 category가 한꺼번에 보이지 않습니다. 객체 수·category·이름·크기를 확인했다면 `CapturedRoom.objects`, `category`, `dimensions`가 목록에 연결된 것입니다.
 
                 @Code(name: "ObjectExplorerViewController.swift", file: "V25-Section2-01-ExploreObjects.swift", previousFile: "V25-Section2-00-ExploreObjects.swift") {
                     @Image(source: "v6-section2-objects-detected.png", alt: "상태바를 제거한 흰 가로형 Section 2 결과로 3D Overview와 category별 object 목록 및 dimensions가 나란히 보임")
@@ -132,7 +134,9 @@
             @Step {
                 **이번 Section에서 작성한 코드를 한 번에 다시 확인하세요.** 아래 Recap은 `renderObjectBoxes()`와 `updateHighlight()`를 함께 보여줍니다. Starter가 제공한 RealityKit support는 생략하고 학습자가 직접 작성한 관련 코드만 모았습니다.
 
-                @Code(name: "ObjectExplorerViewController.swift — Section 4 Recap", file: "Recap-Section4-Visualization.swift")
+                @Code(name: "ObjectExplorerViewController.swift — Section 4 Recap", file: "Recap-Section4-Visualization.swift") {
+                    @Image(source: "guide-visualization-map.svg", alt: "설명 도식: dimensions는 box 크기, transform은 위치와 방향, identifier는 같은 객체의 Highlight에 연결됨. 실행 캡처가 아닌 Recap 관계도")
+                }
             }
         }
     }
@@ -141,11 +145,15 @@
         @ContentAndMedia {
             이번에는 Starter에 없던 USDZ 파일을 학습자가 직접 앱 target에 추가합니다. 아래 이미지는 교체 전 box가 아니라, 앱에 넣을 **Original Office Chair 3D asset 자체**의 디자인 렌더입니다. `category → asset` mapping만 바꾸면 Chair가 아닌 Bed나 Table model도 같은 pipeline으로 교체할 수 있습니다.
 
+            @Image(source: "chair-asset-three-quarter.png", alt: "앱에 직접 추가할 Original Office Chair 3D asset의 3분의 4 방향 렌더")
+        }
+
+        @ContentAndMedia {
             **코드를 읽기 전에:** 모델을 불러오는 `async` 함수는 작업 중 기다릴 수 있고, `await`는 모델이 준비될 때까지 결과를 기다리는 지점입니다. `throws`와 `try`는 로딩이 실패할 수 있음을 나타내며, 오류 안내는 Starter의 호출부가 담당합니다.
 
             **선택을 다시 확인하는 이유:** 모델을 기다리는 사이 다른 객체를 선택할 수 있습니다. 그래서 로딩 뒤의 `guard selectedObjectID == identifier`는 처음 선택한 객체가 여전히 선택되어 있을 때만 교체를 계속하게 합니다. 아래 코드는 **불러오기 → 선택 재확인 → 장면 교체 → 상태 갱신** 순서로 읽으세요.
 
-            @Image(source: "chair-asset-three-quarter.png", alt: "앱에 직접 추가할 Original Office Chair 3D asset의 3분의 4 방향 렌더")
+            @Image(source: "guide-replacement-pipeline.svg", alt: "설명 도식: 모델 불러오기, 같은 선택 UUID인지 재확인, 장면 교체, 참조와 상태 갱신의 네 단계. 실제 실행 캡처가 아니며 장면 변경은 dictionary 저장과 별개의 작업")
         }
 
         @Steps {
@@ -153,6 +161,8 @@
                 Section 1에서 받은 실습 자료의 `Assets/Chair.usdz`를 찾으세요. 이것이 소개 이미지와 같은 **Original Office Chair v2**입니다. Xcode Project Navigator에서 `RoomPlanExampleApp`의 `Resources`를 선택하고 `Chair.usdz`를 끌어 놓은 뒤 **Copy items if needed**와 **RoomPlanExampleApp target**을 체크합니다.
 
                 이 동작은 3D 파일을 앱 bundle에 넣습니다. 파일명이 `Chair.usdz`인지, File Inspector의 Target Membership에 `RoomPlanExampleApp`이 선택됐는지 확인하세요.
+
+                @Image(source: "guide-add-usdz.svg", alt: "작업 도식: 실습 자료의 Assets/Chair.usdz를 Xcode Resources로 끌어 놓고 Copy items if needed와 RoomPlanExampleApp target을 확인. 실제 Xcode 캡처가 아닌 작업 위치 안내")
             }
 
             @Step {
@@ -183,26 +193,36 @@
 
             @Step {
                 **Try Your Own USDZ — 아래 두 방법 중 하나만 선택하세요. 방법 A는 코드 변경 없이 파일을 교체합니다.** 새 model을 `Chair.usdz`로 이름 바꿔 기존 파일과 교체하고, `furnitureAssetsByCategory`는 그대로 둔 채 File Inspector에서 **RoomPlanExampleApp** Target Membership만 다시 확인합니다.
+
+                @Image(source: "guide-swap-file.svg", alt: "방법 A 작업 도식: MyChair.usdz 같은 새 모델을 Chair.usdz로 이름 바꿔 기존 Resources 파일을 교체하며 resourceName Chair와 mapping은 유지")
             }
 
             @Step {
                 **방법 B는 파일 이름을 mapping에 연결합니다.** `MyChair.usdz`라는 이름을 유지하려면 `.chair: FurnitureAsset(resourceName: "MyChair")` 한 줄만 바꾸세요. `Bed.usdz`나 `Table.usdz`는 같은 dictionary에 `.bed: FurnitureAsset(resourceName: "Bed")` 또는 `.table: FurnitureAsset(resourceName: "Table")`를 한 줄 추가합니다. model의 앞 방향이 다를 때만 `yawCorrectionDegrees`로 asset 축을 보정하세요.
+
+                @Image(source: "guide-asset-mapping.svg", alt: "방법 B 연결 도식: chair category는 resourceName MyChair와 MyChair.usdz, bed는 Bed와 Bed.usdz, table은 Table과 Table.usdz로 연결. resourceName에는 확장자를 쓰지 않음")
             }
 
             @Step {
                 **지금 확인하는 교체 지점:** 방법 A는 코드 변경 없이 같은 `Chair` resource를 사용하고, 방법 B는 `furnitureAssetsByCategory`의 선택한 category 한 줄이 새 resource 이름을 가리킵니다. **모델 주위에 여백이 생겨도 정상입니다.** Starter는 model의 비율을 유지한 채 RoomPlan이 추정한 box 안에 들어오도록 크기를 맞추고, model의 바닥을 box의 아래쪽에 정렬합니다. 다른 model을 넣었다고 가로·세로·높이를 각각 늘려 box를 꽉 채우지는 않습니다.
 
                 **실행 체크포인트:** `Command-R`로 다시 실행해 mapping한 category의 object를 선택하고 **Replace with 3D Model**을 누르세요. 새 USDZ가 같은 RoomPlan 위치와 크기 안에 보이면 성공입니다. 현재 예제는 category마다 하나의 asset을 연결합니다. Chair 1·2·3에 서로 다른 model을 고르는 per-object picker와 runtime Files import는 이 tutorial의 범위에 포함하지 않습니다.
+
+                @Image(source: "guide-model-fitting.svg", alt: "크기 맞춤 개념도: 새 의자 모델을 세 축에 같은 배율로 조절해 RoomPlan 추정 box 안에 넣고 바닥을 아래쪽 선에 정렬함. 모델 모양은 유지되고 남는 공간은 정상")
             }
 
             @Step {
                 **이번 Section에서 작성한 코드를 한 번에 다시 확인하세요.** 아래 Recap은 `category → asset` mapping, 선택 object 찾기, 교체 가능 여부와 실제 Entity 교체를 함께 보여줍니다. Starter가 제공한 asset loading과 fitting support는 생략했습니다. 읽기용 기본 예시이므로, 앞에서 `MyChair` 등으로 바꾼 자신의 mapping을 Recap의 `Chair`로 덮어쓰지 마세요.
 
-                @Code(name: "ObjectExplorerViewController.swift — Section 5 Recap", file: "Recap-Section5-3DAsset.swift")
+                @Code(name: "ObjectExplorerViewController.swift — Section 5 Recap", file: "Recap-Section5-3DAsset.swift") {
+                    @Image(source: "guide-replacement-pipeline.svg", alt: "설명 도식: 모델 불러오기, 같은 선택 UUID인지 재확인, 장면 교체, 참조와 상태 갱신의 네 단계. 실제 실행 캡처가 아니며 장면 변경은 dictionary 저장과 별개의 작업")
+                }
             }
 
             @Step {
                 **Main Tutorial Completion — RoomPlan Object Explorer를 완성했습니다.** 직접 만든 흐름은 `Room.json → CapturedRoom → objects → category / identifier → dimensions / transform → Entity → Highlight → Custom USDZ`입니다. Category Correction과 Remove는 <doc:06-OptionalEditing>에서 Main과 분리해 살펴봅니다.
+
+                @Image(source: "v6-section5-before-after.png", alt: "Main 완료를 확인하는 기존 Simulator 캡처: 선택된 분홍 box가 같은 위치의 Chair model로 교체된 전후 화면")
             }
         }
     }
@@ -212,6 +232,8 @@
             이 Bonus는 새로운 RoomPlan data를 배우는 필수 Section이 아닙니다. Main에서 만든 `CapturedRoom.Object → Entity` 연결을 확장해 scan data는 그대로 두고 RealityKit 표현만 회전합니다. 매번 원본 `object.transform`에서 pose를 다시 만든 뒤 local Y-axis quaternion을 합성해 위치는 유지하고 방향만 90°씩 바꿉니다.
 
             **각도와 축 읽기:** `.pi / 2`는 90°이고, `axis: [0, 1, 0]`은 객체의 위쪽인 local Y축을 뜻합니다. `% 4`는 회전 횟수를 0~3으로 유지해 네 번째 클릭에 원래 방향으로 돌아오게 합니다. `CapturedRoom` 원본을 바꾸는 것이 아니라 같은 replacement Entity의 방향만 바꿉니다.
+
+            @Image(source: "guide-rotation-cycle.svg", alt: "설명 도식: local 양의 Y축 위에서 본 모델을 반시계 방향으로 90도씩 회전하며 네 번 뒤 원래 방향. 위치와 선택 UUID는 유지하며 실제 실행 캡처가 아님")
         }
 
         @Steps {
@@ -244,11 +266,15 @@
             @Step {
                 **Bonus에서 작성한 코드를 한 번에 다시 확인하세요.** 아래 Recap은 Rotate 버튼의 표시 조건과 90° 회전을 함께 보여주며, Main에서 만든 replacement Entity를 그대로 재사용합니다.
 
-                @Code(name: "ObjectExplorerViewController.swift — Bonus Recap", file: "Recap-Bonus-Rotation.swift")
+                @Code(name: "ObjectExplorerViewController.swift — Bonus Recap", file: "Recap-Bonus-Rotation.swift") {
+                    @Image(source: "guide-rotation-cycle.svg", alt: "설명 도식: local 양의 Y축 위에서 본 모델을 반시계 방향으로 90도씩 회전하며 네 번 뒤 원래 방향. 위치와 선택 UUID는 유지하며 실제 실행 캡처가 아님")
+                }
             }
 
             @Step {
                 **Bonus Completion — 교체한 3D model 회전까지 확장했습니다.** 다음에는 같은 표현 계층에서 drag, 자유 회전 gesture, 여러 category의 model library나 wall/object 공간 관계 검사로 확장할 수 있습니다.
+
+                @Image(source: "v6-bonus-before-after.png", alt: "Bonus 완료를 확인하는 기존 Simulator 캡처: 같은 RoomPlan 위치에서 교체된 Chair model의 방향만 90도 바뀐 전후 화면")
             }
         }
     }

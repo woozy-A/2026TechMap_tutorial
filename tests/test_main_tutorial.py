@@ -80,7 +80,10 @@ class MainTutorialTests(unittest.TestCase):
         previews = re.findall(
             r'@Code\([^\n]+\)\s*\{\s*@Image\(source: "([^"]+)"', self.tutorial
         )
-        self.assertEqual(len(previews), 9)
+        self.assertEqual(len(previews), 12)
+        # Nine original runtime captures plus three explicitly labeled Recap diagrams.
+        self.assertEqual(sum(file.startswith("v6-") for file in previews), 9)
+        self.assertEqual(sum(file.startswith("guide-") for file in previews), 3)
         for file in previews:
             self.assertTrue((CATALOG / "Resources/Images" / file).is_file(), file)
 

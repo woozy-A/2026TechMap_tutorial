@@ -1,8 +1,9 @@
 # 실제 방 스캔 캡처 넣기
 
-현재 Challenge의 `challenge-scan-flow.svg`는 설명용 흐름도입니다.
+현재 Challenge의 `challenge-scan-flow.svg`와 `guide-*.svg`는 설명용 흐름도·작업 도식입니다.
 실제 기기에서 검증한 스캔 캡처가 없으므로 이를 실제 결과처럼 표시하지 않습니다.
-Main의 Preview는 고정 Sample Room의 Simulator 결과입니다.
+Main의 실행 Preview와 Challenge의 두 비교 이미지는 고정 Sample Room의 Simulator 결과입니다.
+모든 Step에 도식 또는 비교 이미지가 연결되어 있으므로 새 캡처를 넣을 때 이미지 한 장을 추가하지 않습니다.
 
 ## 무엇을 찍나요?
 
@@ -15,15 +16,19 @@ Main의 Preview는 고정 Sample Room의 Simulator 결과입니다.
 ## 어디에 넣나요?
 
 `RoomPlanExampleApp/RoomPlanObjectExplorer.docc/Resources/Images/`에 위 두 파일명으로 저장하세요.
-그다음 `Tutorials/05-ScanYourOwnRoom.tutorial`의 아래 두 Step에 한 줄씩 추가합니다.
+그다음 `Tutorials/05-ScanYourOwnRoom.tutorial`의 아래 두 Step에서 기존 `@Image` 한 줄을 교체합니다.
 
 **「실제 방으로 실행하기」Step 2** (`Scan Your Own Room`과 카메라 권한 안내):
+
+현재 `guide-scan-room.svg`를 가리키는 줄을 아래 줄로 교체합니다.
 
 ```text
 @Image(source: "challenge-live-scan.png", alt: "LiDAR 실제 기기에서 촬영한 RoomPlan 스캔 화면. 벽과 객체를 인식하고 Done 버튼이 보임")
 ```
 
 **「결과를 확인하고 마무리하기」Step 2** (row checkmark와 같은 box의 Highlight 확인):
+
+현재 `v6-section4-highlight.png`를 가리키는 줄을 아래 줄로 교체합니다.
 
 ```text
 @Image(source: "challenge-live-result.png", alt: "실제 방 스캔 뒤 Object Explorer의 객체 목록과 같은 UUID의 Highlight box가 보이는 화면")
